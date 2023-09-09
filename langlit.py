@@ -16,12 +16,12 @@ if prompt:
 
 st.write('# QA langchain')
 st.markdown('''
-    This is a dashboard showing the *Q&A* over Documents using langchain :rocket:  
-    code source: [Colab](https://colab.research.google.com/drive/1Eh6XRoE80MMRKeaJiugXNljpEdqws4tL#scrollTo=9pSPlYwvnQaP)
+    This is a pre dashboard "web-app" returning  *Question Answering over Documents* :rocket:  
+    MY source: [Github](https://github.com/kahtan777/langlit/edit/main/langlit.py)
     ''')
 
 from langchain.document_loaders import WebBaseLoader
-loader = WebBaseLoader("https://cogitotech.medium.com/how-do-self-driving-cars-work-abcac21ececb")
+loader = WebBaseLoader("https://medium.com/swlh/an-ultimate-guide-to-creating-a-startup-3b310f41d7e7")
 data = loader.load()
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 text_splitter = RecursiveCharacterTextSplitter(
