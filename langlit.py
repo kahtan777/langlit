@@ -41,13 +41,6 @@ API_KEY=st.secrets["openAI_key"]
 P_API_KEY =st.secrets["pincone_key"]
 
 
-prompt = st.chat_input("Say something")
-if prompt:
-    st.write(f"User has sent the following prompt: {prompt}")
-    print(prompt)
-    prompt = str(prompt)
-
-st.write('# QA langchain')
 
 from langchain.document_loaders import WebBaseLoader
 loader = WebBaseLoader("https://medium.com/swlh/an-ultimate-guide-to-creating-a-startup-3b310f41d7e7")
@@ -83,6 +76,14 @@ memory = ConversationBufferMemory(memory_key="chat_history", return_messages= Tr
 chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory= memory)
 query = str(prompt)
 Answer=chain.run({'question': query})
+
+prompt = st.chat_input("Say something")
+if prompt:
+    st.write(f"User has sent the following prompt: {prompt}")
+    print(prompt)
+    prompt = str(prompt)
+
+st.write('# QA langchain')
 
 
 with st.chat_message("user"):
