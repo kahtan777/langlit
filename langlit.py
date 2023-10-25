@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 import os
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="centered")
 
 video_html = """
 		<style>
