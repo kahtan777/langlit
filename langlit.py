@@ -12,7 +12,7 @@ video_html = """
 		  position: fixed;
 		  right: 0;
 		  bottom: 0;
-		  min-width: 100%; 
+		  width: 100%; 
 		  height: 80%;
 		}
 
