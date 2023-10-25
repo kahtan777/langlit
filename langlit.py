@@ -13,7 +13,7 @@ video_html = """
 		  right: 0;
 		  bottom: 0;
 		  min-width: 100%; 
-		  min-height: 80%;
+		  min-height: 50%;
 		}
 
 		.content {
@@ -22,7 +22,7 @@ video_html = """
 		  background: rgba(0, 0, 0, 0.5);
 		  color: #f1f1f1;
 		  width: 100%;
-		  padding: 20px;
+		  padding: 30px;
 		}
 
 		</style>	
@@ -33,7 +33,6 @@ video_html = """
         """
 
 st.markdown(video_html, unsafe_allow_html=True)
-st.title('Video page')
 
 
 API_KEY=st.secrets["openAI_key"]
