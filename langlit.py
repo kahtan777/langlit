@@ -43,21 +43,19 @@ with st.container():
 
 
 
-prompt = st.chat_input("Say something")
 
 
 tab1, tab2 = st.tabs(["Cat", "Dog"])
 
 with tab1:
    st.header("A cat")
-   if prompt:
-       st.write(f"User has sent the following prompt: {prompt}")
-       print(prompt)
+   prompt = st.chat_input("Say something")
+    if prompt:
+        st.write(f"User has sent the following prompt: {prompt}")
+        prompt = str(prompt)
+        print(prompt)
+        
        
-with tab2:
-   st.header("A dog")
-   st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
-prompt = str(prompt)
 from langchain.document_loaders import WebBaseLoader
 loader = WebBaseLoader("https://medium.com/swlh/an-ultimate-guide-to-creating-a-startup-3b310f41d7e7")
 data = loader.load()
