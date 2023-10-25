@@ -41,13 +41,14 @@ with st.container():
     st.markdown(video_html, unsafe_allow_html=True) 
 
 
+tab1, tab2 = st.tabs(["Cat", "Dog"])
 
-
-prompt = st.chat_input("Say something")
-if prompt:
-    st.write(f"User has sent the following prompt: {prompt}")
-    print(prompt)
-    prompt = str(prompt)
+with tab1:
+    prompt = st.chat_input("Say something")
+    if prompt:
+        st.write(f"User has sent the following prompt: {prompt}")
+        print(prompt)
+        prompt = str(prompt)
 
 
 
@@ -87,8 +88,8 @@ Answer=chain.run({'question': query})
 
 
 
-
-with st.chat_message("user"):
-    st.write(str(Answer))
+with tab2:
+    with st.chat_message("user"):
+        st.write(str(Answer))
 
 
