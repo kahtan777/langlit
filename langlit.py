@@ -110,7 +110,10 @@ while True:
     # Print the current contents of the dictionary
     print("Current Dictionary:")
     for k, v in data_dict.items():
-        print(f"{k}: {v}")
+        x=print(f"{k}: {v}")
+
+with st.sidebar:
+    st.write (x)
 
 
     
