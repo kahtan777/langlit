@@ -108,10 +108,9 @@ with st.sidebar:
             del data_dict[keys[0]]
     
         # Print the current contents of the dictionary
-        print("Current Dictionary:")
+        st.write("history:")
         for k, v in data_dict.items():
-            x=print(f"{k}: {v}")
-        st.write(x)
+            st.write(f"{k}: {v}")
 
 
 
