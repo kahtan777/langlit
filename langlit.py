@@ -41,16 +41,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Content below the video
-st.markdown(
-    """
-    <div class="content">
-        This is your content that appears below the video. You can add text, images, or other elements here.
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
 st.markdown(video_html, unsafe_allow_html=True)
 
 
