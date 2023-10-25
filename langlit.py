@@ -41,7 +41,6 @@ with st.container():
     st.markdown(video_html, unsafe_allow_html=True) 
 
 
-tab1, tab2 = st.tabs(["Cat", "Dog"])
 
 
     prompt = st.chat_input("Say something")
