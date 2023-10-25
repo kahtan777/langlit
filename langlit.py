@@ -6,17 +6,17 @@ import os
 import streamlit as st
 
 
-st.set_page_config(layout="wide")
-
-video_html = """
+st.set_page_config(layout="centered")
+with st.container():
+    video_html = """
 		<style>
 
 		#myVideo {
 		  position: fixed;
 		  right: 0;
-		  bottom: 0;
-		  min-width: 100%; 
-		  min-height: 100%;
+		  bottom: 5;
+		  width: 100%; 
+		  height: 100%;
 		}
 
 		.content {
@@ -35,7 +35,7 @@ video_html = """
 		</video>
         """
 
-st.markdown(video_html, unsafe_allow_html=True)
+    st.markdown(video_html, unsafe_allow_html=True)
 
 API_KEY=st.secrets["openAI_key"]
 P_API_KEY =st.secrets["pincone_key"]
