@@ -48,9 +48,7 @@ with st.container():
 prompt = st.chat_input("Say something")
 if prompt:
     with st.chat_message("user"):
-        st.write(f"User has sent the following prompt: {prompt}")
-    prompt = str(prompt)
-    print(prompt)
+        st.write(str(prompt))
         
        
 from langchain.document_loaders import WebBaseLoader
