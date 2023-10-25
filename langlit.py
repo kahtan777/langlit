@@ -14,9 +14,9 @@ with st.container():
 		#myVideo {
 		  position: fixed;
 		  right: 0;
-		  bottom: -50;
+		  top: 0;
 		  width: 100%; 
-		  height: 100%;
+		  height: 80%;
 		}
 
 		.content {
@@ -24,7 +24,7 @@ with st.container():
 		  bottom: 0;
 		  background: rgba(0, 0, 0, 0.5);
 		  color: #f1f1f1;
-		  width: 10%;
+		  width: 100%;
 		  padding: 20px;
 		}
 
