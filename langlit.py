@@ -8,34 +8,34 @@ import streamlit as st
 
 st.set_page_config(layout="centered")
 
-video_html = """
-<style>
-.video-container {
-  width: 100%; 
-  height: auto;
-}
+with st.container():
+    video_html = """
+    <style>
+    .video-container {
+    width: 100%; 
+    height: auto;
+    }
 
-video {
-  width: 100%; 
-  height: auto;
-}
+    video {
+    width: 100%; 
+    height: auto;
+    }
 
-.content {
-  background: rgba(0, 0, 0, 0.5);
-  color: #f1f1f1;
-  width: 100%;
-  padding: 20px;
-}
-</style>	
-<div class="video-container">
-  <video autoplay muted loop id="myVideo">
-    <source src="https://static.streamlit.io/examples/star.mp4">
-    Your browser does not support HTML5 video.
-  </video>
-</div>
-"""
-
-st.markdown(video_html, unsafe_allow_html=True)
+    .content {
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+    }
+    </style>	
+    <div class="video-container">
+    <video autoplay muted loop id="myVideo">
+        <source src="https://static.streamlit.io/examples/star.mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    </div>
+    """  
+    st.markdown(video_html, unsafe_allow_html=True) 
 
 API_KEY=st.secrets["openAI_key"]
 P_API_KEY =st.secrets["pincone_key"]
