@@ -43,7 +43,7 @@ with st.container():
 
 tab1, tab2 = st.tabs(["Cat", "Dog"])
 
-with tab1:
+
     prompt = st.chat_input("Say something")
     if prompt:
         st.write(f"User has sent the following prompt: {prompt}")
@@ -92,6 +92,3 @@ with tab1:
         st.write(str(Answer))
     
 
-with tab2:
-   st.header("A dog")
-   st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
