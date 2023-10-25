@@ -3,34 +3,53 @@ import pandas as pd
 import plotly.express as px
 import os
 
-st.set_page_config(layout="wide+full_width")
+st.set_page_config(layout="wide")
 
-video_html = """
-		<style>
+import streamlit as st
 
-		#myVideo {
-		  position: fixed;
-		  right: 0;
-		  bottom: 0;
-		  width: 100%; 
-		  height: 100%;
-		}
+st.markdown(
+    """
+    <style>
+    .video-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Place the video behind other content */
+    }
+    .content {
+        position: relative;
+        z-index: 1;
+        padding: 30px;
+        background: rgba(0, 0, 0, 0.5);
+        color: #f1f1f1;
+    }
+    </style>
+    """
+)
 
-		.content {
-		  position: fixed;
-		  bottom: 0;
-		  background: rgba(0, 0, 0, 0.5);
-		  color: #f1f1f1;
-		  width: 100%;
-		  padding: 30px;
-		}
+st.markdown(
+    """
+    <div class="video-container">
+        <video autoplay muted loop id="myVideo">
+            <source src="https://static.streamlit.io/examples/star.mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
-		</style>	
-		<video autoplay muted loop id="myVideo">
-		  <source src="https://static.streamlit.io/examples/star.mp4")>
-		  Your browser does not support HTML5 video.
-		</video>
-        """
+# Content below the video
+st.markdown(
+    """
+    <div class="content">
+        This is your content that appears below the video. You can add text, images, or other elements here.
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 st.markdown(video_html, unsafe_allow_html=True)
 
