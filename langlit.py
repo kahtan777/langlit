@@ -93,27 +93,31 @@ with st.chat_message("assistant"):
 
 # Initialize an empty dictionary to store key-value pairs
 data_dict = {}
-
-while True:
-    key = prompt
-    value = Answer
-
-    # Add the key-value pair to the dictionary
-    data_dict[key] = value
-
-    # If the dictionary has more than 10 key-value pairs, remove the earliest one
-    if len(data_dict) > 10:
-        # Get the keys as a list and remove the first key-value pair
-        keys = list(data_dict.keys())
-        del data_dict[keys[0]]
-
-    # Print the current contents of the dictionary
-    print("Current Dictionary:")
-    for k, v in data_dict.items():
-        x=print(f"{k}: {v}")
-
 with st.sidebar:
-    st.write (x)
+    while True:
+        key = prompt
+        value = Answer
+    
+        # Add the key-value pair to the dictionary
+        data_dict[key] = value
+    
+        # If the dictionary has more than 10 key-value pairs, remove the earliest one
+        if len(data_dict) > 10:
+            # Get the keys as a list and remove the first key-value pair
+            keys = list(data_dict.keys())
+            del data_dict[keys[0]]
+    
+        # Print the current contents of the dictionary
+        print("Current Dictionary:")
+        for k, v in data_dict.items():
+            x=print(f"{k}: {v}")
+            st.write(x)
+
+
+
+
+
+    
 
 
     
