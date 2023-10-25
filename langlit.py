@@ -13,12 +13,12 @@ video_html = """
 		  right: 0;
 		  bottom: 0;
 		  min-width: 100%; 
-		  min-height: 50%;
+		  height: 30%;
 		}
 
 		.content {
 		  position: fixed;
-		  bottom: 3;
+		  bottom: 0;
 		  background: rgba(0, 0, 0, 0.5);
 		  color: #f1f1f1;
 		  width: 100%;
