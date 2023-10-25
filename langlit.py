@@ -45,15 +45,12 @@ with st.container():
 
 
 
-tab1, tab2 = st.tabs(["Cat", "Dog"])
-
-with tab1:
-   st.header("A cat")
-   prompt = st.chat_input("Say something")
-    if prompt:
+prompt = st.chat_input("Say something")
+if prompt:
+    with st.chat_message("user"):
         st.write(f"User has sent the following prompt: {prompt}")
-        prompt = str(prompt)
-        print(prompt)
+    prompt = str(prompt)
+    print(prompt)
         
        
 from langchain.document_loaders import WebBaseLoader
@@ -91,7 +88,7 @@ Answer=chain.run({'question': query})
 
 
 
-with st.chat_message("user"):
+with st.chat_message("assistant"):
     st.write(str(Answer))
     
 
