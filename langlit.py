@@ -48,7 +48,7 @@ with st.container():
 prompt = st.chat_input("Say something")
 if prompt:
     with st.chat_message("user"):
-        kk=st.write(str(prompt))
+        st.write(str(prompt))
         
        
 from langchain.document_loaders import WebBaseLoader
@@ -87,7 +87,7 @@ Answer=chain.run({'question': query})
 
 
 with st.chat_message("assistant"):
-    vv=st.write(str(Answer))
+    st.write(str(Answer))
 
 
 
@@ -95,8 +95,8 @@ with st.chat_message("assistant"):
 data_dict = {}
 
 while True:
-    key = kk
-    value = vv
+    key = prompt
+    value = Answer
 
     # Add the key-value pair to the dictionary
     data_dict[key] = value
