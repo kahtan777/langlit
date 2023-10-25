@@ -94,7 +94,7 @@ with st.chat_message("assistant"):
 # Initialize an empty dictionary to store key-value pairs
 data_dict = {}
 with st.sidebar:
-    while true :
+    while True :
         key = prompt
         value = Answer
     # Add the key-value pair to the dictionary
