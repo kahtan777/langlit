@@ -16,7 +16,7 @@ with st.container():
 		  left: 0;
 		  top: 60;
 		  width: 100%; 
-		  height: 60%;
+		  height: 100%;
 		}
 
 		.content {
