@@ -111,7 +111,7 @@ with st.sidebar:
         print("Current Dictionary:")
         for k, v in data_dict.items():
             x=print(f"{k}: {v}")
-            st.write(x)
+        st.write(x)
 
 
 
