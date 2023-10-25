@@ -97,8 +97,8 @@ with st.sidebar:
     while True :
         key = prompt
         value = Answer
-    # Add the key-value pair to the dictionary
-    data_dict[key] = value
+        # Add the key-value pair to the dictionary
+        data_dict[key] = value
     
     # If the dictionary has more than 10 key-value pairs, remove the earliest one
     if len(data_dict) > 10:
