@@ -14,9 +14,9 @@ with st.container():
 		#myVideo {
 		  position: fixed;
 		  left: 0;
-		  top: 60;
+		  top: 70;
 		  width: 100%; 
-		  height: 100%;
+		  height: 70%;
 		}
 
 		.content {
