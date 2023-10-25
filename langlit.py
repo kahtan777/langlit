@@ -92,7 +92,9 @@ with st.chat_message("assistant"):
 
 
 # Initialize an empty dictionary to store key-value pairs
+import pandas as pd
 data_dict = {}
+
 with st.sidebar:
     
     key = prompt
@@ -107,9 +109,9 @@ with st.sidebar:
         del data_dict[keys[0]]
     
     # Display the current contents of the dictionary using st.write
-    st.write("Current Dictionary:")
-    for key, value in data_dict.items():
-        st.write(f"Key: {key}, Value: {value}")
+    df = pd.DataFrame(data_dict.items(), columns=["Key", "Value"])
+    st.write(df)
+
 
 
 
