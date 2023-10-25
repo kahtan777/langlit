@@ -48,7 +48,7 @@ with st.container():
 prompt = st.chat_input("Say something")
 if prompt:
     with st.chat_message("user"):
-        st.write(str(prompt))
+        k=st.write(str(prompt))
         
        
 from langchain.document_loaders import WebBaseLoader
@@ -87,6 +87,31 @@ Answer=chain.run({'question': query})
 
 
 with st.chat_message("assistant"):
-    st.write(str(Answer))
+    v=st.write(str(Answer))
+
+
+
+# Initialize an empty dictionary to store key-value pairs
+data_dict = {}
+
+while True:
+    key = k
+    value = v
+
+    # Add the key-value pair to the dictionary
+    data_dict[key] = value
+
+    # If the dictionary has more than 10 key-value pairs, remove the earliest one
+    if len(data_dict) > 10:
+        # Get the keys as a list and remove the first key-value pair
+        keys = list(data_dict.keys())
+        del data_dict[keys[0]]
+
+    # Print the current contents of the dictionary
+    print("Current Dictionary:")
+    for k, v in data_dict.items():
+        print(f"{k}: {v}")
+
+
     
 
