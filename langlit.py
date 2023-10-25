@@ -13,10 +13,10 @@ with st.container():
 
 		#myVideo {
 		  position: fixed;
-		  right: 0;
-		  top: 0;
+		  left: 0;
+		  top: 60;
 		  width: 100%; 
-		  height: 80%;
+		  height: 60%;
 		}
 
 		.content {
