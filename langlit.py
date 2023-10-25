@@ -107,7 +107,9 @@ with st.sidebar:
         del data_dict[keys[0]]
     
     # Display the current contents of the dictionary using st.write
-    st.write(data_dict)
+    st.write("Current Dictionary:")
+    for key, value in data_dict.items():
+        st.write(f"Key: {key}, Value: {value}")
 
 
 
