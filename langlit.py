@@ -47,7 +47,6 @@ if prompt:
     print(prompt)
     prompt = str(prompt)
 
-st.write('# QA langchain')
 
 
 
