@@ -2,8 +2,11 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import os
+import pinecone
 
-import streamlit as st
+API_KEY=st.secrets["openAI_key"]
+P_API_KEY =st.secrets["pincone_key"]
+
 
 
 st.set_page_config(layout="centered")
@@ -37,8 +40,7 @@ with st.container():
     """  
     st.markdown(video_html, unsafe_allow_html=True) 
 
-API_KEY=st.secrets["openAI_key"]
-P_API_KEY =st.secrets["pincone_key"]
+
 
 
 prompt = st.chat_input("Say something")
@@ -64,8 +66,6 @@ text_splitter = RecursiveCharacterTextSplitter(
 texts = text_splitter.split_documents(data)
 from langchain.vectorstores import Pinecone
 from langchain.embeddings.openai import OpenAIEmbeddings
-import pinecone
-import os
 embeddings = OpenAIEmbeddings(openai_api_key =API_KEY) # set openai_api_key = 'your_openai_api_key' # type: ignore
 pinecone.init(api_key=P_API_KEY, environment="gcp-starter")
 index_name = pinecone.Index('index-1')
