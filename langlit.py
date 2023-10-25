@@ -86,7 +86,7 @@ chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory=
 query = str(prompt)
 Answer=chain.run({'question': query})
 
-st.button('voice input'):
+st.button('voice input')
 
 
 
