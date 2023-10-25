@@ -5,36 +5,35 @@ import os
 
 import streamlit as st
 
-import streamlit as st
 
 st.set_page_config(layout="wide")
 
 video_html = """
-<style>
-#myVideo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensures the video covers the entire container */
-  z-index: -1; /* Place the video behind other content */
-}
+		<style>
 
-.content {
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.5);
-  color: #f1f1f1;
-  width: 100%;
-  position: relative; /* Add this to make content flow below the video */
-  z-index: 1; /* Place content above the video */
-}
-</style>
-<video autoplay muted loop id="myVideo">
-  <source src="https://static.streamlit.io/examples/star.mp4">
-  Your browser does not support HTML5 video.
-</video>
-"""
+		#myVideo {
+		  position: fixed;
+		  right: 0;
+		  bottom: 0;
+		  min-width: 100%; 
+		  min-height: 100%;
+		}
+
+		.content {
+		  position: fixed;
+		  bottom: 0;
+		  background: rgba(0, 0, 0, 0.5);
+		  color: #f1f1f1;
+		  width: 100%;
+		  padding: 20px;
+		}
+
+		</style>	
+		<video autoplay muted loop id="myVideo">
+		  <source src="https://static.streamlit.io/examples/star.mp4")>
+		  Your browser does not support HTML5 video.
+		</video>
+        """
 
 st.markdown(video_html, unsafe_allow_html=True)
 
