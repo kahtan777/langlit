@@ -88,8 +88,7 @@ Answer=chain.run({'question': query})
 
 
 
-with tab2:
-    with st.chat_message("user"):
-        st.write(str(Answer))
+with st.chat_message("user"):
+    st.write(str(Answer))
 
 
