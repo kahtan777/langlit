@@ -94,10 +94,7 @@ with st.chat_message("assistant"):
 # Initialize an empty dictionary to store key-value pairs
 data_dict = {}
 with st.sidebar:
-    while True:
-        key = prompt
-        value = Answer
-    
+    if st.button("Add to Dictionary"):
         # Add the key-value pair to the dictionary
         data_dict[key] = value
     
@@ -107,8 +104,10 @@ with st.sidebar:
             keys = list(data_dict.keys())
             del data_dict[keys[0]]
     
-        # Print the current contents of the dictionary
-        st.write(data_dict)
+    # Display the current contents of the dictionary using st.write
+    st.write("Current Dictionary:")
+    for k, v in data_dict.items():
+        st.write(f"{k}: {v}")
 
 
 
