@@ -86,10 +86,8 @@ chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory=
 query = str(prompt)
 Answer=chain.run({'question': query})
 
-if st.button('Say hello'):
-    st.write('Why hello there')
-else:
-    st.write('Goodbye')
+st.button('voice input'):
+
 
 
 with st.chat_message("user"):
