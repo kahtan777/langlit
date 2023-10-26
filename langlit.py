@@ -86,9 +86,11 @@ chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory=
 query = str(prompt)
 Answer=chain.run({'question': query})
 
-
-with st.chat_message("assistant"):
-    st.write(str(Answer))
+if prompt:
+    with st.chat_message("user"):
+        st.write(str(prompt))
+    with st.chat_message("assistant"):
+        st.write(str(Answer))
             
 
 
