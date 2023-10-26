@@ -47,10 +47,11 @@ with st.container():
     st.markdown(video_html, unsafe_allow_html=True) 
     
 
-prompt = st.chat_input("Say something")
+prompt = st.text_input("User Prompt")
 if prompt:
-    with st.chat_message("user"):
-        st.write(str(prompt))
+    # Display the user's prompt
+    with st.expander("User Prompt"):
+        st.write(prompt)
 
 
         
@@ -81,14 +82,18 @@ vectordb = Pinecone.from_documents(texts, embeddings, index_name='index-1')
 retriever = vectordb.as_retriever()
 
 
-memory = ConversationBufferMemory(memory_key="chat_history", return_messages= True)
-chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory= memory)
-query = str(prompt)
-Answer=chain.run({'question': query})
+# Create a memory to store the conversation history
+memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
+# Create the Conversational Retrieval Chain
+chain = ConversationalRetrievalChain.from_llm(llm, retriever=retriever, memory=memory)
 
-with st.chat_message("assistant"):
-    st.write(str(Answer))
+# Run the conversation
+Answer = chain.run({'question': prompt})
+
+# Display the assistant's answer
+with st.expander("Assistant Answer"):
+    st.write(Answer)
         
 
 
