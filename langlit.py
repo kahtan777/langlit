@@ -85,9 +85,9 @@ query = str(prompt)
 message=chain.run({'question': query})
 
 
-for message in messages: # Display the prior chat messages
-    with st.chat_message(message["role"]):
-        st.write(message["content"])
+for i in messages: # Display the prior chat messages
+    with st.chat_message(i["role"]):
+        st.write(i["content"])
         
 
 
