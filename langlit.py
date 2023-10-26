@@ -11,7 +11,6 @@ from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain.chains import RetrievalQA
-from vector_db import Pinecone
 from conversation_memory import ConversationBufferMemory
 from conversational_retrieval import ConversationalRetrievalChain
 
