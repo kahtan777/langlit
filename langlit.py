@@ -39,12 +39,12 @@ with st.container():
     st.markdown(video_html, unsafe_allow_html=True) 
 
 
+if prompt := st.chat_input("feel free to ask"): # Prompt for user input and save to chat history
+    st.session_state.messages.append({"role": "user", "content": prompt})
 
 
-prompt = st.chat_input("Say something")
-if prompt:
-    with st.chat_message("user"):
-        st.write(str(prompt))
+
+
         
        
 from langchain.document_loaders import WebBaseLoader
@@ -78,12 +78,14 @@ from langchain.chains import ConversationalRetrievalChain
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages= True)
 chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory= memory)
 query = str(prompt)
-Answer=chain.run({'question': query})
+message=chain.run({'question': query})
 
 
+for message in st.session_state.messages: # Display the prior chat messages
+    with st.chat_message(message["role"]):
+        st.write(message["content"])
+        
 
-with st.chat_message("assistant"):
-    st.write(str(Answer))
 
 st.button("Voice input")
 
