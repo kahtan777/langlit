@@ -83,10 +83,9 @@ if "messages" not in st.session_state:
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
     
-prompt = st.chat_input("Say something")
-Answer=chain.run({'question': prompt})
     
 if prompt := st.chat_input():
+    Answer=chain.run({'question': prompt})
     openai.api_key = API_KEY
     st.session_state.messages.append({"role": 'assistant', 'content': Answer })
     st.session_state.messages.append({"role": "user", "content": prompt})
