@@ -96,4 +96,4 @@ if prompt := st.chat_input():
     Answer=chain.run({'question': query})
     msg = Answer
     st.session_state.messages.append(msg)
-    st.chat_message("assistant").write(msg.content)
+    st.chat_message("assistant").write(msg)
