@@ -96,8 +96,7 @@ Answer=chain.run({'question': query})
 chat_history.append(("Assistant", str(Answer))
 
 
-# Display the entire chat history
-for speaker, message in chat_history:
+for speaker, message in chat_history :
     st.chat_message(message, speaker=speaker))
         
 
