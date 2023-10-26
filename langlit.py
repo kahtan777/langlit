@@ -53,7 +53,11 @@ with st.container():
     """
     st.markdown(video_html, unsafe_allow_html=True)
 
-
+if "messages" not in st.session_state:
+    st.session_state["messages"] = [{"role": "assistant", "content": "I'm Here to teach you, feel free to ask any question :)"}]
+    
+for msg in st.session_state.messages:
+    st.chat_message(msg["role"]).write(msg["content"])
 
 
 loader = WebBaseLoader("https://medium.com/swlh/an-ultimate-guide-to-creating-a-startup-3b310f41d7e7")
@@ -79,11 +83,7 @@ memory = ConversationBufferMemory(memory_key="chat_history", return_messages=Tru
 chain = ConversationalRetrievalChain.from_llm(llm, retriever=retriever, memory=memory)
     
 
-if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "I'm Here to teach you, feel free to ask any question :)"}]
-    
-for msg in st.session_state.messages:
-    st.chat_message(msg["role"]).write(msg["content"])
+
     
 
 
