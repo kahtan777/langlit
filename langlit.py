@@ -95,7 +95,11 @@ if prompt:
 
 
 for speaker, message in chat_history:
-    st.chat_message(message, speaker=speaker))
+    if speaker == "User":
+        st.chat_message(message, speaker=st.chat_message.SPEAKER_USER)
+    else:
+        st.chat_message(message, speaker=st.chat_message.SPEAKER_ASSISTANT)
+
         
 
 
