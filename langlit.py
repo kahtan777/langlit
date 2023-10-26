@@ -94,6 +94,6 @@ if prompt := st.chat_input():
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
     Answer=chain.run({'question': query})
-    msg = Answer.choices[0].message
+    msg = Answer
     st.session_state.messages.append(msg)
     st.chat_message("assistant").write(msg.content)
