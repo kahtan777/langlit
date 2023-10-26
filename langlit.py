@@ -38,15 +38,11 @@ with st.container():
     """  
     st.markdown(video_html, unsafe_allow_html=True) 
     
-if "messages" not in st.session_state.keys(): # Initialize the chat messages history
-    st.session_state.messages = [
-        {"role": "assistant", "content": "Ask me a question about Streamlit's open-source Python library!"}
-    ]
 
-if prompt := st.chat_input("feel free to ask"): # Prompt for user input and save to chat history
-    st.messages.append({"role": "user", "content": prompt})
-
-
+prompt = st.chat_input("Say something")
+if prompt:
+    with st.chat_message("user"):
+        st.write(str(prompt))
 
 
         
@@ -85,9 +81,8 @@ query = str(prompt)
 message=chain.run({'question': query})
 
 
-for i in messages: # Display the prior chat messages
-    with st.chat_message(i["role"]):
-        st.write(i["content"])
+with st.chat_message("assistant"):
+    st.write(str(Answer))
         
 
 
