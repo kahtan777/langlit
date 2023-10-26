@@ -7,8 +7,8 @@ import pinecone
 API_KEY=st.secrets["openAI_key"]
 P_API_KEY =st.secrets["pincone_key"]
 
+st.set_page_config(layout="wide")
 
-st.set_page_config(layout="centered")
 with st.container():
     video_html = """
     <style>
