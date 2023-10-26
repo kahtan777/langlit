@@ -51,7 +51,7 @@ with st.container():
 st.title("Chat History")
 
 # Initialize an empty list to store the chat history
-chat_history = []
+chat_history = ["how can i help"]
     
 prompt = st.chat_input("Say something")
 
