@@ -95,7 +95,9 @@ if prompt:
 
 
     for speaker, message in chat_history:
-        st.chat_message(message, speaker=speaker)
+        with st.chat_message("assistant"):
+            st.write(message, speaker=speaker)
+            
 
         
 
