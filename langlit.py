@@ -87,9 +87,8 @@ memory = ConversationBufferMemory(memory_key="chat_history", return_messages= Tr
 chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory= memory)
 
 if prompt:
-    Answer = chain.run({'question': prompt})
     chat_history.append(("User", str(prompt))
-    chat_history.append(("Assistant", str(Answer))
+    chat_history.append(("Assistant", str(chain.run({'question': prompt})))
 
 # Display the entire chat history
 for speaker, message in chat_history:
