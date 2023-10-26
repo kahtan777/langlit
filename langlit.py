@@ -87,7 +87,7 @@ with st.container():
 
     if prompt := st.chat_input():
         openai.api_key = API_KEY
-        st.session_state.messages.append({"role": 'assistant', 'content': 'the following is your memory: '+str(chain.run({'question': query}))})
+        st.session_state.messages.append({"role": 'assistant', 'content': str(chain.run({'question': query}))})
         st.session_state.messages.append({"role": "user", "content": prompt})
         st.chat_message("user").write(prompt)
         response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=st.session_state.messages)
