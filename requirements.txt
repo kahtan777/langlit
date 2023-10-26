@@ -2,7 +2,15 @@ langchain==0.0.285
 pandas==2.1.0
 pinecone_client==2.2.2
 plotly==5.16.1
-streamlit==1.26.0
 bs4==0.0.1
 openai==0.28.0
 tiktoken==0.4.0
+pydantic==1.10.8
+snowflake_snowpark_python==1.5.0
+snowflake-snowpark-python[pandas]
+streamlit==1.27.1
+supabase==1.0.3
+unstructured==0.7.12
+black==23.3.0
+replicate==0.8.4
+boto3==1.28.57
