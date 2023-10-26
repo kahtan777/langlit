@@ -90,9 +90,8 @@ if prompt:
     # Append the user's prompt to the chat history
     chat_history.append(("User", str(prompt))
 
-    # Run the conversation
-    query = str(prompt)
-    Answer = chain.run({'question': query})
+   
+    Answer = chain.run({'question': prompt})
 
     # Append the assistant's answer to the chat history
     chat_history.append(("Assistant", str(Answer))
