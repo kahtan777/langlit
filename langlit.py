@@ -3,7 +3,6 @@ import pandas as pd
 import plotly.express as px
 import os
 import pinecone
-import openai
 from langchain.document_loaders import WebBaseLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Pinecone
@@ -35,7 +34,11 @@ texts = text_splitter.split_documents(data)
 embeddings = OpenAIEmbeddings(openai_api_key=API_KEY)
 pinecone.init(api_key=P_API_KEY, environment="gcp-starter")
 index_name = pinecone.Index('index-1')
-
+llm = ChatOpenAI(model_name='gpt-3.5-turbo-0301', temperature=0, openai_api_key=API_KEY ,type= ignore)
+vectordb = Pinecone.from_documents(texts, embeddings, index_name='index-1')
+retriever = vectordb.as_retriever()
+memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+chain = ConversationalRetrievalChain.from_llm(llm, retriever=retriever, memory=memory)
 
 with st.container():
     video_html = """
@@ -74,23 +77,13 @@ for msg in st.session_state.messages:
     
 
 
-llm = ChatOpenAI(model_name='gpt-3.5-turbo-0301', temperature=0, openai_api_key=API_KEY)
-
-
-vectordb = Pinecone.from_documents(texts, embeddings, index_name='index-1')
-retriever = vectordb.as_retriever()
-
-memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
-chain = ConversationalRetrievalChain.from_llm(llm, retriever=retriever, memory=memory)
-query = str(prompt)
-Answer = chain.run({'question': query})
 
 if prompt := st.chat_input():
 
     openai.api_key = API_KEY
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
-    Answer = chain.run({'question': query})
+    Answer = chain.run({'question': prompt})
     msg = Answer.choices[0].message
     st.session_state.messages.append(msg)
     st.chat_message("assistant").write(msg.content)
