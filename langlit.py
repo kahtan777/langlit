@@ -37,7 +37,11 @@ with st.container():
     </div>
     """  
     st.markdown(video_html, unsafe_allow_html=True) 
-
+    
+if "messages" not in st.session_state.keys(): # Initialize the chat messages history
+    st.session_state.messages = [
+        {"role": "assistant", "content": "Ask me a question about Streamlit's open-source Python library!"}
+    ]
 
 if prompt := st.chat_input("feel free to ask"): # Prompt for user input and save to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
