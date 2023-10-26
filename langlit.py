@@ -47,8 +47,16 @@ with st.container():
         Your browser does not support HTML5 video.
     </video>
     </div>
+
+
+    
     """
-    loader = WebBaseLoader("https://medium.com/swlh/an-ultimate-guide-to-creating-a-startup-3b310f41d7e7")
+    st.markdown(video_html, unsafe_allow_html=True)
+
+
+
+
+loader = WebBaseLoader("https://medium.com/swlh/an-ultimate-guide-to-creating-a-startup-3b310f41d7e7")
 data = loader.load()
 
 text_splitter = RecursiveCharacterTextSplitter(
@@ -69,7 +77,7 @@ vectordb = Pinecone.from_documents(texts, embeddings, index_name='index-1')
 retriever = vectordb.as_retriever()
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 chain = ConversationalRetrievalChain.from_llm(llm, retriever=retriever, memory=memory)
-    st.markdown(video_html, unsafe_allow_html=True)
+    
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "I'm Here to teach you, feel free to ask any question :)"}]
