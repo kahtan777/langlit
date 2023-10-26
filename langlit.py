@@ -13,6 +13,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain.chains import RetrievalQA
 
+st.set_page_config(layout="centered")
 
 st.title("💬 Teacher") 
 if "messages" not in st.session_state:
@@ -37,7 +38,6 @@ embeddings = OpenAIEmbeddings(openai_api_key=API_KEY)
 pinecone.init(api_key=P_API_KEY, environment="gcp-starter")
 index_name = pinecone.Index('index-1')
 
-st.set_page_config(layout="centered")
 
 with st.container():
     video_html = """
