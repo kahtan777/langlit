@@ -14,7 +14,8 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.chains import RetrievalQA
 
 
-st.title("💬 Teacher") if "messages" not in st.session_state:
+st.title("💬 Teacher") 
+if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "I'm Here to teach you, feel free to ask any question :)"}]
 
 API_KEY = st.secrets["openAI_key"]
