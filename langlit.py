@@ -44,7 +44,7 @@ if "messages" not in st.session_state.keys(): # Initialize the chat messages his
     ]
 
 if prompt := st.chat_input("feel free to ask"): # Prompt for user input and save to chat history
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.messages.append({"role": "user", "content": prompt})
 
 
 
@@ -85,7 +85,7 @@ query = str(prompt)
 message=chain.run({'question': query})
 
 
-for message in st.session_state.messages: # Display the prior chat messages
+for message in st.messages: # Display the prior chat messages
     with st.chat_message(message["role"]):
         st.write(message["content"])
         
