@@ -88,9 +88,7 @@ chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory=
 
 if prompt:
     Answer = chain.run({'question': prompt})
-    # Append the user's prompt to the chat history
     chat_history.append(("User", str(prompt))
-    # Append the assistant's answer to the chat history
     chat_history.append(("Assistant", str(Answer))
 
 # Display the entire chat history
