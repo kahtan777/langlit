@@ -47,14 +47,14 @@ with st.container():
     st.markdown(video_html, unsafe_allow_html=True) 
     
 
-prompt = st.text_input("User Prompt")
+
+chat_history = []
+prompt = st.chat_input("Say something")
 if prompt:
-    # Display the user's prompt
-    with st.expander("User Prompt"):
-        st.write(prompt)
+    with st.chat_message("user"):
+        st.write(str(prompt))
+    chat_history.append(("User", prompt))
 
-
-        
        
 
 loader = WebBaseLoader("https://medium.com/swlh/an-ultimate-guide-to-creating-a-startup-3b310f41d7e7")
@@ -90,10 +90,12 @@ chain = ConversationalRetrievalChain.from_llm(llm, retriever=retriever, memory=m
 
 # Run the conversation
 Answer = chain.run({'question': prompt})
+chat_history.append(("Assistant", Answer))
 
 # Display the assistant's answer
-with st.expander("Assistant Answer"):
-    st.write(Answer)
+with st.chat_message("assistant"):
+    for speaker, message in chat_history:
+        st.write(f"{speaker}: {message}")
         
 
 
