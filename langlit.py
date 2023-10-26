@@ -15,9 +15,7 @@ from langchain.chains import RetrievalQA
 
 st.set_page_config(layout="centered")
 
-st.title("💬 Teacher") 
-if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "I'm Here to teach you, feel free to ask any question :)"}]
+
 
 API_KEY = st.secrets["openAI_key"]
 P_API_KEY = st.secrets["pincone_key"]
@@ -68,14 +66,16 @@ with st.container():
     """
     st.markdown(video_html, unsafe_allow_html=True)
 
-
+if "messages" not in st.session_state:
+    st.session_state["messages"] = [{"role": "assistant", "content": "I'm Here to teach you, feel free to ask any question :)"}]
+    
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
     
 
 
 llm = ChatOpenAI(model_name='gpt-3.5-turbo-0301', temperature=0, openai_api_key=API_KEY)
-llm.predict(str(prompt))
+
 
 vectordb = Pinecone.from_documents(texts, embeddings, index_name='index-1')
 retriever = vectordb.as_retriever()
@@ -95,8 +95,6 @@ if prompt := st.chat_input():
     st.session_state.messages.append(msg)
     st.chat_message("assistant").write(msg.content)
 
-
-st.button("Voice input")
 
 
 
