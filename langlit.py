@@ -11,9 +11,6 @@ from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain.chains import RetrievalQA
-from conversation_memory import ConversationBufferMemory
-from conversational_retrieval import ConversationalRetrievalChain
-
 
 API_KEY=st.secrets["openAI_key"]
 P_API_KEY =st.secrets["pincone_key"]
@@ -68,43 +65,32 @@ with st.container():
     st.markdown(video_html, unsafe_allow_html=True) 
     
 
-# Create a function to add messages to the chat history
-def add_message(author, text):
-    st.session_state.chat_history.append({'author': author, 'text': text})
+prompt = st.chat_input("Say something")
+if prompt:
+    with st.chat_message("user"):
+        st.write(str(prompt))
 
-# Create a function to display the chat history
-def display_chat_history():
-    with st.container():
-        for message in st.session_state.chat_history:
-            with st.chat_message(message['author']):
-                st.write(message['text'])
 
-# User input
-prompt = st.text_input("Say something:", key="user_input")
 
         
 llm = ChatOpenAI(model_name='gpt-3.5-turbo-0301', temperature=0,openai_api_key =API_KEY ) # type: ignore
 llm.predict(str(prompt))
+
+
+
 vectordb = Pinecone.from_documents(texts, embeddings, index_name='index-1')
 retriever = vectordb.as_retriever()
+
+
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages= True)
 chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory= memory)
-
+query = str(prompt)
+Answer=chain.run({'question': query})
 
 if prompt:
-    add_message('user', prompt)
-    # Get the response from your model
-    query = str(prompt)
-    Answer = chain.run({'question': query})
-    add_message('assistant', Answer)
-    # Clear the input field
-    st.session_state.user_input = ""
+    with st.chat_message("assistant"):
+        st.write(str(Answer))
+            
 
 
-display_chat_history()
-
-
-
-
-
-
+st.button("Voice input")
