@@ -68,7 +68,7 @@ with st.container():
 
 
 
-
+prompt = st.chat_input("Say something")
         
 llm = ChatOpenAI(model_name='gpt-3.5-turbo-0301', temperature=0,openai_api_key =API_KEY ) # type: ignore
 
@@ -83,9 +83,7 @@ if "messages" not in st.session_state:
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
-
-if prompt := st.chat_input():
-    Answer=chain.run({'question': prompt })
+Answer=chain.run({'question': prompt})
     
 if prompt := st.chat_input():
     openai.api_key = API_KEY
