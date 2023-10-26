@@ -81,22 +81,21 @@ query = str(prompt)
 Answer = chain.run({'question': query})
 
 if prompt:
-    conversation_history.append(("user", str(prompt)))
+    with st.chat_message("assistant"):
+        st.write(str(Answer))
 
-if Answer:
+if prompt:
+    conversation_history.append(("user", str(prompt)))
     conversation_history.append(("assistant", str(Answer)))
 
 # Display the full chat history
 
-container = st.container()
-container.write("This is inside the container")
-
-
-container.subheader("Chat History")
-for role, message in conversation_history:
-    if role == "user":
-        container.write("User: ", message)
-    elif role == "assistant":
-        container.write("Assistant: ", message)
+with st.container():
+    st.subheader("Chat History")
+    for role, message in conversation_history:
+        if role == "user":
+            st.write("User: ", message)
+        elif role == "assistant":
+            st.write("Assistant: ", message)
 
 st.button("Voice input")
