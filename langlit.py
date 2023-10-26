@@ -66,9 +66,6 @@ with st.container():
     
 
 prompt = st.chat_input("Say something")
-if prompt:
-    with st.chat_message("user"):
-        st.write(str(prompt))
 
 
 
@@ -85,8 +82,19 @@ retriever = vectordb.as_retriever()
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages= True)
 chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory= memory)
 query = str(prompt)
-Answer=chain.run({'question': query})
 
-if prompt:
-    with st.chat_message("assistant"):
-        st.write(str(Answer))
+
+if "messages" not in st.session_state:
+    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+
+for msg in st.session_state.messages:
+    st.chat_message(msg["role"]).write(msg["content"])
+
+if prompt := st.chat_input():
+    openai.api_key = openai_api_key
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.chat_message("user").write(prompt)
+    Answer=chain.run({'question': query})
+    msg = Answer.choices[0].message
+    st.session_state.messages.append(msg)
+    st.chat_message("assistant").write(msg.content)
