@@ -13,7 +13,7 @@ with st.container():
     video_html = """
     <style>
     .video-container {
-    width: 100%; 
+    width: auto; 
     height: auto;
     }
 
