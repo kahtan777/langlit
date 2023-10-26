@@ -85,7 +85,8 @@ query = str(prompt)
 Answer=chain.run({'question': query})
 
 if prompt:
-    
+    with st.chat_message("user"):
+        st.write(str(prompt))
     with st.chat_message("assistant"):
         st.write(str(Answer))
             
