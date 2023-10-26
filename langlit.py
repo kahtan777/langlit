@@ -44,7 +44,7 @@ with col1.container():
     </video>
     </div>
     """  
-    st.markdown(video_html, unsafe_allow_html=True) 
+    col1.markdown(video_html, unsafe_allow_html=True) 
 
 
 
