@@ -52,7 +52,7 @@ st.title("Chat History")
 
 # Initialize an empty list to store the chat history
 chat_history = ["how can i help"]
-    
+prompt="hi"   
 prompt = st.chat_input("Say something")
 
 
