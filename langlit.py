@@ -11,6 +11,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain.chains import RetrievalQA
+import openai
 
 API_KEY=st.secrets["openAI_key"]
 P_API_KEY =st.secrets["pincone_key"]
