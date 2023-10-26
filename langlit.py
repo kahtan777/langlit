@@ -65,7 +65,7 @@ with st.container():
     st.markdown(video_html, unsafe_allow_html=True) 
     
 
-prompt = st.chat_input("Say something")
+
 
 
 
@@ -94,5 +94,4 @@ if prompt := st.chat_input():
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
     Answer=chain.run({'question': query})
-    with st.chat_message("assistant"):
-        st.write(str(Answer))
+    st.chat_message("assistant").write(Answer)
