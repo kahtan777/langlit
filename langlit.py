@@ -66,18 +66,14 @@ with st.container():
     
 
 
-
-
-
-        
+prompt = st.chat_input("Say something")        
 llm = ChatOpenAI(model_name='gpt-3.5-turbo-0301', temperature=0,openai_api_key =API_KEY ) # type: ignore
-llm.predict(str(prompt))
+
 
 
 
 vectordb = Pinecone.from_documents(texts, embeddings, index_name='index-1')
 retriever = vectordb.as_retriever()
-
 
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages= True)
 chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory= memory)
