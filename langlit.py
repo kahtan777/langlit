@@ -75,8 +75,6 @@ vectordb = Pinecone.from_documents(texts, embeddings, index_name='index-1')
 retriever = vectordb.as_retriever()
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages= True)
 chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory= memory)
-query = str(prompt)
-Answer=chain.run({'question': query})
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
@@ -88,7 +86,7 @@ with st.container():
 
     if prompt := st.chat_input():
         openai.api_key = API_KEY
-        st.session_state.messages.append({"role": 'assistant', 'content': 'the following is your memory: '+str(semantic_search(Answer))})
+        st.session_state.messages.append({"role": 'assistant', 'content': 'the following is your memory: '+str(chain.run({'question': query}))})
         st.session_state.messages.append({"role": "user", "content": prompt})
         st.chat_message("user").write(prompt)
         response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=st.session_state.messages)
