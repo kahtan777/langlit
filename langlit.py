@@ -8,16 +8,8 @@ API_KEY=st.secrets["openAI_key"]
 P_API_KEY =st.secrets["pincone_key"]
 
 
-
-
 st.set_page_config(layout="centered")
-
-col1, col2 = st.columns(2)
-
-original = Image.open(image)
-col1.header("Original")
-
-with col1.container():
+with st.container():
     video_html = """
     <style>
     .video-container {
@@ -44,13 +36,7 @@ with col1.container():
     </video>
     </div>
     """  
-    col1.markdown(video_html, unsafe_allow_html=True) 
-
-
-
-grayscale = original.convert('LA')
-col2.header("Grayscale")
-col2.image(grayscale, use_column_width=True)
+    st.markdown(video_html, unsafe_allow_html=True) 
 
 
 
