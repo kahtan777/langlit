@@ -77,8 +77,7 @@ retriever = vectordb.as_retriever()
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages= True)
 chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory= memory)
 
-if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
