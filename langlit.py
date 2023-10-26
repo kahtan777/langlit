@@ -87,11 +87,16 @@ if Answer:
     conversation_history.append(("assistant", str(Answer)))
 
 # Display the full chat history
-st.subheader("Chat History")
+
+container = st.container()
+container.write("This is inside the container")
+
+
+container.subheader("Chat History")
 for role, message in conversation_history:
     if role == "user":
-        st.write("User: ", message)
+        container.write("User: ", message)
     elif role == "assistant":
-        st.write("Assistant: ", message)
+        container.write("Assistant: ", message)
 
 st.button("Voice input")
