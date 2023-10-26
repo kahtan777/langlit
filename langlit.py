@@ -48,9 +48,7 @@ with st.container():
     
 
 prompt = st.chat_input("Say something")
-if prompt:
-    with st.chat_message("user"):
-        st.write(str(prompt))
+
 
 
         
