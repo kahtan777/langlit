@@ -17,6 +17,7 @@ P_API_KEY =st.secrets["pincone_key"]
 
 st.set_page_config(layout="centered")
 
+
 with st.container():
     video_html = """
     <style>
@@ -45,12 +46,18 @@ with st.container():
     </div>
     """  
     st.markdown(video_html, unsafe_allow_html=True) 
-    
 
+
+st.title("Chat History")
+
+# Initialize an empty list to store the chat history
+chat_history = []
+    
 prompt = st.chat_input("Say something")
+
 if prompt:
-    with st.chat_message("user"):
-        st.write(str(prompt))
+    # Append the user's prompt to the chat history
+    chat_history.append(("User", str(prompt)))
 
 
         
@@ -86,9 +93,12 @@ chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory=
 query = str(prompt)
 Answer=chain.run({'question': query})
 
+chat_history.append(("Assistant", str(Answer))
 
-with st.chat_message("assistant"):
-    st.write(str(Answer))
+
+# Display the entire chat history
+for speaker, message in chat_history:
+    st.chat_message(message, speaker=speaker))
         
 
 
