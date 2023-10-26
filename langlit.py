@@ -84,7 +84,7 @@ retriever = vectordb.as_retriever()
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages= True)
 chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory= memory)
 query = str(prompt)
-message=chain.run({'question': query})
+Answer=chain.run({'question': query})
 
 
 with st.chat_message("assistant"):
