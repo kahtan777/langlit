@@ -13,3 +13,5 @@ unstructured==0.7.12
 black==23.3.0
 replicate==0.8.4
 boto3==1.28.57
+streamlit_chat
+sentence_transformers
