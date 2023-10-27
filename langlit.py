@@ -11,9 +11,37 @@ import streamlit as st
 from streamlit_chat import message
 from utils import *
 
+# Your existing code here
+
 keyy = st.secrets["openAI_key"]
 
-# Define your video HTML
+# Define CSS style to move containers to the right
+container_style = """
+<style>
+.text-container {
+    float: right;
+    margin-right: 10%;
+    width: 40%; /* Adjust the width as needed */
+}
+
+.response-container {
+    float: right;
+    margin-right: 10%;
+    width: 40%; /* Adjust the width as needed */
+}
+
+/* Adjust the width of text inputs as needed */
+.text-container input[type="text"] {
+    width: 90%;
+}
+
+/* Add any other styling you need for the containers and their content here */
+</style>
+"""
+
+# Apply the CSS style to move containers to the right
+st.markdown(container_style, unsafe_allow_html=True)
+
 video_html = """
 <style>
 .video-container {
@@ -47,9 +75,6 @@ video {
 """
 
 st.markdown(video_html, unsafe_allow_html=True)
-
-# Add style for the textcontainer and response_container
-st.write('<style> .st-cj{justify-content: flex-end;} </style>', unsafe_allow_html=True)
 
 st.subheader("Chatbot with Langchain, ChatGPT, Pinecone, and Streamlit")
 
@@ -90,6 +115,7 @@ with textcontainer:
             st.subheader("Refined Query:")
             st.write(refined_query)
             context = find_match(refined_query)
+            # print(context)  
             response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
         st.session_state.requests.append(query)
         st.session_state.responses.append(response)
