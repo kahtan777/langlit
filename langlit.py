@@ -9,7 +9,7 @@ from langchain.prompts import (
 )
 import streamlit as st
 from streamlit_chat import message
-from utils import *
+from utils import
 
 keyy = st.secrets["openAI_key"]
 
@@ -22,6 +22,8 @@ video_html = """
     left: 0;
     width: 29%; /* Adjust the width to your desired size */
     height: auto;
+    border-radius: 15px; /* Add rounded edges */
+    overflow: hidden; /* Hide overflow content */
 }
 
 video {
@@ -35,7 +37,7 @@ video {
     width: 100%;
     padding: 20px;
 }
-</style>    
+</style>
 <div class="video-container">
 <video autoplay muted loop id="myVideo">
     <source src="https://futurelaby.com/mZaher/80e038fc-7500-41c0-9c7c-595008e2e8bb.mp4">
