@@ -86,7 +86,6 @@ prompt=[]
 Answer=[]    
 if prompt := st.chat_input():
     Answer=chain.run({'question': prompt})
-    openai.api_key = API_KEY
     st.session_state.messages.append({"role": 'assistant', 'content': Answer })
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("assistant").write(Answer)
