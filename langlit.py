@@ -10,10 +10,10 @@ from langchain.prompts import (
 import streamlit as st
 from streamlit_chat import message
 from utils import *
+keyy=st.secrets["openAI_key"]
 
-keyy = st.secrets["openAI_key"]
 
-# Define your video HTML
+
 video_html = """
 <style>
 .video-container {
@@ -38,31 +38,20 @@ video {
 </style>    
 <div class="video-container">
 <video autoplay muted loop id="myVideo">
-    <source src="https://futurelaby.com/mZaher/80e038fc-7500-41c0-9c7c-595008e2e8bb.mp4">
+    <source src="https://static.streamlit.io/examples/star.mp4">
     Your browser does not support HTML5 video.
 </video>
 </div>
 """
 
-# Create a container for the entire content and move it to the right
-content_container = st.container()
+st.markdown(video_html, unsafe_allow_html=True)
 
-content_container.markdown(
-    """
-    <style>
-    .content-container {
-        margin-left: auto;  /* Move the container to the right */
-    }
-    </style>
-    """, unsafe_allow_html=True
-)
 
-# Include video and other content in the content_container
-content_container.markdown(video_html, unsafe_allow_html=True)
 
-content_container.subheader("Chatbot with Langchain, ChatGPT, Pinecone, and Streamlit")
 
-# Initialize session state variables
+
+st.subheader("Chatbot with Langchain, ChatGPT, Pinecone, and Streamlit")
+
 if 'responses' not in st.session_state:
     st.session_state['responses'] = ["How can I assist you?"]
 
@@ -72,12 +61,12 @@ if 'requests' not in st.session_state:
 llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=keyy)
 
 if 'buffer_memory' not in st.session_state:
-    st.session_state.buffer_memory = ConversationBufferWindowMemory(k=3, return_messages=True)
+            st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
 
-system_msg_template = SystemMessagePromptTemplate.from_template(
-    template="""Answer the question as truthfully as possible using the provided context in Arabic only, 
-    and if the answer is not contained within the text below, say 'I don't know'"""
-)
+
+system_msg_template = SystemMessagePromptTemplate.from_template(template="""Answer the question as truthfully as possible using the provided context in Arabic only, 
+and if the answer is not contained within the text below, say 'I don't know'""")
+
 
 human_msg_template = HumanMessagePromptTemplate.from_template(template="{input}")
 
@@ -85,11 +74,14 @@ prompt_template = ChatPromptTemplate.from_messages([system_msg_template, Message
 
 conversation = ConversationChain(memory=st.session_state.buffer_memory, prompt=prompt_template, llm=llm, verbose=True)
 
-# Create a container for chat history
-response_container = content_container.container()
 
-# Create a container for the text input
-textcontainer = content_container.container()
+
+
+# container for chat history
+response_container = st.container()
+# container for text box
+textcontainer = st.container()
+
 
 with textcontainer:
     query = st.text_input("Query: ", key="input")
@@ -101,13 +93,14 @@ with textcontainer:
             st.subheader("Refined Query:")
             st.write(refined_query)
             context = find_match(refined_query)
+            # print(context)  
             response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
         st.session_state.requests.append(query)
-        st.session_state.responses.append(response)
-
+        st.session_state.responses.append(response) 
 with response_container:
     if st.session_state['responses']:
+
         for i in range(len(st.session_state['responses'])):
-            message(st.session_state['responses'][i], key=str(i))
+            message(st.session_state['responses'][i],key=str(i))
             if i < len(st.session_state['requests']):
-                message(st.session_state["requests"][i], is_user=True, key=str(i) + '_user')
+                message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
