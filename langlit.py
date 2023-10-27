@@ -11,7 +11,6 @@ from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain.chains import RetrievalQA
-import openai
 
 API_KEY=st.secrets["openAI_key"]
 P_API_KEY =st.secrets["pincone_key"]
@@ -66,30 +65,32 @@ with st.container():
     st.markdown(video_html, unsafe_allow_html=True) 
     
 
+prompt = st.chat_input("Say something")
+if prompt:
+    with st.chat_message("user"):
+        st.write(str(prompt))
 
 
 
         
 llm = ChatOpenAI(model_name='gpt-3.5-turbo-0301', temperature=0,openai_api_key =API_KEY ) # type: ignore
+llm.predict(str(prompt))
+
+
 
 vectordb = Pinecone.from_documents(texts, embeddings, index_name='index-1')
 retriever = vectordb.as_retriever()
+
+
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages= True)
 chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory= memory)
+query = str(prompt)
+Answer=chain.run({'question': query})
+
+if prompt:
+    with st.chat_message("assistant"):
+        st.write(str(Answer))
+            
 
 
-if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
-
-
-prompt=[]
-Answer=[]    
-if prompt := st.chat_input():
-    Answer=chain.run({'question': prompt})
-    st.session_state.messages.append({"role": 'assistant', 'content': Answer })
-    st.session_state.messages.append({"role": "user", "content": prompt})
-    st.chat_message("assistant").write(Answer)
-    st.chat_message("user").write(prompt)
-
-    
-    
+st.button("Voice input")
