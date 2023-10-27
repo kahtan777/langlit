@@ -58,7 +58,7 @@ if 'buffer_memory' not in st.session_state:
             st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
 
 
-system_msg_template = SystemMessagePromptTemplate.from_template(template="""Answer the question as truthfully as possible using the provided context, 
+system_msg_template = SystemMessagePromptTemplate.from_template(template="""Answer the question as truthfully as possible using the provided context in Arabic only, 
 and if the answer is not contained within the text below, say 'I don't know'""")
 
 
