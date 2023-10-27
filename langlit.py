@@ -17,40 +17,30 @@ keyy=st.secrets["openAI_key"]
 video_html = """
 <style>
 .video-container {
-    position: fixed;
+    position: fixed; /* Fixed position to keep it in the top left corner */
     top: 0;
     left: 0;
-    width: 70%; /* Make the video 70% of the screen width */
-    height: 100%; /* Set the height to 100% to cover the entire height */
+    width: 25%; /* Adjust the width to your desired size */
+    height: auto;
 }
 
 video {
     width: 100%;
-    height: 100%; /* Set the video to cover the entire height of the container */
+    height: auto;
 }
 
 .content {
     background: rgba(0, 0, 0, 0.5);
     color: #f1f1f1;
-    width: 30%; /* Allocate 30% of the screen width for content */
-    height: 100%; /* Set the height to 100% to cover the entire height */
-    position: fixed; /* Keep content fixed to the right */
-    top: 0;
-    right: 0;
-    overflow: auto; /* Add scrolling for content if needed */
+    width: 100%;
+    padding: 20px;
 }
-
 </style>    
 <div class="video-container">
 <video autoplay muted loop id="myVideo">
     <source src="https://static.streamlit.io/examples/star.mp4">
     Your browser does not support HTML5 video.
 </video>
-</div>
-<div class="content">
-    <!-- Your content here -->
-    <h1>Your Content</h1>
-    <p>This is your content placed to the right of the video.</p>
 </div>
 """
 
