@@ -11,7 +11,7 @@ import streamlit as st
 from streamlit_chat import message
 from utils import *
 keyy=st.secrets["openAI_key"]
-left_column, right_column = st.columns([1, 5])
+left_column, right_column = st.columns([1, 3])
 
 with left_column:
     video_html = """
@@ -54,7 +54,7 @@ with left_column:
 
 
 with right_column:
-
+    st.subheader("Chatbot with Langchain, ChatGPT, Pinecone, and Streamlit")
     if 'responses' not in st.session_state:
         st.session_state['responses'] = ["How can I assist you?"]
     
