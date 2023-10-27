@@ -13,6 +13,7 @@ from utils import *
 
 keyy = st.secrets["openAI_key"]
 
+# Define your video HTML
 video_html = """
 <style>
 .video-container {
@@ -25,7 +26,7 @@ video_html = """
     border-radius: 10%; /* Apply border-radius to make it round-edged */
 }
 
-.video {
+video {
     width: 100%;
     height: auto;
 }
@@ -47,6 +48,9 @@ video_html = """
 
 st.markdown(video_html, unsafe_allow_html=True)
 
+# Add style for the textcontainer and response_container
+st.write('<style> .st-cj{justify-content: flex-end;} </style>', unsafe_allow_html=True)
+
 st.subheader("Chatbot with Langchain, ChatGPT, Pinecone, and Streamlit")
 
 if 'responses' not in st.session_state:
@@ -60,26 +64,28 @@ llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=keyy)
 if 'buffer_memory' not in st.session_state:
     st.session_state.buffer_memory = ConversationBufferWindowMemory(k=3, return_messages=True)
 
-system_msg_template = SystemMessagePromptTemplate.from_template(template="""Answer the question as truthfully as possible using the provided context in Arabic only, 
-and if the answer is not contained within the text below, say 'I don't know'""")
+system_msg_template = SystemMessagePromptTemplate.from_template(
+    template="""Answer the question as truthfully as possible using the provided context in Arabic only, 
+    and if the answer is not contained within the text below, say 'I don't know'"""
+)
 
-human_msg_template = HumanMessagePromptTemplate.from_template(template="{input}")
+human_msg_template = HumanMessagePromptTemplate.from_template("{input}")
 
 prompt_template = ChatPromptTemplate.from_messages([system_msg_template, MessagesPlaceholder(variable_name="history"), human_msg_template])
 
 conversation = ConversationChain(memory=st.session_state.buffer_memory, prompt=prompt_template, llm=llm, verbose=True)
 
-# Right-aligned container for chat history
-st.text("Chat History")
+# container for chat history
 response_container = st.container()
-
-# Right-aligned container for text box
+# container for text box
 textcontainer = st.container()
+
 with textcontainer:
     query = st.text_input("Query: ", key="input")
     if query:
         with st.spinner("typing..."):
             conversation_string = get_conversation_string()
+            # st.code(conversation_string)
             refined_query = query_refiner(conversation_string, query)
             st.subheader("Refined Query:")
             st.write(refined_query)
