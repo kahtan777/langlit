@@ -3,11 +3,11 @@ import pinecone
 import openai
 import streamlit as st
 openai.api_key = st.secrets["openAI_key"]
-api_key=st.secrets["openAI_key"]
+api_p=st.secrets["openAI_key"]
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
-pinecone.init(api_key='', environment='us-east-1-aws')
-index = pinecone.Index('langchain-chatbot')
+pinecone.init(api_key=api_p, environment='gcp-starter')
+index = pinecone.Index('one')
 
 def find_match(input):
     input_em = model.encode(input).tolist()
