@@ -87,6 +87,6 @@ if prompt:
     # Split your prompt into multiple messages if it's too long
     messages = [{"role": "user", "content": prompt}]
     for msg in messages:
-        Answer = chain.run(msg)
+        Answer = chain.run("question": msg)
         with st.chat_message("assistant"):
             st.write(str(Answer))
