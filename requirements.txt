@@ -6,12 +6,15 @@ bs4==0.0.1
 openai==0.28.0
 tiktoken==0.4.0
 pydantic==1.10.8
-snowflake_snowpark_python==1.5.0
 streamlit==1.27.1
-supabase==1.0.3
 unstructured==0.7.12
 black==23.3.0
 replicate==0.8.4
 boto3==1.28.57
 streamlit_chat
 sentence_transformers
+
+pydub==0.25.1
+google-cloud-speech==2.21.1
+google-cloud-texttospeech==2.14.2
+wave==0.0.2
