@@ -89,8 +89,8 @@ if prompt := st.chat_input():
     openai.api_key = API_KEY
     st.session_state.messages.append({"role": 'assistant', 'content': Answer })
     st.session_state.messages.append({"role": "user", "content": prompt})
-
-for msg in st.session_state.messages:
     st.chat_message("assistant").write(Answer)
     st.chat_message("user").write(prompt)
+
+    
     
