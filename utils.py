@@ -7,8 +7,8 @@ import streamlit as st
 P_API_KEY = 'a0a95cf2-546f-42dc-b8c6-ef95a5e88ab0'
 API_KEY='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'
 
-openai.api_key = API_KEY #st.secrets["openAI_key"]
-api_p=P_API_KEY#st.secrets["pincone_key"]
+openai.api_key = st.secrets["openAI_key"]
+api_p= st.secrets["pincone_key"]
 
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
