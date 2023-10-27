@@ -21,6 +21,7 @@ with left_column:
     top: 5%;
     left: 0;
     width: 40%;
+    height: auto;
     padding-top: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100%) */
     overflow: hidden;
     border-radius: 10%;
