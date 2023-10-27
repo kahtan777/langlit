@@ -90,7 +90,7 @@ if prompt := st.chat_input():
     openai.api_key = API_KEY
     st.session_state.messages.append({"role": 'assistant', 'content': Answer })
     st.chat_message("user").write(prompt)
-    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=st.session_state.messages)
+    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=st.session_state.messages, max_tokens=9000)
     msg = response.choices[0].message
     st.session_state.messages.append(msg)
     st.chat_message("assistant").write(msg.content)
