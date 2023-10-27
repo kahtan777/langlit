@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 import os
 import pinecone
+import openai
 from langchain.document_loaders import WebBaseLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Pinecone
