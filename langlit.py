@@ -17,18 +17,18 @@ with left_column:
     video_html = """
     <style>
     .video-container {
-        position: fixed;
+        position: fixed; /* Fixed position to keep it in the top left corner */
         top: 5%;
         left: 0;
-        width: 40%;
-        padding-top: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100%) */
-        overflow: hidden;
-        border-radius: 10%;
+        width: 29%; /* Adjust the width to your desired size */
+        height: auto;
+        overflow: hidden; /* Add overflow hidden to clip round edges */
+        border-radius: 10%; /* Apply border-radius to make it round-edged */
     }
     
     video {
         width: 100%;
-        height: 100%;
+        height: auto;
     }
     
     .content {
@@ -45,8 +45,6 @@ with left_column:
     </video>
     </div>
     """
-
-    
     st.markdown(video_html, unsafe_allow_html=True)
 
 
