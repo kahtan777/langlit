@@ -77,14 +77,11 @@ retriever = vectordb.as_retriever()
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages= True)
 chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory= memory)
 
-Answer=()
-prompt=()
+
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
     
-for msg in st.session_state.messages:
-    st.chat_message("assistant").write(Answer)
-    st.chat_message("user").write(prompt)
+
     
 if prompt := st.chat_input():
     Answer=chain.run({'question': prompt})
@@ -95,4 +92,8 @@ if prompt := st.chat_input():
     msg = Answer
     st.session_state.messages.append(msg)
     st.chat_message("assistant").write(msg)
+
+for msg in st.session_state.messages:
+    st.chat_message("assistant").write(Answer)
+    st.chat_message("user").write(prompt)
     
