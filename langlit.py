@@ -73,7 +73,7 @@ pinecone.init(api_key=P_API_KEY, environment="gcp-starter")
 index_name = pinecone.Index('index-1')
 
 llm = ChatOpenAI(model_name='gpt-3.5-turbo-0301', temperature=0,openai_api_key =API_KEY ) # type: ignore
-llm.predict(str(prompt))
+
 
 
 
