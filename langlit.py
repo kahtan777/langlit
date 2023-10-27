@@ -83,7 +83,7 @@ if "messages" not in st.session_state:
 
 
 prompt=[]
-    
+Answer=[]    
 if prompt := st.chat_input():
     Answer=chain.run({'question': prompt})
     openai.api_key = API_KEY
