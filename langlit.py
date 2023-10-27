@@ -80,13 +80,15 @@ conversation = ConversationChain(memory=st.session_state.buffer_memory, prompt=p
 
 
 
-# container for chat history
-response_container = st.container()
-# container for text box
-textcontainer = st.container()
+import streamlit as st
 
+# Create two columns, the first for the main content, the second for the elements on the right
+left_column, right_column = st.beta_columns(2)
 
-with textcontainer:
+# Main content in the left column
+with left_column:
+    st.title("Main Content")
+
     query = st.text_input("Query: ", key="input")
     if query:
         with st.spinner("typing..."):
@@ -96,14 +98,21 @@ with textcontainer:
             st.subheader("Refined Query:")
             st.write(refined_query)
             context = find_match(refined_query)
-            # print(context)  
+            # print(context)
             response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
         st.session_state.requests.append(query)
-        st.session_state.responses.append(response) 
-with response_container:
-    if st.session_state['responses']:
+        st.session_state.responses.append(response)
 
+# Elements on the right column
+with right_column:
+    st.title("Elements on the Right")
+
+    st.text("Some content on the right")
+    st.button("Button 1")
+    st.button("Button 2")
+
+    if st.session_state['responses']:
         for i in range(len(st.session_state['responses'])):
-            message(st.session_state['responses'][i],key=str(i))
+            st.write(st.session_state['responses'][i], key=str(i))
             if i < len(st.session_state['requests']):
-                message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
+                st.write(st.session_state["requests"][i], is_user=True, key=str(i) + '_user')
