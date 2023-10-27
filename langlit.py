@@ -47,10 +47,6 @@ with st.container():
     st.markdown(video_html, unsafe_allow_html=True) 
     
 
-prompt = st.chat_input("Say something")
-if prompt:
-    with st.chat_message("user"):
-        st.write(str(prompt))
 
 
         
@@ -87,5 +83,11 @@ query = str(prompt)
 Answer=chain.run({'question': query})
 
 
-with st.chat_message("assistant"):
-    st.write(str(Answer))
+prompt = st.chat_input("Say something")
+if prompt:
+    # Split your prompt into multiple messages if it's too long
+    messages = [{"role": "user", "content": prompt}]
+    for msg in messages:
+        Answer = chain.run(msg)
+        with st.chat_message("assistant"):
+            st.write(str(Answer))
