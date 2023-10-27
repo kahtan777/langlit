@@ -17,30 +17,40 @@ keyy=st.secrets["openAI_key"]
 video_html = """
 <style>
 .video-container {
-width: 100%; 
-height: auto;
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio (change as needed) */
 }
 
 video {
-width: 100%; 
-height: auto;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
 .content {
-background: rgba(0, 0, 0, 0.5);
-color: #f1f1f1;
-width: 100%;
-padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
 }
-</style>    
+</style>
+<div class="content">
+  This is your content.
+</div>
 <div class="video-container">
-<video autoplay muted loop id="myVideo">
+  <video autoplay muted loop id="myVideo">
     <source src="https://static.streamlit.io/examples/star.mp4">
     Your browser does not support HTML5 video.
-</video>
+  </video>
 </div>
-"""  
+"""
+
 st.markdown(video_html, unsafe_allow_html=True)
+
 
 
 st.subheader("Chatbot with Langchain, ChatGPT, Pinecone, and Streamlit")
