@@ -11,7 +11,7 @@ import streamlit as st
 from streamlit_chat import message
 from utils import *
 keyy=st.secrets["openAI_key"]
-left_column, right_column = st.columns([1, 3])
+left_column,col, right_column = st.columns([1,1,1])
 
 with left_column:
     video_html = """
@@ -49,7 +49,8 @@ with left_column:
 
 
 
-
+with col:
+    st.write("|||")
 
 
 with right_column:
