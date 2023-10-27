@@ -83,7 +83,7 @@ conversation = ConversationChain(memory=st.session_state.buffer_memory, prompt=p
 import streamlit as st
 
 # Create two columns, the first for the main content, the second for the elements on the right
-left_column, right_column = st.beta_columns(2)
+left_column, right_column = st.columns([2, 1])
 
 # Main content in the left column
 with left_column:
