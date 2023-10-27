@@ -13,6 +13,36 @@ from utils import *
 keyy=st.secrets["openAI_key"]
 
 
+
+video_html = """
+<style>
+.video-container {
+width: 100%; 
+height: auto;
+}
+
+video {
+width: 100%; 
+height: auto;
+}
+
+.content {
+background: rgba(0, 0, 0, 0.5);
+color: #f1f1f1;
+width: 100%;
+padding: 20px;
+}
+</style>    
+<div class="video-container">
+<video autoplay muted loop id="myVideo">
+    <source src="https://static.streamlit.io/examples/star.mp4">
+    Your browser does not support HTML5 video.
+</video>
+</div>
+"""  
+st.markdown(video_html, unsafe_allow_html=True)
+
+
 st.subheader("Chatbot with Langchain, ChatGPT, Pinecone, and Streamlit")
 
 if 'responses' not in st.session_state:
