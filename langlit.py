@@ -1,90 +1,67 @@
-import streamlit as st
-import pandas as pd
-import plotly.express as px
-import os
-import pinecone
-from langchain.document_loaders import WebBaseLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.vectorstores import Pinecone
-from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI
-from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationalRetrievalChain
-from langchain.chains import RetrievalQA
-
-API_KEY=st.secrets["openAI_key"]
-P_API_KEY =st.secrets["pincone_key"]
-
-st.set_page_config(layout="centered")
-
-with st.container():
-    video_html = """
-    <style>
-    .video-container {
-    width: 100%; 
-    height: auto;
-    }
-
-    video {
-    width: 100%; 
-    height: auto;
-    }
-
-    .content {
-    background: rgba(0, 0, 0, 0.5);
-    color: #f1f1f1;
-    width: 100%;
-    padding: 20px;
-    }
-    </style>    
-    <div class="video-container">
-    <video autoplay muted loop id="myVideo">
-        <source src="https://static.streamlit.io/examples/star.mp4">
-        Your browser does not support HTML5 video.
-    </video>
-    </div>
-    """  
-    st.markdown(video_html, unsafe_allow_html=True) 
-    
-
-    prompt = st.chat_input("Say something")
-    if prompt:
-        with st.chat_message("user"):
-            st.write(str(prompt))
-
-
-            
-        
-
-loader = WebBaseLoader("https://medium.com/swlh/an-ultimate-guide-to-creating-a-startup-3b310f41d7e7")
-data = loader.load()
-
-text_splitter = RecursiveCharacterTextSplitter(
-    # Set a really small chunk size, just to show.
-    chunk_size = 1000,
-    chunk_overlap  = 100,
-    length_function = len,
-    add_start_index = True,
+from langchain.chains import ConversationChain
+from langchain.chains.conversation.memory import ConversationBufferWindowMemory
+from langchain.prompts import (
+    SystemMessagePromptTemplate,
+    HumanMessagePromptTemplate,
+    ChatPromptTemplate,
+    MessagesPlaceholder
 )
-texts = text_splitter.split_documents(data)
+import streamlit as st
+from streamlit_chat import message
+from utils import *
 
-embeddings = OpenAIEmbeddings(openai_api_key =API_KEY) # set openai_api_key = 'your_openai_api_key' # type: ignore
-pinecone.init(api_key=P_API_KEY, environment="gcp-starter")
-index_name = pinecone.Index('index-1')
+st.subheader("Chatbot with Langchain, ChatGPT, Pinecone, and Streamlit")
 
-llm = ChatOpenAI(model_name='gpt-3.5-turbo-0301', temperature=0,openai_api_key =API_KEY ) # type: ignore
-llm.predict(str(prompt))
+if 'responses' not in st.session_state:
+    st.session_state['responses'] = ["How can I assist you?"]
 
+if 'requests' not in st.session_state:
+    st.session_state['requests'] = []
 
+llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key="")
 
-vectordb = Pinecone.from_documents(texts, embeddings, index_name='index-1')
-retriever = vectordb.as_retriever()
-
-
-memory = ConversationBufferMemory(memory_key="chat_history", return_messages= True)
-chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory= memory)
-Answer=chain.run({'question': prompt})
+if 'buffer_memory' not in st.session_state:
+            st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
 
 
-with st.chat_message("assistant"):
-    st.write(str(Answer))
+system_msg_template = SystemMessagePromptTemplate.from_template(template="""Answer the question as truthfully as possible using the provided context, 
+and if the answer is not contained within the text below, say 'I don't know'""")
+
+
+human_msg_template = HumanMessagePromptTemplate.from_template(template="{input}")
+
+prompt_template = ChatPromptTemplate.from_messages([system_msg_template, MessagesPlaceholder(variable_name="history"), human_msg_template])
+
+conversation = ConversationChain(memory=st.session_state.buffer_memory, prompt=prompt_template, llm=llm, verbose=True)
+
+
+
+
+# container for chat history
+response_container = st.container()
+# container for text box
+textcontainer = st.container()
+
+
+with textcontainer:
+    query = st.text_input("Query: ", key="input")
+    if query:
+        with st.spinner("typing..."):
+            conversation_string = get_conversation_string()
+            # st.code(conversation_string)
+            refined_query = query_refiner(conversation_string, query)
+            st.subheader("Refined Query:")
+            st.write(refined_query)
+            context = find_match(refined_query)
+            # print(context)  
+            response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
+        st.session_state.requests.append(query)
+        st.session_state.responses.append(response) 
+with response_container:
+    if st.session_state['responses']:
+
+        for i in range(len(st.session_state['responses'])):
+            message(st.session_state['responses'][i],key=str(i))
+            if i < len(st.session_state['requests']):
+                message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
