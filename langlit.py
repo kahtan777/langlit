@@ -82,8 +82,8 @@ if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
     
 for msg in st.session_state.messages:
-    st.chat_message("assistant").write(msg)
-    
+    st.chat_message("assistant").write(Answer)
+    st.chat_message("user").write(prompt)
     
 if prompt := st.chat_input():
     Answer=chain.run({'question': prompt})
