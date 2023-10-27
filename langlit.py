@@ -10,6 +10,8 @@ from langchain.prompts import (
 import streamlit as st
 from streamlit_chat import message
 from utils import *
+keyy=st.secrets["openAI_key"]
+
 
 st.subheader("Chatbot with Langchain, ChatGPT, Pinecone, and Streamlit")
 
@@ -19,7 +21,7 @@ if 'responses' not in st.session_state:
 if 'requests' not in st.session_state:
     st.session_state['requests'] = []
 
-llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key="")
+llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=keyy)
 
 if 'buffer_memory' not in st.session_state:
             st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
