@@ -23,7 +23,7 @@ video_html = """
     width: 29%; /* Adjust the width to your desired size */
     height: auto;
     overflow: hidden; /* Add overflow hidden to clip round edges */
-    border-radius: 50%; /* Apply border-radius to make it round-edged */
+    border-radius: 10%; /* Apply border-radius to make it round-edged */
 }
 
 video {
