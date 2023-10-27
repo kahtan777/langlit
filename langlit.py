@@ -61,8 +61,8 @@ data = loader.load()
 
 text_splitter = RecursiveCharacterTextSplitter(
     # Set a really small chunk size, just to show.
-    chunk_size = 1000,
-    chunk_overlap  = 100,
+    chunk_size = 100,
+    chunk_overlap  = 20,
     length_function = len,
     add_start_index = True,
 )
