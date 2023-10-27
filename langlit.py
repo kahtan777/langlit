@@ -78,7 +78,7 @@ memory = ConversationBufferMemory(memory_key="chat_history", return_messages= Tr
 chain = ConversationalRetrievalChain.from_llm(llm, retriever= retriever, memory= memory)
 
 Answer=()
-
+prompt=()
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
     
