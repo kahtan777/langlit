@@ -20,7 +20,7 @@ video_html = """
     position: fixed; /* Fixed position to keep it in the top left corner */
     top: 0;
     left: 0;
-    width: 25%; /* Adjust the width to your desired size */
+    width: 35%; /* Adjust the width to your desired size */
     height: auto;
 }
 
