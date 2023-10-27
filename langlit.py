@@ -15,37 +15,36 @@ left_column, right_column = st.columns([1, 3])
 
 with left_column:
     video_html = """
-<style>
-.video-container {
-    position: fixed;
-    top: 5%;
-    left: 0;
-    width: 40%;
-    height: auto;
-    padding-top: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100%) */
-    overflow: hidden;
-    border-radius: 10%;
-}
-
-video {
-    width: 100%;
-    height: 100%;
-}
-
-.content {
-    background: rgba(0, 0, 0, 0.5);
-    color: #f1f1f1;
-    width: 100%;
-    padding: 20px;
-}
-</style>    
-<div class="video-container">
-<video autoplay muted loop id="myVideo">
-    <source src="https://futurelaby.com/mZaher/80e038fc-7500-41c0-9c7c-595008e2e8bb.mp4">
-    Your browser does not support HTML5 video.
-</video>
-</div>
-"""
+    <style>
+    .video-container {
+        position: fixed;
+        top: 5%;
+        left: 0;
+        width: 40%;
+        padding-top: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100%) */
+        overflow: hidden;
+        border-radius: 10%;
+    }
+    
+    video {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .content {
+        background: rgba(0, 0, 0, 0.5);
+        color: #f1f1f1;
+        width: 100%;
+        padding: 20px;
+    }
+    </style>    
+    <div class="video-container">
+    <video autoplay muted loop id="myVideo">
+        <source src="https://futurelaby.com/mZaher/80e038fc-7500-41c0-9c7c-595008e2e8bb.mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    </div>
+    """
 
     
     st.markdown(video_html, unsafe_allow_html=True)
