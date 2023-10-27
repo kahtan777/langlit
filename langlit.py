@@ -13,7 +13,7 @@ import streamlit as st
 from streamlit_chat import message
 from utils import *
 
-keyy=#st.secrets["openAI_key"]
+keyy=st.secrets["openAI_key"]
 
 col1, col2, col3 = st.columns(3)
 
