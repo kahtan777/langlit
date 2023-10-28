@@ -55,8 +55,5 @@ def tts(text):
     with open('output.wav', 'wb') as out:
         st.write('gonna do something')
         # Write the response to the output file.
-        out.write(response.audio_content)
-        mixer.init()
-        mixer.music.load(out)
-        mixer.music.play()
+        audio.play_audio('output.wav')
         print('Audio content written to file "output-voice.wav"')
