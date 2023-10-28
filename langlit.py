@@ -18,13 +18,15 @@ keyy = st.secrets["openAI_key"]
 st.set_page_config(layout="wide")
 
 # Create Bootstrap columns
+import streamlit as st
+
 st.markdown("""
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-md-7">
-            <div class="video-container embed-responsive embed-responsive-16by9">
-                <video autoplay muted loop id="myVideo" class="embed-responsive-item">
-                    <source src="https://futurelaby.com/avatar/2023-10-28%2014-19-34.mp4">
+            <div class="embed-responsive embed-responsive-16by9" style="padding-bottom: 56.25%; position: relative;">
+                <video autoplay muted loop id="myVideo" class="embed-responsive-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                    <source src="https://futurelaby.com/avatar/2023-10-28%2014-19-34.mp4" type="video/mp4">
                     Your browser does not support HTML5 video.
                 </video>
             </div>
@@ -43,6 +45,7 @@ st.markdown("""
     </div>
 </div>
 """, unsafe_allow_html=True)
+
 
 if 'responses' not in st.session_state:
     st.session_state['responses'] = ["How can I assist you?"]
