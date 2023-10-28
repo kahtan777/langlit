@@ -67,7 +67,7 @@ with left_column:
 st.markdown("""
 <style>
 @media (max-width: 768px) {
-    .video-container {
+    .textcontainer {
         width: 100%; /* Adjust the width to fill the screen width */
         top: 30%; /* Move to the top */
         left: 0; /* Move to the left */
@@ -78,10 +78,7 @@ st.markdown("""
         padding: 30px; /* Add some padding to separate from the video */
     }
 
-    .textcontainer {
-        width: 100%; /* Adjust the width to fill the screen width */
-        padding: 30px; /* Add some padding to separate from the video */
-    }
+
 }
 </style>
 """, unsafe_allow_html=True)
