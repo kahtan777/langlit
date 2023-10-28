@@ -116,7 +116,6 @@ with right_column:
                 # print(context)  
                 response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
                 tts.tts(response)
-                audio.play_audio('output.wav')
                 fname='output.wav'
                 with contextlib.closing(wave.open(fname,'r')) as f:
                     frames = f.getnframes()
