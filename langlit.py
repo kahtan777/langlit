@@ -96,16 +96,16 @@ def change_my_text_back():
 
 with textcontainer:
     if mytext == 'default':
-        query = st.text_input("Query: ", key="input", on_change=change_my_text_back)
+        query = st.text_input("Question: ", key="input", on_change=change_my_text_back)
     else:
-        query = st.text_input("Query: ", key="input", value=mytext, on_change=change_my_text_back)
+        query = st.text_input("Question: ", key="input", value=mytext, on_change=change_my_text_back)
     if query:
         with st.spinner("typing..."):
             conversation_string = get_conversation_string()
-            st.code(conversation_string)
+            #st.code(conversation_string)
             refined_query = query_refiner(conversation_string, query)
-            st.subheader("Refined Query:")
-            st.write(refined_query)
+            #st.subheader("Refined Query:")
+            #st.write(refined_query)
             context = find_match(refined_query)
             # print(context)  
             response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
