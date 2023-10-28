@@ -62,6 +62,30 @@ with left_column:
     """
     st.markdown(video_html, unsafe_allow_html=True)
 
+
+
+st.markdown("""
+<style>
+@media (max-width: 768px) {
+    .video-container {
+        width: 100%; /* Adjust the width to fill the screen width */
+        top: 0; /* Move to the top */
+        left: 0; /* Move to the left */
+    }
+
+    .content {
+        width: 100%; /* Adjust the width to fill the screen width */
+        padding: 10px; /* Add some padding to separate from the video */
+    }
+
+    .textcontainer {
+        width: 100%; /* Adjust the width to fill the screen width */
+        padding: 10px; /* Add some padding to separate from the video */
+    }
+}
+</style>
+""", unsafe_allow_html=True)
+
 with right_column:
     if 'responses' not in st.session_state:
         st.session_state['responses'] = ["How can I assist you?"]
