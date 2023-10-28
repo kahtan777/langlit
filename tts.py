@@ -57,6 +57,9 @@ def tts(text):
         # Write the response to the output file.
         st.download_button('Download WAV', f=out, file_name='wavv.wav')  # Defaults to 'text/plain'
         print('Audio content written to file "output-voice.wav"')
+        audio_file = open('output.wav', 'rb')
+        audio_bytes = audio_file.read()
+        st.download_button('download second wav', f=audio_bytes, file_name='wav.wav')
     audio_file = open('output.wav', 'rb')
     audio_bytes = audio_file.read()
     st.download_button('download second wav', f=audio_bytes, file_name='wav.wav')
