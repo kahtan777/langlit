@@ -29,7 +29,7 @@ with left_column:
         width: 60%; /* Adjust the width to your desired size */
         height: auto;
         overflow: hidden; /* Add overflow hidden to clip round edges */
-        border-radius: 10%; /* Apply border-radius to make it round-edged */
+        border-radius: 3%; /* Apply border-radius to make it round-edged */
     }
     
     video {
