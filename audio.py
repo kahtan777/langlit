@@ -8,6 +8,7 @@ from pydub import AudioSegment
 import sst, tts
 from pygame import mixer 
 import wave
+import base64
 
 # DESIGN implement changes to the standard streamlit UI/UX
 # --> optional, not relevant for the functionality of the component!
@@ -25,12 +26,19 @@ st.markdown('''<style>.css-nlntq9 a {color: #ff4c4b;}</style>''',
             unsafe_allow_html=True)  # lightmode
 
 def play_audio(where):
-    mixer.init()
-    mixer.music.load(where)
-    mixer.music.set_volume(0.7)
-    mixer.music.play()
-    print('hey were playing')
-    st.write('hey, were playing')
+    with open(file_path, "rb") as f:
+        data = f.read()
+        b64 = base64.b64encode(data).decode()
+        md = f"""
+            <audio controls autoplay="true">
+            <source src="data:audio/mp3;base64,{b64}" type="audio/mp3">
+            </audio>
+            """
+        st.markdown(
+            md,
+            unsafe_allow_html=True,
+        )
+
 def audiorec_demo_app():
     wav_audio_data, filename = st_audiorec() # tadaaaa! yes, that's it! :D
     print(filename)
