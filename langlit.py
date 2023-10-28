@@ -64,24 +64,7 @@ with left_column:
 
 
 
-st.markdown("""
-<style>
-@media (max-width: 768px) {
-    .textcontainer {
-        width: 100%; /* Adjust the width to fill the screen width */
-        top: 30%; /* Move to the top */
-        left: 0; /* Move to the left */
-    }
 
-    .content {
-        width: 100%; /* Adjust the width to fill the screen width */
-        padding: 30px; /* Add some padding to separate from the video */
-    }
-
-
-}
-</style>
-""", unsafe_allow_html=True)
 
 with right_column:
     if 'responses' not in st.session_state:
