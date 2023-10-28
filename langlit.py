@@ -14,8 +14,21 @@ import streamlit as st
 from streamlit_chat import message
 from utils import *
 
-st.write(str(os.environ.get('GOOGLE_JSON')))
-st.write(type(os.environ.get('GOOGLE_JSON')))
+google_json={
+    'universe_domain': st.secrets('universe_domain'),
+    'client_x509_cert_url': st.secrets('client_x509_cert_url'),
+    'auth_provider_x509_cert_url': st.secrets('auth_provider_x509_cert_url'),
+    'client_email': st.secrets('client_email'),
+    'client_id': st.secrets('client_id'),
+    'auth_uri': st.secrets('auth_uri'),
+    'token_uri': st.secrets('token_uri'),
+    'private_key': st.secrets('private_key'),
+    'private_key_id': st.secrets('private_key_id'),
+    'project_id': st.secrets('project_id'),
+    'type' st.secrets('type'):
+}
+
+st.write(google_json)
 
 keyy=st.secrets["openAI_key"]
 
