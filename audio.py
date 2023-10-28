@@ -29,6 +29,8 @@ def play_audio(where):
     mixer.music.load(where)
     mixer.music.set_volume(0.7)
     mixer.music.play()
+    print('hey were playing')
+    st.write('hey, were playing')
 def audiorec_demo_app():
     wav_audio_data, filename = st_audiorec() # tadaaaa! yes, that's it! :D
     print(filename)
