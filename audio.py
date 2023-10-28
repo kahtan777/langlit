@@ -6,7 +6,7 @@ from st_audio_rec import st_audiorec
 from pydub import AudioSegment
 
 import sst, tts
-import pyaudio
+import pygame
 import wave
 
 # DESIGN implement changes to the standard streamlit UI/UX
@@ -25,32 +25,10 @@ st.markdown('''<style>.css-nlntq9 a {color: #ff4c4b;}</style>''',
             unsafe_allow_html=True)  # lightmode
 
 def play_audio(where):
-    #define stream chunk   
-    chunk = 1024  
-
-    #open a wav format music  
-    f = wave.open(where,"rb")  
-    #instantiate PyAudio  
-    p = pyaudio.PyAudio()  
-    #open stream  
-    stream = p.open(format = p.get_format_from_width(f.getsampwidth()),  
-        channels = f.getnchannels(),  
-        rate = f.getframerate(),  
-        output = True)  
-    #read data  
-    data = f.readframes(chunk)  
-
-    #play stream  
-    while data:  
-        stream.write(data)  
-        data = f.readframes(chunk)  
-
-    #stop stream  
-    stream.stop_stream()  
-    stream.close()  
-
-    #close PyAudio  
-    p.terminate()  
+    mixer.init()
+    mixer.music.load(where)
+    mixer.music.set_volume(0.7)
+    mixer.music.play()
 def audiorec_demo_app():
     wav_audio_data, filename = st_audiorec() # tadaaaa! yes, that's it! :D
     print(filename)
