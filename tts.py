@@ -2,9 +2,22 @@ import os
 from google.cloud import texttospeech
 import json
 
-#json_file=json.loads(str(os.environ.get('GOOGLE_JSON')))
-#with open("eduavatar-m-hamza-321734316044.json", "w") as outfile:
-#    outfile.write(json_file)
+google_json={
+    'universe_domain': st.secrets['universe_domain'],
+    'client_x509_cert_url': st.secrets['client_x509_cert_url'],
+    'auth_provider_x509_cert_url': st.secrets['auth_provider_x509_cert_url'],
+    'client_email': st.secrets['client_email'],
+    'client_id': st.secrets['client_id'],
+    'auth_uri': st.secrets['auth_uri'],
+    'token_uri': st.secrets['token_uri'],
+    'private_key': st.secrets['private_key'],
+    'private_key_id': st.secrets['private_key_id'],
+    'project_id': st.secrets['project_id'],
+    'type': st.secrets['type']
+}
+json_string = json.dumps(google_json)
+with open("eduavatar-m-hamza-321734316044.json", "w") as outfile:
+    outfile.write(json_file)
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="eduavatar-m-hamza-321734316044.json"
 
 
