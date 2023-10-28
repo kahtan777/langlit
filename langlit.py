@@ -25,7 +25,7 @@ google_json={
     'private_key': st.secrets('private_key'),
     'private_key_id': st.secrets('private_key_id'),
     'project_id': st.secrets('project_id'),
-    'type' st.secrets('type'):
+    'type': st.secrets('type')
 }
 
 st.write(google_json)
