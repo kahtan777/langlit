@@ -26,6 +26,7 @@ st.markdown('''<style>.css-nlntq9 a {color: #ff4c4b;}</style>''',
             unsafe_allow_html=True)  # lightmode
 
 def play_audio_(file):
+            return
             b64 = base64.b64encode(file).decode()
             md = f"""
             <audio controls autoplay="false">
@@ -38,6 +39,7 @@ def play_audio_(file):
             )
 
 def play_audio(where):
+    return
     with open(where, "rb") as f:
         data = f.read()
         b64 = base64.b64encode(data).decode()
