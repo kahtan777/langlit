@@ -12,14 +12,15 @@ import audio
 import streamlit as st
 from streamlit_chat import message
 from utils import *
+import tts
+import wave
+import contextlib
 
 keyy=st.secrets["openAI_key"]
 
 st.set_page_config(layout="wide")
 
 left_column, right_column = st.columns([7,3])
-
-import streamlit as st
 
 with left_column:
     video_html = """
