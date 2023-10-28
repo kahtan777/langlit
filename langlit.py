@@ -102,7 +102,7 @@ with textcontainer:
     if query:
         with st.spinner("typing..."):
             conversation_string = get_conversation_string()
-            # st.code(conversation_string)
+            st.code(conversation_string)
             refined_query = query_refiner(conversation_string, query)
             st.subheader("Refined Query:")
             st.write(refined_query)
