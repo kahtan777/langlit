@@ -110,9 +110,6 @@ f"""
 unsafe_allow_html=True
 )
 
-with st.container():
-response_container = st.container()
-textcontainer = st.container()
 
 mytext = audio.audiorec_demo_app()
 
