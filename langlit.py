@@ -20,31 +20,42 @@ st.set_page_config(layout="wide")
 # Create Bootstrap columns
 import streamlit as st
 
-st.markdown("""
-<div class="container">
-    <div class="row">
-        <div class="col-md-7">
-            <div class="embed-responsive embed-responsive-16by9" style="padding-bottom: 56.25%; position: relative;">
-                <video autoplay muted loop id="myVideo" class="embed-responsive-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                    <source src="https://futurelaby.com/avatar/2023-10-28%2014-19-34.mp4" type="video/mp4">
-                    Your browser does not support HTML5 video.
-                </video>
-            </div>
-        </div>
-        <div class="col-md-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="content">
-                            <!-- Your content goes here -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+video_html = """
+<style>
+.video-container {
+    position: relative; /* Change from fixed to relative position */
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio for the video container */
+    overflow: hidden;
+    border-radius: 10px; /* Apply border-radius to make it round-edged */
+}
+
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
+</style>
+
+<div class="video-container">
+    <video autoplay muted loop id="myVideo">
+        <source src="https://futurelaby.com/avatar/2023-10-28%2014-19-34.mp4">
+        Your browser does not support HTML5 video.
+    </video>
 </div>
-""", unsafe_allow_html=True)
+"""
+
+st.markdown(video_html, unsafe_allow_html=True)
+
 
 
 if 'responses' not in st.session_state:
