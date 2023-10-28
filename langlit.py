@@ -89,7 +89,6 @@ with right_column:
     textcontainer = st.container()
 
 with right_column:
-    st.write('hihihihihi')
     mytext = audio.audiorec_demo_app()
 
 def change_my_text_back():
