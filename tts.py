@@ -1,6 +1,7 @@
 import os
 from google.cloud import texttospeech
 import json
+import streamlit as st
 
 google_json={
     'universe_domain': st.secrets['universe_domain'],
