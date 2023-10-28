@@ -26,12 +26,12 @@ st.markdown('''<style>.css-nlntq9 a {color: #ff4c4b;}</style>''',
             unsafe_allow_html=True)  # lightmode
 
 def play_audio(where):
-    with open(file_path, "rb") as f:
+    with open(where, "rb") as f:
         data = f.read()
         b64 = base64.b64encode(data).decode()
         md = f"""
             <audio controls autoplay="true">
-            <source src="data:audio/mp3;base64,{b64}" type="audio/mp3">
+            <source src="data:audio/mp3;base64,{b64}" type="audio/wav">
             </audio>
             """
         st.markdown(
