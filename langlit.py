@@ -98,29 +98,16 @@ with right_column:
    st.markdown(
     f"""
     <style>
-        .reportview-container .main .block-container {{
-            width: 70%;
-        }}
-        .reportview-container .main {{
-            display: flex;
-            justify-content: space-between;
-        }}
         .response-container {{
-            width: 45%;
-            margin-left: 15%;
-            position: relative;
-            top: 15%;
+            margin-top: 15px;  /* Add margin to create space at the top */
         }}
         .text-container {{
-            width: 45%;
-            margin-right: 15%;
-            position: relative;
-            top: 15%;
+            margin-top: 15px;  /* Add margin to create space at the top */
         }}
     </style>
     """,
     unsafe_allow_html=True
-    )
+)
 
     with st.container():
     response_container = st.container()
