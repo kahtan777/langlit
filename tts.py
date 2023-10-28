@@ -15,9 +15,9 @@ google_json={
     'project_id': st.secrets['project_id'],
     'type': st.secrets['type']
 }
-json_string = json.dumps(google_json)
-with open("eduavatar-m-hamza-321734316044.json", "w") as outfile:
-    outfile.write(json_file)
+with open("eduavatar-m-hamza-321734316044.json", "w") as json_file:
+    json.dump(google_json, json_file)
+
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="eduavatar-m-hamza-321734316044.json"
 
 
