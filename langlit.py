@@ -23,29 +23,30 @@ with left_column:
     video_html = """
     <style>
     .video-container {
-        width: 60%; /* Adjust the width to your desired size */
+        width: 60%;
         height: auto;
-        overflow: hidden; /* Add overflow hidden to clip round edges */
-        border-radius: 0; /* Apply border-radius to make it round-edged */
-        position: fixed; /* Fixed position to keep it in the top left corner for desktop */
+        overflow: hidden;
+        border-radius: 0;
+        position: fixed;
         top: 5%;
         left: 3%;
+        z-index: 999; /* Ensure the video appears above other content */
     }
 
     @media (max-width: 768px) {
         .video-container {
-            position: fixed; /* Fixed position for mobile */
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100%; /* Full width for mobile */
+            width: 100%;
         }
     }
-    
+
     video {
         width: 100%;
         height: auto;
     }
-    
+
     .content {
         background: rgba(0, 0, 0, 0.5);
         color: #f1f1f1;
@@ -53,14 +54,14 @@ with left_column:
         padding: 60px;
     }
     </style>    
-    <div class="video-container">
+    <div class="video-container floating">
     <video autoplay muted loop id="myVideo">
         <source src="https://futurelaby.com/avatar/2023-10-28%2014-19-34.mp4">
         Your browser does not support HTML5 video.
     </video>
     </div>
     """
-    st.markdown(video_html, unsafe_allow_html=True)
+st.markdown(video_html, unsafe_allow_html=True)
 
 
 
