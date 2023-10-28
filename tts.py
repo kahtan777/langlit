@@ -2,7 +2,7 @@ import os
 from google.cloud import texttospeech
 import json
 
-json_file=json.loads(GOOGLE_JSON)
+json_file=json.loads(os.environ.get('GOOGLE_JSON'))
 with open("eduavatar-m-hamza-321734316044.json", "w") as outfile:
     outfile.write(json_file)
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="eduavatar-m-hamza-321734316044.json"
