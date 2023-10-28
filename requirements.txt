@@ -18,5 +18,5 @@ pydub==0.25.1
 google-cloud-speech==2.21.1
 google-cloud-texttospeech==2.14.2
 wave==0.0.2
-pyaudio==0.2.13
+pygame
 audio-recorder-streamlit
