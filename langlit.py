@@ -1,4 +1,3 @@
-
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationChain
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
@@ -14,11 +13,9 @@ import streamlit as st
 from streamlit_chat import message
 from utils import *
 
-st.set_page_config(layout="wide")
-
 keyy=st.secrets["openAI_key"]
 
-
+st.set_page_config(layout="wide")
 
 left_column, right_column = st.columns([7,3])
 
@@ -33,7 +30,6 @@ with left_column:
         position: fixed; /* Fixed position to keep it in the top left corner for desktop */
         top: 5%;
         left: 3%;
-        display: none; /* Hide the video by default on larger screens */
     }
 
     @media (max-width: 768px) {
@@ -42,7 +38,6 @@ with left_column:
             top: 0;
             left: 0;
             width: 100%; /* Full width for mobile */
-            display: block; /* Display the video on smaller screens */
         }
     }
     
@@ -56,7 +51,6 @@ with left_column:
         color: #f1f1f1;
         width: 100%;
         padding: 20px;
-        margin-top: 50px; /* Adjust margin to make content appear below the video */
     }
     </style>    
     <div class="video-container">
@@ -67,7 +61,7 @@ with left_column:
     </div>
     """
     st.markdown(video_html, unsafe_allow_html=True)
-    
+
 with right_column:
     if 'responses' not in st.session_state:
         st.session_state['responses'] = ["How can I assist you?"]
@@ -132,3 +126,5 @@ with right_column:
                 message(st.session_state['responses'][i],key=str(i))
                 if i < len(st.session_state['requests']):
                     message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
+
+
