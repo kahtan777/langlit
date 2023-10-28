@@ -3,9 +3,10 @@ from google.cloud import speech
 import tts
 import json
 
-json_file=json.loads(str(os.environ.get('GOOGLE_JSON')))
-with open("eduavatar-m-hamza-321734316044.json", "w") as outfile:
-    outfile.write(json_file)
+
+#json_file=json.loads(str(os.environ.get('GOOGLE_JSON')))
+#with open("eduavatar-m-hamza-321734316044.json", "w") as outfile:
+#    outfile.write(json_file)
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="eduavatar-m-hamza-321734316044.json"
 
 def recognize(file) -> speech.RecognizeResponse:
