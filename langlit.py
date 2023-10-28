@@ -20,41 +20,49 @@ st.set_page_config(layout="wide")
 # Create Bootstrap columns
 import streamlit as st
 
-video_html = """
-<style>
-.video-container {
-    position: relative; /* Change from fixed to relative position */
-    width: 100%;
-    padding-top: 56.25%; /* 16:9 aspect ratio for the video container */
-    overflow: hidden;
-    border-radius: 10px; /* Apply border-radius to make it round-edged */
-}
+with left_column:
+    video_html = """
+    <style>
+    .video-container {
+        width: 60%; /* Adjust the width to your desired size */
+        height: auto;
+        overflow: hidden; /* Add overflow hidden to clip round edges */
+        border-radius: 0; /* Apply border-radius to make it round-edged */
+        position: fixed; /* Fixed position to keep it in the top left corner for desktop */
+        top: 5%;
+        left: 3%;
+    }
 
-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.content {
-    background: rgba(0, 0, 0, 0.5);
-    color: #f1f1f1;
-    width: 100%;
-    padding: 20px;
-}
-</style>
-
-<div class="video-container">
+    @media (max-width: 768px) {
+        .video-container {
+            position: fixed; /* Fixed position for mobile */
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width for mobile */
+        }
+    }
+    
+    video {
+        width: 100%;
+        height: auto;
+    }
+    
+    .content {
+        background: rgba(0, 0, 0, 0.5);
+        color: #f1f1f1;
+        width: 100%;
+        padding: 20px;
+    }
+    </style>    
+    <div class="video-container">
     <video autoplay muted loop id="myVideo">
         <source src="https://futurelaby.com/avatar/2023-10-28%2014-19-34.mp4">
         Your browser does not support HTML5 video.
     </video>
-</div>
-"""
+    </div>
+    """
+    st.markdown(video_html, unsafe_allow_html=True)
 
-st.markdown(video_html, unsafe_allow_html=True)
 
 
 
