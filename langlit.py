@@ -70,78 +70,79 @@ st.markdown(video_html, unsafe_allow_html=True)
 
 
 with right_column:
-    if 'responses' not in st.session_state:
-        st.session_state['responses'] = ["How can I assist you?"]
-    
-    if 'requests' not in st.session_state:
-        st.session_state['requests'] = []
-    
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=keyy)
-    
-    if 'buffer_memory' not in st.session_state:
-                st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
-    
-    
-    system_msg_template = SystemMessagePromptTemplate.from_template(template="""Answer the question as truthfully as possible using the provided context In Arabic only with now more than 50 words, 
-    and if the answer is not contained within the text below, say 'I don't know'""")
-    
-    
-    human_msg_template = HumanMessagePromptTemplate.from_template(template="{input}")
-    
-    prompt_template = ChatPromptTemplate.from_messages([system_msg_template, MessagesPlaceholder(variable_name="history"), human_msg_template])
-    
-    conversation = ConversationChain(memory=st.session_state.buffer_memory, prompt=prompt_template, llm=llm, verbose=True)
-    
-    
-    
-    
-   st.markdown(
-    f"""
-    <style>
-        .response-container {{
-            margin-top: 15px;  /* Add margin to create space at the top */
-        }}
-        .text-container {{
-            margin-top: 15px;  /* Add margin to create space at the top */
-        }}
-    </style>
-    """,
-    unsafe_allow_html=True
+    st.write("HII")
+if 'responses' not in st.session_state:
+    st.session_state['responses'] = ["How can I assist you?"]
+
+if 'requests' not in st.session_state:
+    st.session_state['requests'] = []
+
+llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=keyy)
+
+if 'buffer_memory' not in st.session_state:
+            st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
+
+
+system_msg_template = SystemMessagePromptTemplate.from_template(template="""Answer the question as truthfully as possible using the provided context In Arabic only with now more than 50 words, 
+and if the answer is not contained within the text below, say 'I don't know'""")
+
+
+human_msg_template = HumanMessagePromptTemplate.from_template(template="{input}")
+
+prompt_template = ChatPromptTemplate.from_messages([system_msg_template, MessagesPlaceholder(variable_name="history"), human_msg_template])
+
+conversation = ConversationChain(memory=st.session_state.buffer_memory, prompt=prompt_template, llm=llm, verbose=True)
+
+
+
+
+st.markdown(
+f"""
+<style>
+    .response-container {{
+        margin-top: 15px;  /* Add margin to create space at the top */
+    }}
+    .text-container {{
+        margin-top: 15px;  /* Add margin to create space at the top */
+    }}
+</style>
+""",
+unsafe_allow_html=True
 )
 
-    with st.container():
-    response_container = st.container()
-    textcontainer = st.container()
+with st.container():
+response_container = st.container()
+textcontainer = st.container()
+
+mytext = audio.audiorec_demo_app()
+
+def change_my_text_back():
+    mytext='default'
     
-    mytext = audio.audiorec_demo_app()
-    
-    def change_my_text_back():
-        mytext='default'
-        
-    
-    with textcontainer:
-        if mytext == 'default':
-            query = st.text_input("Question: ", key="input", on_change=change_my_text_back)
-        else:
-            query = st.text_input("Question: ", key="input", value=mytext, on_change=change_my_text_back)
-        if query:
-            with st.spinner("typing..."):
-                conversation_string = get_conversation_string()
-                #st.code(conversation_string)
-                refined_query = query_refiner(conversation_string, query)
-                #st.subheader("Refined Query:")
-                #st.write(refined_query)
-                context = find_match(refined_query)
-                # print(context)  
-                response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
-            st.session_state.requests.append(query)
-            st.session_state.responses.append(response) 
-    with response_container:
-        if st.session_state['responses']:
-    
-            for i in range(len(st.session_state['responses'])):
-                message(st.session_state['responses'][i],key=str(i))
-                if i < len(st.session_state['requests']):
+
+with textcontainer:
+    if mytext == 'default':
+        query = st.text_input("Question: ", key="input", on_change=change_my_text_back)
+    else:
+        query = st.text_input("Question: ", key="input", value=mytext, on_change=change_my_text_back)
+    if query:
+        with st.spinner("typing..."):
+            conversation_string = get_conversation_string()
+            #st.code(conversation_string)
+            refined_query = query_refiner(conversation_string, query)
+            #st.subheader("Refined Query:")
+            #st.write(refined_query)
+            context = find_match(refined_query)
+            # print(context)  
+            response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
+        st.session_state.requests.append(query)
+        st.session_state.responses.append(response) 
+with response_container:
+    if st.session_state['responses']:
+
+        for i in range(len(st.session_state['responses'])):
+            message(st.session_state['responses'][i],key=str(i))
+            if i < len(st.session_state['requests']):
                     message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
 
 
