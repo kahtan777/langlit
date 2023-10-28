@@ -26,7 +26,6 @@ print('after')
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="eduavatar-m-hamza-321734316044.json"
 
 def recognize(file) -> speech.RecognizeResponse:
-    print('enteringgggggg')
     # Instantiates a client
     client = speech.SpeechClient()
 
