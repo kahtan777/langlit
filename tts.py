@@ -1,5 +1,6 @@
 import os
 from google.cloud import texttospeech
+import json
 
 json_file=json.loads(GOOGLE_JSON)
 with open("eduavatar-m-hamza-321734316044.json", "w") as outfile:
