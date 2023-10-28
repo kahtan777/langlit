@@ -15,9 +15,11 @@ from utils import *
 
 keyy=st.secrets["openAI_key"]
 
-col1, col2, col3 = st.columns(3)
+st.set_page_config(layout="wide")
 
-with col1:
+left_column, right_column = st.columns([7,3])
+
+with left_column:
     video_html = """
     <style>
     .video-container {
@@ -51,10 +53,6 @@ with col1:
     """
     st.markdown(video_html, unsafe_allow_html=True)
 
-with col2:
-    st.text('heyyy')
-with col3:
-    st.text('hiiii')
 
 
 if 'responses' not in st.session_state:
@@ -83,13 +81,13 @@ conversation = ConversationChain(memory=st.session_state.buffer_memory, prompt=p
 
 
 # container for chat history
-with col3:
+with right_column:
     response_container = st.container()
 # container for text box
-with col3: 
+with right_column: 
     textcontainer = st.container()
 
-with col3:
+with right_column:
     mytext = audio.audiorec_demo_app()
 
 def change_my_text_back():
