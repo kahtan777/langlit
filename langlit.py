@@ -22,14 +22,14 @@ st.markdown("""
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-7">
-            <div class="video-container">
-                <video autoplay muted loop id="myVideo">
+            <div class="video-container embed-responsive embed-responsive-16by9">
+                <video autoplay muted loop id="myVideo" class="embed-responsive-item">
                     <source src="https://futurelaby.com/avatar/2023-10-28%2014-19-34.mp4">
                     Your browser does not support HTML5 video.
                 </video>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-5">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -67,19 +67,19 @@ conversation = ConversationChain(memory=st.session_state.buffer_memory, prompt=p
 
 # Container for chat history
 st.markdown('<div class="container-fluid"><div class="row">', unsafe_allow_html=True)
-st.markdown('<div class="col-md-3">', unsafe_allow_html=True)
+st.markdown('<div class="col-md-5">', unsafe_allow_html=True)
 response_container = st.container()
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Container for text box
-st.markdown('<div class="col-md-9">', unsafe_allow_html=True)
+st.markdown('<div class="col-md-7">', unsafe_allow_html=True)
 textcontainer = st.container()
-
 mytext = audio.audiorec_demo_app()
 def change_my_text_back():
     mytext='default'
     
 with textcontainer:
+    
     if mytext == 'default':
         query = st.text_input("Question: ", key="input", on_change=change_my_text_back)
     else:
