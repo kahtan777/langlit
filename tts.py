@@ -2,6 +2,7 @@ import os
 from google.cloud import texttospeech
 import json
 import streamlit as st
+import audio
 
 google_json={
     'universe_domain': st.secrets['universe_domain'],
@@ -36,7 +37,7 @@ def tts(text):
     voice = texttospeech.VoiceSelectionParams(
         language_code='ar-XA',
         name='ar-XA-Standard-B',
-        ssml_gender=texttospeech.SsmlVoiceGender.MALE)
+        ssml_gender=texttospeech.SsmlVoiceGender.FEMALE)
 
     # Select the type of audio file you want returned
     audio_config = texttospeech.AudioConfig(
@@ -48,7 +49,9 @@ def tts(text):
         input=synthesis_input, voice=voice, audio_config=audio_config
     )
     # The response's audio_content is binary.
+    print('were gonna play something')
     with open('output.wav', 'wb') as out:
         # Write the response to the output file.
         out.write(response.audio_content)
+        audio.play_audio(out)
         print('Audio content written to file "output-voice.wav"')
