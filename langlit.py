@@ -26,7 +26,7 @@ with left_column:
         position: fixed; /* Fixed position to keep it in the top left corner */
         top: 5%;
         left: 0;
-        width: 40%; /* Adjust the width to your desired size */
+        width: 60%; /* Adjust the width to your desired size */
         height: auto;
         overflow: hidden; /* Add overflow hidden to clip round edges */
         border-radius: 10%; /* Apply border-radius to make it round-edged */
