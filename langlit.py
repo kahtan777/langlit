@@ -99,10 +99,10 @@ conversation = ConversationChain(memory=st.session_state.buffer_memory, prompt=p
 st.markdown(
 f"""
 <style>
-    .response-container {{
+    .response_container {{
         margin-top: 15px;  /* Add margin to create space at the top */
     }}
-    .text-container {{
+    .textcontainer {{
         margin-top: 15px;  /* Add margin to create space at the top */
     }}
 </style>
