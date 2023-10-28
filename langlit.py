@@ -8,6 +8,7 @@ from langchain.prompts import (
     ChatPromptTemplate,
     MessagesPlaceholder
 )
+import os
 import audio
 import streamlit as st
 from streamlit_chat import message
