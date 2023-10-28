@@ -6,7 +6,7 @@ from st_audio_rec import st_audiorec
 from pydub import AudioSegment
 
 import sst, tts
-import pygame
+from pygame import mixer 
 import wave
 
 # DESIGN implement changes to the standard streamlit UI/UX
