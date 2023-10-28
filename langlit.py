@@ -50,7 +50,7 @@ with left_column:
         background: rgba(0, 0, 0, 0.5);
         color: #f1f1f1;
         width: 100%;
-        padding: 20px;
+        padding: 60px;
     }
     </style>    
     <div class="video-container">
@@ -69,18 +69,18 @@ st.markdown("""
 @media (max-width: 768px) {
     .video-container {
         width: 100%; /* Adjust the width to fill the screen width */
-        top: 0; /* Move to the top */
+        top: 30%; /* Move to the top */
         left: 0; /* Move to the left */
     }
 
     .content {
         width: 100%; /* Adjust the width to fill the screen width */
-        padding: 10px; /* Add some padding to separate from the video */
+        padding: 30px; /* Add some padding to separate from the video */
     }
 
     .textcontainer {
         width: 100%; /* Adjust the width to fill the screen width */
-        padding: 10px; /* Add some padding to separate from the video */
+        padding: 30px; /* Add some padding to separate from the video */
     }
 }
 </style>
