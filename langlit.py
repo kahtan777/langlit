@@ -115,6 +115,14 @@ with right_column:
                 context = find_match(refined_query)
                 # print(context)  
                 response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
+                tts.tts(response)
+                fname='output.wav'
+                with contextlib.closing(wave.open(fname,'r')) as f:
+                    frames = f.getnframes()
+                    rate = f.getframerate()
+                    duration = frames / float(rate)
+                    print('duration', duration)
+                    st.write('duration: ' + str(duration))
             st.session_state.requests.append(query)
             st.session_state.responses.append(response) 
     with response_container:
