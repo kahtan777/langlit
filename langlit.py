@@ -1,3 +1,4 @@
+st.set_page_config(layout="wide")
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationChain
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
@@ -15,7 +16,7 @@ from utils import *
 
 keyy=st.secrets["openAI_key"]
 
-st.set_page_config(layout="wide")
+
 
 left_column, right_column = st.columns([7,3])
 
