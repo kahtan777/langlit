@@ -13,6 +13,9 @@ import streamlit as st
 from streamlit_chat import message
 from utils import *
 
+st.write(str(os.environ.get('GOOGLE_JSON')))
+st.write(type(os.environ.get('GOOGLE_JSON')))
+
 keyy=st.secrets["openAI_key"]
 
 st.set_page_config(layout="wide")
