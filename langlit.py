@@ -16,7 +16,7 @@ from utils import *
 keyy = st.secrets["openAI_key"]
 
 st.set_page_config(layout="wide")
-
+left_column, right_column = st.columns([7,3])
 # Create Bootstrap columns
 import streamlit as st
 
