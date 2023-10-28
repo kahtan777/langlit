@@ -74,11 +74,12 @@ st.markdown('</div>', unsafe_allow_html=True)
 # Container for text box
 st.markdown('<div class="col-md-9">', unsafe_allow_html=True)
 textcontainer = st.container()
+
+mytext = audio.audiorec_demo_app()
 def change_my_text_back():
     mytext='default'
     
 with textcontainer:
-    mytext = audio.audiorec_demo_app()
     if mytext == 'default':
         query = st.text_input("Question: ", key="input", on_change=change_my_text_back)
     else:
