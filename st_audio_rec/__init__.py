@@ -4,6 +4,7 @@ import streamlit as st
 from io import BytesIO
 import streamlit.components.v1 as components
 import datetime 
+from audio_recorder_streamlit import audio_recorder
 
 import numpy as np
 
@@ -21,23 +22,23 @@ def st_audiorec():
     st_audiorec = components.declare_component("st_audiorec", path=build_dir)
 
     # Create an instance of the component: STREAMLIT AUDIO RECORDER
-    raw_audio_data = st_audiorec()  # raw_audio_data: stores all the data returned from the streamlit frontend
+    #raw_audio_data = st_audiorec()  # raw_audio_data: stores all the data returned from the streamlit frontend
     wav_bytes = None                # wav_bytes: contains the recorded audio in .WAV format after conversion
 
-    rad = raw_audio_data
+    raw_audio_data = audio_recorder(text= '')
 
     # the frontend returns raw audio data in the form of arraybuffer
     # (this arraybuffer is derived from web-media API WAV-blob data))
 
     if isinstance(raw_audio_data, dict):  # retrieve audio data
         with st.spinner('retrieving audio-recording...'):
-            ind, raw_audio_data = zip(*raw_audio_data['arr'].items())
-            ind = np.array(ind, dtype=int)  # convert to np array
-            raw_audio_data = np.array(raw_audio_data)  # convert to np array
-            sorted_ints = raw_audio_data[ind]
-            stream = BytesIO(b"".join([int(v).to_bytes(1, "big") for v in sorted_ints]))
+            #ind, raw_audio_data = zip(*raw_audio_data['arr'].items())
+            #ind = np.array(ind, dtype=int)  # convert to np array
+            #raw_audio_data = np.array(raw_audio_data)  # convert to np array
+            #sorted_ints = raw_audio_data[ind]
+            #stream = BytesIO(b"".join([int(v).to_bytes(1, "big") for v in sorted_ints]))
             # wav_bytes contains audio data in byte format, ready to be processed further
-            wav_bytes = stream.read()
+            wav_bytes = raw_audio_data #stream.read()
 
             #Wave Analysis
 
