@@ -18,13 +18,15 @@ google_json={
     'project_id': st.secrets['project_id'],
     'type': st.secrets['type']
 }
+print('before')
 with open("eduavatar-m-hamza-321734316044.json", "w") as json_file:
     json.dump(google_json, json_file)
+print('after')
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="eduavatar-m-hamza-321734316044.json"
 
 def recognize(file) -> speech.RecognizeResponse:
-    print('entering')
+    print('enteringgggggg')
     # Instantiates a client
     client = speech.SpeechClient()
 
@@ -33,7 +35,7 @@ def recognize(file) -> speech.RecognizeResponse:
 
     with open(file, "rb") as audio_file:
         content = audio_file.read()
-    print('hii')
+    print('hiiiiiiiiiiiiiii')
 
     audio = speech.RecognitionAudio(content=content)
 
