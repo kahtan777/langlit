@@ -14,6 +14,8 @@ import streamlit as st
 from streamlit_chat import message
 from utils import *
 
+st.set_page_config(layout="wide")
+
 keyy=st.secrets["openAI_key"]
 
 
