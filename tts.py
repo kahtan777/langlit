@@ -56,5 +56,5 @@ def tts(text):
         # Write the response to the output file.
         out.write(response.audio_content)
         # audio.play_audio(out)
-        st.write('did something?')
+        st.write(response.audio_content)
         print('Audio content written to file "output-voice.wav"')
