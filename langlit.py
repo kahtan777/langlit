@@ -1,4 +1,4 @@
-st.set_page_config(layout="wide")
+
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationChain
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
@@ -13,7 +13,7 @@ import audio
 import streamlit as st
 from streamlit_chat import message
 from utils import *
-
+st.set_page_config(layout="wide")
 keyy=st.secrets["openAI_key"]
 
 
