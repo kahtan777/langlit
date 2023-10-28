@@ -27,31 +27,11 @@ st.markdown('''<style>.css-nlntq9 a {color: #ff4c4b;}</style>''',
 
 def play_audio_(file):
             return
-            b64 = base64.b64encode(file).decode()
-            md = f"""
-            <audio controls autoplay="false">
-            <source src="data:audio/wav;base64,{b64}" type="audio/wav">
-            </audio>
-            """
-            st.markdown(
-            md,
-            unsafe_allow_html=True,
-            )
+            
 
 def play_audio(where):
     return
-    with open(where, "rb") as f:
-        data = f.read()
-        b64 = base64.b64encode(data).decode()
-        md = f"""
-            <audio controls autoplay="false">
-            <source src="data:audio/wav;base64,{b64}" type="audio/wav">
-            </audio>
-            """
-        st.markdown(
-            md,
-            unsafe_allow_html=True,
-        )
+    
 
 def audiorec_demo_app():
     wav_audio_data, filename = st_audiorec() # tadaaaa! yes, that's it! :D
