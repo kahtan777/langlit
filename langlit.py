@@ -84,10 +84,7 @@ with left_column:
 
 def change_avatar(secs):
     start_time = 37
-    end_time = 37+secs
-    time.sleep(secs)
-    start_time = 5
-    end_time = 10
+    end_time = 45
 
 with right_column:
     if 'responses' not in st.session_state:
