@@ -138,8 +138,10 @@ with right_column:
                 # print(context)  
                 response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
                 aud = tts.tts(response, left_column)
-                duration_seconds = aud.getnframes() / aud.getframerate()
-                st.write(f'AUDIO SIZE IS {duration_seconds}')
+                with wave.open("output.wav") as mywav:
+                    duration_seconds = mywav.getnframes() / mywav.getframerate()
+                    st.write(f"Length of the WAV file: {duration_seconds:.1f} s")
+                st.write(aud.read().getnframes() / aud.read().getframerate())
             st.session_state.requests.append(query)
             st.session_state.responses.append(response) 
     with response_container:
