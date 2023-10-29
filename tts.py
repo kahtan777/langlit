@@ -24,7 +24,7 @@ with open("eduavatar-m-hamza-321734316044.json", "w") as json_file:
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="eduavatar-m-hamza-321734316044.json"
 
-def autoplay_audio(file_path: str):
+def autoplay_audio(file_path: str, col):
     import time
 
     html_string = """
@@ -34,7 +34,9 @@ def autoplay_audio(file_path: str):
             """
 
     sound = st.empty()
-    sound.markdown(html_string, unsafe_allow_html=True)  # will display a st.audio with the sound you specified in the "src" of the html_string and autoplay i
+    with col:
+        sound.markdown(html_string, unsafe_allow_html=True)  # will display a st.audio with the sound you specified in the "src" of the html_string and autoplay i
+    
     return
     with open(file_path, "rb") as f:
         data = f.read()
@@ -44,10 +46,11 @@ def autoplay_audio(file_path: str):
             <source src="data:audio/wav;base64,{b64}" type="audio/wav">
             </audio>
             """
-        st.markdown(
-            md,
-            unsafe_allow_html=True,
-        )
+        with col:
+            st.markdown(
+                md,
+                unsafe_allow_html=True,
+            )
     
 
 def tts(text, col):
@@ -84,7 +87,7 @@ def tts(text, col):
     try:
         with col:
             st.audio(filename, format='audio/wav')
-            autoplay_audio(filename)
+            autoplay_audio(filename, col)
     except:
         autoplay_audio
     return filename
