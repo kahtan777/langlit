@@ -15,12 +15,12 @@ from utils import *
 import tts
 import wave
 import contextlib
-
 keyy=st.secrets["openAI_key"]
-
 st.set_page_config(layout="wide")
-
 left_column, right_column = st.columns([7,3])
+
+start_time = 10  # Start time in seconds
+duration = 30  
 
 with left_column:
     video_html = """
@@ -57,9 +57,9 @@ with left_column:
         padding: 45%;
     }
     </style>    
-    <div class="video-container floating">
-    <video autoplay muted loop id="myVideo">
-        <source src="https://futurelaby.com/avatar/2023-10-28%2014-19-34.mp4">
+    <div class="video-container">
+    <video autoplay muted loop id="myVideo" poster="poster.jpg">
+        <source src="https://futurelaby.com/mZaher/80e038fc-7500-41c0-9c7c-595008e2e8bb.mp4#t={start_time},{duration}" type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
     </div>
