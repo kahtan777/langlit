@@ -72,6 +72,7 @@ def tts(text, col):
         out.write(response.audio_content)
     try:
         with col:
+            st.audio(filename, format='audio/wav')
             autoplay_audio(filename)
     except:
         autoplay_audio
