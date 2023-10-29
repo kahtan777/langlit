@@ -30,7 +30,7 @@ with left_column:
     <style>
     .video-container {
         width: 60%; ## it was 60%
-        height: 100%; # IT WAS AUTO ###############################################
+        height: auto; # IT WAS AUTO ###############################################
         overflow: hidden;
         border-radius: 0;
         position: fixed;
@@ -50,14 +50,13 @@ with left_column:
 
     video {
         width: 100%;
-        height: 100%; #### IT WAS AUTO ##########
+        height: auto; #### IT WAS AUTO ##########
     }
 
     .content {
         background: rgba(0, 0, 0, 0.5);
         color: #f1f1f1;
         width: 100%;
-        padding: 45%;
     }
 
     
@@ -87,7 +86,7 @@ with left_column:
     </div>
     """
 #st.markdown(video_html, unsafe_allow_html=True)
-components.html(video_html, height=600, width=1080)
+components.html(video_html, height=874, width=1080)
 
 
 
