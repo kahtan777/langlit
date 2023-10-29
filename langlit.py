@@ -73,7 +73,7 @@ st.markdown(video_html, unsafe_allow_html=True)
 with right_column:
     st.subheader("Chatbot with Langchain, ChatGPT, Pinecone, and Streamlit")
     if 'responses' not in st.session_state:
-        st.session_state['responses'] = ["How can I assist you?"]
+        st.session_state['responses'] = ["مرحبا، انا مريم رح كون انستكون ليوم"]
     
     if 'requests' not in st.session_state:
         st.session_state['requests'] = []
@@ -85,7 +85,7 @@ with right_column:
     
     
     system_msg_template = SystemMessagePromptTemplate.from_template(template="""Answer the question as truthfully as possible using the provided context in Arabic only, 
-    and if the answer is not contained within the text below, say 'I don't know', but if its a greeting you have to greet back""")
+    and if the answer is not contained within the text below, say 'I don't know', but if its a greeting you have to greet back, and be friendly, play the teacher role and your name is mariam""")
     
     
     human_msg_template = HumanMessagePromptTemplate.from_template(template="{input}")
