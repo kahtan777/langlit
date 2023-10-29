@@ -137,5 +137,9 @@ with right_column:
                 if i < len(st.session_state['requests']):
                     message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
 
+def play_audio(where):
+    with right_column:
+        st.write('hi')
+    return
 
 
