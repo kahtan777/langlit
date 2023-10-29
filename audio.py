@@ -37,7 +37,7 @@ def audiorec_demo_app(col):
         wav_file.set_frame_rate(48000)
         wav_file.set_channels(2)
         wav_file.export('sency.wav', format='wav')
-        mytext = str(sst.recognize('sency.wav'), col)
+        mytext = str(sst.recognize('sency.wav', col))
 
 
     else:
