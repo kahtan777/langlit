@@ -55,6 +55,7 @@ def tts(text, col):
         st.write('gonna do something')
         # Write the response to the output file.
         out.write(response.audio_content)
+        st.write('hello')
     with col:
         st.write('hello')
         
