@@ -209,8 +209,8 @@ with right_column:
                 context = find_match(query)#refined_query
                 # print(context)  
                 response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
-                aud = tts.tts(response, left_column)
-                with wave.open("output.wav") as mywav:
+                filename_ = tts.tts(response, left_column)
+                with wave.open(filename_) as mywav:
                     duration_seconds = mywav.getnframes() / mywav.getframerate()
                     st.write(f"Length of the WAV file: {duration_seconds:.1f} s")
                     change_avatar(duration_seconds)
