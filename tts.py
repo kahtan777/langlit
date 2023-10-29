@@ -65,7 +65,6 @@ def tts(text, col):
     )
     # The response's audio_content is binary.
     print('were gonna play something')
-    st.write('supposed to do something')
     with open('output.wav', 'wb') as out:
         # Write the response to the output file.
         out.write(response.audio_content)
