@@ -40,6 +40,7 @@ with left_column:
         overflow: hidden;
         border-radius: 0;
         position: fixed;
+        bottom:0;
         top:5%;
         left: 3%;
         z-index: 999; /* Ensure the video appears above other content */
