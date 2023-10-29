@@ -61,12 +61,12 @@ with left_column:
         var video = document.getElementById('myVideo');
 
         video.addEventListener('loadedmetadata', function() {
-            video.currentTime = """ +start_time+ """; // Start at 5 seconds
-            var endTime = """+end_time+""";    // End at 10 seconds
+            video.currentTime = """ +str(start_time)+ """; // Start at 5 seconds
+            var endTime = """+str(end_time)+""";    // End at 10 seconds
 
             video.addEventListener('timeupdate', function() {
-                if (video.currentTime >= endTime) {
-                    video.currentTime = """+ start_time+ """; // Loop back to 5 seconds
+                if (video.currentTime >= endTime) { 
+                    video.currentTime = """+ str(start_time)+ """; // Loop back to 5 seconds
                 }
             });
 
