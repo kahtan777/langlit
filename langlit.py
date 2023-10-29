@@ -35,14 +35,13 @@ with left_column:
     video_html = """
     <style>
     .video-container {
-        width: 60%; ## it was 60%
-        height: auto; # IT WAS AUTO ###############################################
+        width: 60%;
+        height: auto; 
         overflow: hidden;
         border-radius: 0;
         position: fixed;
-        top:5%;
-        left: 3%;
-        z-index: 999; /* Ensure the video appears above other content */
+        top:0;
+        left: 0;
     }
 
 
