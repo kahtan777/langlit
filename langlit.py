@@ -35,8 +35,8 @@ with left_column:
     video_html = """
     <style>
     .video-container {
-        width: 80%;
-        height: 80%; 
+        width: auto;
+        height: auto; 
         overflow: hidden;
         border-radius: 0;
         position: fixed;
@@ -57,7 +57,7 @@ with left_column:
     
     </style>    
     <div class="video-container">
-    <video width="437" height="540" autoplay muted loop id="myVideo" >
+    <video width="847" height="1080" autoplay muted loop id="myVideo" >
         <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
