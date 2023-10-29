@@ -48,16 +48,7 @@ with left_column:
         }
     }
 
-    video {
-        width: 100%;
-        height: auto; #### IT WAS AUTO ##########
-    }
-
-    .content {
-        background: rgba(0, 0, 0, 0.5);
-        color: #f1f1f1;
-        width: 100%;
-    }
+    
 
     
     </style>    
