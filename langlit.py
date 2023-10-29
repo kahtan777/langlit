@@ -50,7 +50,7 @@ with left_column:
 
     video {
         width: 100%;
-        height: auto;
+        height: 100%; #### IT WAS AUTO ##########
     }
 
     .content {
