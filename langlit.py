@@ -23,6 +23,7 @@ import time
 
 keyy=st.secrets["openAI_key"]
 st.set_page_config(layout="wide")
+st.set_page_config(background_color='#E8C9C2')
 left_column, right_column = st.columns([7,3])
 
 with left_column:
