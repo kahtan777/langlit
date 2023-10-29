@@ -85,7 +85,7 @@ with right_column:
     
     
     system_msg_template = SystemMessagePromptTemplate.from_template(template="""Answer the question as truthfully as possible using the provided context in Arabic only, 
-    and if the answer is not contained within the text below, say 'I don't know', but if its a greeting you have to greet back, and be friendly, play the teacher role and your name is mariam""")
+    and if the answer is not contained within the text below, say 'I don't know', but if its a greeting you have to greet back, and be friendly female teacher,and your name is mariam, act as teacher your name is mariam""")
     
     
     human_msg_template = HumanMessagePromptTemplate.from_template(template="{input}")
