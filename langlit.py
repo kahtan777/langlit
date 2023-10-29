@@ -82,7 +82,6 @@ with left_column:
 
 
 with right_column:
-    st.subheader("Chatbot with Langchain, ChatGPT, Pinecone, and Streamlit")
     if 'responses' not in st.session_state:
         st.session_state['responses'] = ["مرحبا، انا مريم رح كون انستكون ليوم"]
     
