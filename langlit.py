@@ -59,7 +59,7 @@ with left_column:
     </style>    
     <div class="video-container">
     <video autoplay muted loop id="myVideo" poster="poster.jpg">
-        <source src="https://futurelaby.com/mZaher/80e038fc-7500-41c0-9c7c-595008e2e8bb.mp4#t={start_time},{duration}" type="video/mp4">
+        <source src="https://futurelaby.com/mZaher/80e038fc-7500-41c0-9c7c-595008e2e8bb.mp4#type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
     </div>
