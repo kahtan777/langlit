@@ -153,6 +153,7 @@ def change_avatar(secs):
 
 
 with right_column:
+    st.markdown('#')
     if 'responses' not in st.session_state:
         st.session_state['responses'] = ["مرحبا، انا مريم رح كون انستكون ليوم"]
     
