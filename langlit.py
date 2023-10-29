@@ -29,7 +29,7 @@ with left_column:
     video_html = """
     <style>
     .video-container {
-        width: 100%; ## it was 60%
+        width: 60%; ## it was 60%
         height: 100%; # IT WAS AUTO ###############################################
         overflow: hidden;
         border-radius: 0;
