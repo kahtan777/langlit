@@ -97,32 +97,36 @@ with right_column:
     
     
     
+   
     # container for chat history
-    response_container = st.container()
+    with right_column:
+        response_container = st.container()
     # container for text box
-    textcontainer = st.container()
+    with right_column: 
+        textcontainer = st.container()
     
+    with right_column:
+        mytext = audio.audiorec_demo_app()
+    
+    def change_my_text_back():
+        mytext='default'
+        
     
     with textcontainer:
-        query = st.text_input("Query: ", key="input")
+        if mytext == 'default':
+            query = st.text_input("Question: ", key="input", on_change=change_my_text_back)
+        else:
+            query = st.text_input("Question: ", key="input", value=mytext, on_change=change_my_text_back)
         if query:
             with st.spinner("typing..."):
                 conversation_string = get_conversation_string()
-                # st.code(conversation_string)
+                #st.code(conversation_string)
                 refined_query = query_refiner(conversation_string, query)
-                st.subheader("Refined Query:")
-                st.write(refined_query)
+                #st.subheader("Refined Query:")
+                #st.write(refined_query)
                 context = find_match(refined_query)
                 # print(context)  
                 response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
-                tts.tts(response)
-                fname='output.wav'
-                #with contextlib.closing(wave.open(fname,'r')) as f:
-                #    frames = f.getnframes()
-                #    rate = f.getframerate()
-                #    duration = frames / float(rate)
-                #    print('duration', duration)
-                #    st.write('duration: ' + str(duration))
             st.session_state.requests.append(query)
             st.session_state.responses.append(response) 
     with response_container:
