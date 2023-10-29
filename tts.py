@@ -25,11 +25,11 @@ with open("eduavatar-m-hamza-321734316044.json", "w") as json_file:
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="eduavatar-m-hamza-321734316044.json"
 
 def autoplay_audio(file_path: str, col):
-    html_string = """
+    html_string = '''
             <audio controls autoplay>
-              <source src="""+file_path+""" type="audio/wav">
+              <source src="'''+file_path+'''" type="audio/wav">
             </audio>
-            """
+            '''
 
     sound = st.empty()
     with col:
