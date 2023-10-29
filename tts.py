@@ -4,6 +4,7 @@ import json
 import streamlit as st
 from pygame import mixer 
 import base64
+import datetime
 
 google_json={
     'universe_domain': st.secrets['universe_domain'],
@@ -65,13 +66,14 @@ def tts(text, col):
     )
     # The response's audio_content is binary.
     print('were gonna play something')
-    with open('output.wav', 'wb') as out:
+    filename = f'output{str(datetime.datetime.now()).replace(' ', '').replace('.','').replace('-', '')}.wav'
+    with open(filename, 'wb') as out:
         # Write the response to the output file.
         out.write(response.audio_content)
     try:
         with col:
-            autoplay_audio('output.wav')
+            autoplay_audio(filename)
     except:
         autoplay_audio
-    return out
+    return filename
         
