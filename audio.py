@@ -30,7 +30,6 @@ st.markdown('''<style>.css-nlntq9 a {color: #ff4c4b;}</style>''',
 def audiorec_demo_app(col):
     wav_audio_data, filename = st_audiorec() # tadaaaa! yes, that's it! :D
     print(filename)
-    st.write(filename)
     mytext = 'default'
     if wav_audio_data is not None:
 
