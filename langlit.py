@@ -142,7 +142,7 @@ def change_avatar(secs):
     # Clear the old component and replace it with the updated content
     #placeholder.components.html(video_html2, height=874, width=1080)
     with video_placeholder:
-        components.html(video_html, height=874, width=1080)
+        components.html(video_html2, height=874, width=1080)
 
 
 with right_column:
