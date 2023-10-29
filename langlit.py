@@ -82,7 +82,7 @@ with left_column:
     """
 #st.markdown(video_html, unsafe_allow_html=True)
     #components.html(video_html, height=874, width=1080)
-    video_placeholder.components.v1.html(video_html, height=874, width=1080)
+    video_placeholder.components.html(video_html, height=874, width=1080)
 
 
 def change_avatar(secs):
@@ -139,7 +139,7 @@ def change_avatar(secs):
     """
     
     # Clear the old component and replace it with the updated content
-    placeholder.components.v1.html(video_html2, height=874, width=1080)
+    placeholder.components.html(video_html2, height=874, width=1080)
 
 
 with right_column:
