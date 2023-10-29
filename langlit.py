@@ -28,16 +28,7 @@ duration = 30
 with left_column:
     video_html = """
     <style>
-    .video-container {
-        width: 0%; ## it was 60%
-        height: auto; # IT WAS AUTO ###############################################
-        overflow: hidden;
-        border-radius: 0;
-        position: fixed;
-        top: 0;
-        left: 3%;
-        z-index: 999; /* Ensure the video appears above other content */
-    }
+    
 
     @media (max-width: 768px) {
         .video-container {
