@@ -29,7 +29,7 @@ with left_column:
     video_html = """
     <style>
     .video-container {
-        width: 60%;
+        width: 100%; ## it was 60%
         height: 100%; # IT WAS AUTO ###############################################
         overflow: hidden;
         border-radius: 0;
@@ -51,6 +51,13 @@ with left_column:
     video {
         width: 100%;
         height: 100%; #### IT WAS AUTO ##########
+    }
+
+    .content {
+        background: rgba(0, 0, 0, 0.5);
+        color: #f1f1f1;
+        width: 100%;
+        padding: 45%;
     }
 
     
