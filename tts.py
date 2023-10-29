@@ -3,6 +3,7 @@ from google.cloud import texttospeech
 import json
 import streamlit as st
 from pygame import mixer 
+import base64
 
 google_json={
     'universe_domain': st.secrets['universe_domain'],
@@ -21,6 +22,20 @@ with open("eduavatar-m-hamza-321734316044.json", "w") as json_file:
     json.dump(google_json, json_file)
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="eduavatar-m-hamza-321734316044.json"
+
+def autoplay_audio(file_path: str):
+    with open(file_path, "rb") as f:
+        data = f.read()
+        b64 = base64.b64encode(data).decode()
+        md = f"""
+            <audio controls autoplay="true">
+            <source src="data:audio/wav;base64,{b64}" type="audio/wav">
+            </audio>
+            """
+        st.markdown(
+            md,
+            unsafe_allow_html=True,
+        )
 
 
 def tts(text, col):
@@ -57,7 +72,7 @@ def tts(text, col):
         # Write the response to the output file.
         # out.write(response.audio_content)
         with col:
-            st.write('hello')
+            autoplay_audio('output.wav')
     with col:
         st.write('hello')
         
