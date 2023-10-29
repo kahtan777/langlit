@@ -127,6 +127,7 @@ with right_column:
                 context = find_match(refined_query)
                 # print(context)  
                 response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
+                print(response)
             st.session_state.requests.append(query)
             st.session_state.responses.append(response) 
     with response_container:
