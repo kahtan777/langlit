@@ -54,7 +54,7 @@ with left_column:
         background: rgba(0, 0, 0, 0.5);
         color: #f1f1f1;
         width: 100%;
-        padding: 15%;
+        padding: 45%;
     }
     </style>    
     <div class="video-container floating">
