@@ -35,7 +35,7 @@ with left_column:
     video_html = """
     <style>
     .video-container {
-        width: 70%;
+        width: auto;
         height: auto; 
         overflow: hidden;
         border-radius: 0;
