@@ -85,6 +85,55 @@ with left_column:
 def change_avatar(secs):
     start_time = 37
     end_time = 45
+    video_html = """
+    <style>
+    .video-container {
+        width: 60%; ## it was 60%
+        height: auto; # IT WAS AUTO ###############################################
+        overflow: hidden;
+        border-radius: 0;
+        position: fixed;
+        bottom: 0;
+        top:5%;
+        left: 3%;
+        z-index: 999; /* Ensure the video appears above other content */
+    }
+
+
+    @media (max-width: 768px) {
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 95%;
+        }
+    }
+    
+    </style>    
+    <div class="video-container">
+    <video autoplay muted loop id="myVideo" >
+        <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        var video = document.getElementById('myVideo');
+
+        video.addEventListener('loadedmetadata', function() {
+            video.currentTime = """ +str(start_time)+ """; // Start at 5 seconds
+            var endTime = """+str(end_time)+""";    // End at 10 seconds
+
+            video.addEventListener('timeupdate', function() {
+                if (video.currentTime >= endTime) { 
+                    video.currentTime = """+ str(start_time)+ """; // Loop back to 5 seconds
+                }
+            });
+
+            video.play(); // Play the video
+        });
+    </script>
+    </div>
+    """
 
 with right_column:
     if 'responses' not in st.session_state:
