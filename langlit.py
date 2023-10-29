@@ -88,7 +88,7 @@ with left_column:
 
 def change_avatar(secs):
     start_time = 37
-    end_time = 45
+    end_time = 37+secs
     video_html2 = """
     <style>
     .video-container {
@@ -143,6 +143,12 @@ def change_avatar(secs):
     #placeholder.components.html(video_html2, height=874, width=1080)
     with video_placeholder:
         components.html(video_html2, height=874, width=1080)
+    time.sleep(secs)
+    start_time = 5
+    end_time = 10
+    with video_placeholder:
+        components.html(video_html, height=874, width=1080)
+    
 
 
 with right_column:
