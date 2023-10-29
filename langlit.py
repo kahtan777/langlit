@@ -22,8 +22,8 @@ keyy=st.secrets["openAI_key"]
 st.set_page_config(layout="wide")
 left_column, right_column = st.columns([7,3])
 
-start_time = 10  # Start time in seconds
-duration = 30  
+start_time = 5  # Start time in seconds
+end_time = 10
 
 with left_column:
     video_html = """
@@ -49,9 +49,6 @@ with left_column:
             width: 95%;
         }
     }
-
-    
-
     
     </style>    
     <div class="video-container">
@@ -64,12 +61,12 @@ with left_column:
         var video = document.getElementById('myVideo');
 
         video.addEventListener('loadedmetadata', function() {
-            video.currentTime = 5; // Start at 5 seconds
-            var endTime = 10;    // End at 10 seconds
+            video.currentTime = """ +start_time+ """; // Start at 5 seconds
+            var endTime = """+end_time+""";    // End at 10 seconds
 
             video.addEventListener('timeupdate', function() {
                 if (video.currentTime >= endTime) {
-                    video.currentTime = 5; // Loop back to 5 seconds
+                    video.currentTime = """+ start_time+ """; // Loop back to 5 seconds
                 }
             });
 
