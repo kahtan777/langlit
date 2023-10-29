@@ -70,7 +70,7 @@ def tts(text, col):
         with col:
             st.write('gonna do something')
         # Write the response to the output file.
-        # out.write(response.audio_content)
+        out.write(response.audio_content)
         with col:
             autoplay_audio('output.wav')
     with col:
