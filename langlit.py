@@ -82,29 +82,28 @@ with left_column:
     </div>
     """
 #st.markdown(video_html, unsafe_allow_html=True)
-st.markdown(""" 
-<video autoplay muted loop id="myVideo" >
-        <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
+st.markdown(
+    """
+    <div id="div"></div>
     <script>
-        var video = document.getElementById('myVideo');
+        function  initTimer(periodInSeconds) {
+            var end = Date.now() + periodInSeconds * 1000;
 
-        video.addEventListener('loadedmetadata', function() {
-            video.currentTime = 5; // Start at 5 seconds
-            var endTime = 10;    // End at 10 seconds
 
-            video.addEventListener('timeupdate', function() {
-                if (video.currentTime >= endTime) {
-                    video.currentTime = 5; // Loop back to 5 seconds
-                }
-            });
+            var x = window.setInterval(function() {
+                var timeLeft = Math.floor((end - Date.now()) / 1000);
 
-            video.play(); // Play the video
-        });
+                if(timeLeft < 0) { clearInterval(x); return; }
+
+                $('#div').html('00:' + (timeLeft < 10 ? '0' + timeLeft : timeLeft));
+            },200);
+        }
+
+       initTimer(10);
     </script>
-""", unsafe_allow_html=True)
+    """,
+    unsafe_allow_html=True,
+)
 
 
 
