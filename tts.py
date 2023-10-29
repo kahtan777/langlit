@@ -71,4 +71,5 @@ def tts(text, col):
         out.write(response.audio_content)
         with col:
             autoplay_audio('output.wav')
+    return out
         
