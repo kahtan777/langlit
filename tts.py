@@ -56,5 +56,5 @@ def tts(text):
         st.write('gonna do something')
         # Write the response to the output file.
         out.write(response.audio_content)
-    ق
+    audio.play_audio('output.wav')
         
