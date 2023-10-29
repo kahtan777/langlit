@@ -25,7 +25,7 @@ print('after')
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="eduavatar-m-hamza-321734316044.json"
 
-def recognize(file) -> speech.RecognizeResponse:
+def recognize(file, col) -> speech.RecognizeResponse:
     # Instantiates a client
     client = speech.SpeechClient()
 
@@ -50,7 +50,7 @@ def recognize(file) -> speech.RecognizeResponse:
 
     print('response')
 
-    tts.tts('مرحبا كيف حالك؟')
+    tts.tts('مرحبا كيف حالك؟', col)
 
     
     try:
