@@ -25,6 +25,8 @@ keyy=st.secrets["openAI_key"]
 st.set_page_config(layout="wide")
 left_column, right_column = st.columns([7,3])
 
+video_placeholder = st.empty()
+
 start_time = 5  # Start time in seconds
 end_time = 10
 
@@ -79,13 +81,14 @@ with left_column:
     </div>
     """
 #st.markdown(video_html, unsafe_allow_html=True)
-    components.html(video_html, height=874, width=1080)
+    #components.html(video_html, height=874, width=1080)
+    video_placeholder.components.v1.html(video_html, height=874, width=1080)
 
 
 def change_avatar(secs):
     start_time = 37
     end_time = 45
-    video_html = """
+    video_html2 = """
     <style>
     .video-container {
         width: 60%; ## it was 60%
@@ -134,6 +137,10 @@ def change_avatar(secs):
     </script>
     </div>
     """
+    
+    # Clear the old component and replace it with the updated content
+    placeholder.components.v1.html(video_html2, height=874, width=1080)
+
 
 with right_column:
     if 'responses' not in st.session_state:
