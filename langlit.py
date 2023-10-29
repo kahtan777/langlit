@@ -47,7 +47,7 @@ with left_column:
     }
 
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1079px) {
         .video-container {
             position: fixed;
             top: 0;
