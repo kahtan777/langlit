@@ -15,6 +15,9 @@ from utils import *
 import tts
 import wave
 import contextlib
+import streamlit.components.v1 as components
+
+
 keyy=st.secrets["openAI_key"]
 st.set_page_config(layout="wide")
 left_column, right_column = st.columns([7,3])
@@ -82,28 +85,7 @@ with left_column:
     </div>
     """
 #st.markdown(video_html, unsafe_allow_html=True)
-st.markdown(
-    """
-    <div id="div"></div>
-    <script>
-        function  initTimer(periodInSeconds) {
-            var end = Date.now() + periodInSeconds * 1000;
-
-
-            var x = window.setInterval(function() {
-                var timeLeft = Math.floor((end - Date.now()) / 1000);
-
-                if(timeLeft < 0) { clearInterval(x); return; }
-
-                $('#div').html('00:' + (timeLeft < 10 ? '0' + timeLeft : timeLeft));
-            },200);
-        }
-
-       initTimer(10);
-    </script>
-    """,
-    unsafe_allow_html=True,
-)
+components.html(video_html)
 
 
 
