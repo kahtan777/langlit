@@ -51,7 +51,7 @@ def tts(text, col):
     # and the ssml voice gender ("neutral")
     voice = texttospeech.VoiceSelectionParams(
         language_code='ar-XA',
-        name='ar-XA-Standard-B',
+        name='ar-XA-Standard-A',
         ssml_gender=texttospeech.SsmlVoiceGender.FEMALE)
 
     # Select the type of audio file you want returned
