@@ -35,7 +35,7 @@ with left_column:
     video_html = """
     <style>
     .video-container {
-        width: 60%;
+        width: auto;
         height: auto; 
         overflow: hidden;
         border-radius: 0;
@@ -93,7 +93,7 @@ def change_avatar(secs):
     video_html2 = """
     <style>
     .video-container {
-        width: 60%;
+        width: auto;
         height: auto; 
         overflow: hidden;
         border-radius: 0;
