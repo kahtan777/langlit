@@ -141,7 +141,7 @@ with right_column:
                 with wave.open("output.wav") as mywav:
                     duration_seconds = mywav.getnframes() / mywav.getframerate()
                     st.write(f"Length of the WAV file: {duration_seconds:.1f} s")
-                st.write(aud.read().getnframes() / aud.read().getframerate())
+                
             st.session_state.requests.append(query)
             st.session_state.responses.append(response) 
     with response_container:
