@@ -30,12 +30,12 @@ with left_column:
     <style>
     .video-container {
         width: 60%; ## it was 60%
-        height: 100%; # IT WAS AUTO ###############################################
+        height: auto; # IT WAS AUTO ###############################################
         overflow: hidden;
         border-radius: 0;
         position: fixed;
         bottom: 0;
-        top:0;
+        top:3%;
         left: 3%;
         z-index: 999; /* Ensure the video appears above other content */
     }
