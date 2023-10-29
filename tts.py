@@ -60,8 +60,5 @@ def tts(text):
         audio_file = open('output.wav', 'rb')
         audio_bytes = audio_file.read()
         st.download_button('download second wav', audio_bytes, file_name='wav.wav')
-    audio_file = open('output.wav', 'rb')
-    audio_bytes = audio_file.read()
-    st.download_button('download second wav', audio_bytes, file_name='wav.wav')
 
         
