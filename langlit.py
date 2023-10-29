@@ -53,12 +53,7 @@ with left_column:
         height: 100%; #### IT WAS AUTO ##########
     }
 
-    .content {
-        background: rgba(0, 0, 0, 0.5);
-        color: #f1f1f1;
-        width: 100%;
-        padding: 45%;
-    }
+    
     </style>    
     <div class="video-container">
     <video autoplay muted loop id="myVideo" >
