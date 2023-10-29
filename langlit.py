@@ -25,7 +25,8 @@ keyy=st.secrets["openAI_key"]
 st.set_page_config(layout="wide")
 left_column, right_column = st.columns([7,3])
 
-video_placeholder = st.empty()
+with left_column:
+    video_placeholder = st.empty()
 
 start_time = 5  # Start time in seconds
 end_time = 10
