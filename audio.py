@@ -45,8 +45,3 @@ def audiorec_demo_app():
         mytext='default'
         
     return mytext
-
-if __name__ == '__main__':
-    # call main function
-    r = 0
-    audiorec_demo_app()
