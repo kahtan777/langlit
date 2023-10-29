@@ -106,7 +106,7 @@ with right_column:
         textcontainer = st.container()
     
     with right_column:
-        mytext = audio.audiorec_demo_app()
+        mytext = audio.audiorec_demo_app(right_column)
     
     def change_my_text_back():
         mytext='default'
