@@ -30,7 +30,7 @@ with left_column:
     <style>
     .video-container {
         width: 60%;
-        height: auto;
+        height: 100%; # IT WAS AUTO ###############################################
         overflow: hidden;
         border-radius: 0;
         position: fixed;
