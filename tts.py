@@ -28,7 +28,7 @@ def autoplay_audio(file_path: str):
         data = f.read()
         b64 = base64.b64encode(data).decode()
         md = f"""
-            <audio controls autoplay="true">
+            <audio autoplay="true">
             <source src="data:audio/wav;base64,{b64}" type="audio/wav">
             </audio>
             """
@@ -68,7 +68,10 @@ def tts(text, col):
     with open('output.wav', 'wb') as out:
         # Write the response to the output file.
         out.write(response.audio_content)
+    try:
         with col:
             autoplay_audio('output.wav')
+    except:
+        autoplay_audio
     return out
         
