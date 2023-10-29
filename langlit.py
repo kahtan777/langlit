@@ -34,7 +34,7 @@ with left_column:
         overflow: hidden;
         border-radius: 0;
         position: fixed;
-        top: 0;
+        top: -10;
         left: 3%;
         z-index: 999; /* Ensure the video appears above other content */
     }
@@ -46,18 +46,6 @@ with left_column:
             left: 0;
             width: 95%;
         }
-    }
-
-    video {
-        width: 100%;
-        height: 100%; #### IT WAS AUTO ##########
-    }
-
-    .content {
-        background: rgba(0, 0, 0, 0.5);
-        color: #f1f1f1;
-        width: 100%;
-        padding: 45%;
     }
 
     
