@@ -27,7 +27,7 @@ st.markdown('''<style>.css-nlntq9 a {color: #ff4c4b;}</style>''',
 
     
 
-def audiorec_demo_app():
+def audiorec_demo_app(col):
     wav_audio_data, filename = st_audiorec() # tadaaaa! yes, that's it! :D
     print(filename)
     st.write(filename)
@@ -38,7 +38,7 @@ def audiorec_demo_app():
         wav_file.set_frame_rate(48000)
         wav_file.set_channels(2)
         wav_file.export('sency.wav', format='wav')
-        mytext = str(sst.recognize('sency.wav'))
+        mytext = str(sst.recognize('sency.wav'), col)
 
 
     else:
