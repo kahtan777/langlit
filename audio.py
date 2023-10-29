@@ -25,12 +25,6 @@ st.markdown('''<style>.css-v37k9u a {color: #ff4c4b;}</style>''',
 st.markdown('''<style>.css-nlntq9 a {color: #ff4c4b;}</style>''',
             unsafe_allow_html=True)  # lightmode
 
-def play_audio_(file):
-            return
-            
-
-def play_audio(where):
-    return
     
 
 def audiorec_demo_app():
