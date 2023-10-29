@@ -35,6 +35,7 @@ with left_column:
         border-radius: 0;
         position: fixed;
         bottom: 20%;
+        top:20%
         left: 3%;
         z-index: 999; /* Ensure the video appears above other content */
     }
