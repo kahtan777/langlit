@@ -16,6 +16,9 @@ import tts
 import wave
 import contextlib
 import streamlit.components.v1 as components
+import time
+
+
 
 
 keyy=st.secrets["openAI_key"]
@@ -79,7 +82,12 @@ with left_column:
     components.html(video_html, height=874, width=1080)
 
 
-
+def change_avatar(secs):
+    start_time = 37
+    end_time = 37+secs
+    time.sleep(secs)
+    start_time = 5
+    end_time = 10
 
 with right_column:
     if 'responses' not in st.session_state:
@@ -141,6 +149,7 @@ with right_column:
                 with wave.open("output.wav") as mywav:
                     duration_seconds = mywav.getnframes() / mywav.getframerate()
                     st.write(f"Length of the WAV file: {duration_seconds:.1f} s")
+                    change_avatar(duration_seconds)
                 
             st.session_state.requests.append(query)
             st.session_state.responses.append(response) 
