@@ -67,7 +67,7 @@ with left_column:
     </video>
     </div>
     """
-st.markdown(video_html, unsafe_allow_html=True)
+    st.markdown(video_html, unsafe_allow_html=True)
 #st.markdown(video_html, unsafe_allow_html=True)
 #components.html(video_html)
 
