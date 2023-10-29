@@ -4,6 +4,7 @@ import json
 import streamlit as st
 import audio
 from pygame import mixer 
+import langlit
 
 google_json={
     'universe_domain': st.secrets['universe_domain'],
@@ -56,5 +57,5 @@ def tts(text):
         st.write('gonna do something')
         # Write the response to the output file.
         out.write(response.audio_content)
-    audio.play_audio('output.wav')
+    langlit.play_audio('output.wav')
         
