@@ -2,9 +2,8 @@ import os
 from google.cloud import texttospeech
 import json
 import streamlit as st
-import audio
 from pygame import mixer 
-import langlit
+from langlit import play_audio
 
 google_json={
     'universe_domain': st.secrets['universe_domain'],
