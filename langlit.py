@@ -57,7 +57,7 @@ with left_column:
     
     </style>    
     <div class="video-container">
-    <video autoplay muted loop id="myVideo" >
+    <video width="437" height="540" autoplay muted loop id="myVideo" >
         <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
