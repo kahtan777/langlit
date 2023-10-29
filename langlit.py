@@ -40,7 +40,7 @@ with left_column:
         border-radius: 0;
         position: fixed;
         bottom: 0;
-        top:5%;
+        top:0%;
         left: 3%;
         z-index: 999; /* Ensure the video appears above other content */
     }
