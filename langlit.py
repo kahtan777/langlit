@@ -62,7 +62,8 @@ with left_column:
         <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-     <script>
+
+    <script>
         var video = document.getElementById('myVideo');
 
         video.addEventListener('loadedmetadata', function() {
