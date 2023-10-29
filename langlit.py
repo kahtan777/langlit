@@ -42,6 +42,7 @@ with left_column:
         position: fixed;
         top:0;
         left: 0;
+        z-index: 999; /* Ensure the video appears above other content */
     }
 
 
@@ -91,8 +92,8 @@ def change_avatar(secs):
     video_html2 = """
     <style>
     .video-container {
-        width: 60%; ## it was 60%
-        height: auto; # IT WAS AUTO ###############################################
+        width: 60%;
+        height: auto; 
         overflow: hidden;
         border-radius: 0;
         position: fixed;
