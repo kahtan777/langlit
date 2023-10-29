@@ -3,7 +3,6 @@ from google.cloud import texttospeech
 import json
 import streamlit as st
 from pygame import mixer 
-from langlit import play_audio
 
 google_json={
     'universe_domain': st.secrets['universe_domain'],
@@ -24,7 +23,7 @@ with open("eduavatar-m-hamza-321734316044.json", "w") as json_file:
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="eduavatar-m-hamza-321734316044.json"
 
 
-def tts(text):
+def tts(text, col):
 
     # Instantiates a client
     client = texttospeech.TextToSpeechClient()
@@ -56,5 +55,4 @@ def tts(text):
         st.write('gonna do something')
         # Write the response to the output file.
         out.write(response.audio_content)
-    langlit.play_audio('output.wav')
         
