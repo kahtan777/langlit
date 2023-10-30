@@ -36,7 +36,7 @@ with left_column:
     <style>
     .video-container {
         width: 60%;
-        height: auto; 
+        height: 60%; 
         overflow: hidden;
         border-radius: 0;
         position: fixed;
@@ -93,7 +93,7 @@ def change_avatar(secs):
     <style>
     .video-container {
         width: 60%;
-        height: auto; 
+        height: 60%; 
         overflow: hidden;
         border-radius: 0;
         position: fixed;
