@@ -78,6 +78,21 @@ with left_column:
     #components.html(video_html, height=874*3/4, width=1080*3/4)
     #components.html(video_html) 
     with video_placeholder:
+        # Add a Streamlit script tag to execute JavaScript
+        st.write(
+            """
+            <script>
+                const windowHeight = window.innerHeight;
+                // Send the window height to the Python code
+                st.write(windowHeight)
+            </script>
+            """
+        )
+        
+        # Capture the output from the script and store it in a Python variable
+        window_height = st.dg_output
+        st.write(str(window_height))
+
         components.html(video_html, height=874*3/4) 
         #st.markdown(video_html, unsafe_allow_html=True)
 
