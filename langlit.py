@@ -238,8 +238,8 @@ with right_column:
             st.session_state.responses.append(response) 
     with response_container:
         if st.session_state['responses']:
-    
-            for i in range(min(len(st.session_state['responses']), 0)):
+            st.write(st.session_state['responses'])
+            for i in range(len(st.session_state['responses']))):
                 message(st.session_state['responses'][i],key=str(i))
                 if i < len(st.session_state['requests']):
                     message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
