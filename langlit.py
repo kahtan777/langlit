@@ -71,7 +71,7 @@ with left_column:
     st.markdown(video_html, unsafe_allow_html=True)
 
 with right_column:
-    st.subheader("مرحبا بكم في حصة اليوم")
+    st.subheader("                                    مرحبا بكم في حصة اليوم")
     if 'responses' not in st.session_state:
         st.session_state['responses'] = ["مرحبا، انا مريم رح كون انستكون ليوم"]
     
