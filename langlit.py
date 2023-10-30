@@ -36,7 +36,7 @@ with left_column:
     <style>
     .video-container video {
         width: 80%;
-        height: 80%; 
+        height: 0%; 
         #overflow: hidden;
         #border-radius: 0;
         #position: fixed;
