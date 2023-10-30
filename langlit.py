@@ -57,29 +57,7 @@ with left_column:
     }
     
     </style>    
-    <div class="video-container">
-    <video autoplay muted loop id="myVideo" >
-        <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <script>
-        var video = document.getElementById('myVideo');
-
-        video.addEventListener('loadedmetadata', function() {
-            video.currentTime = """ +str(start_time)+ """; // Start at 5 seconds
-            var endTime = """+str(end_time)+""";    // End at 10 seconds
-
-            video.addEventListener('timeupdate', function() {
-                if (video.currentTime >= endTime) { 
-                    video.currentTime = """+ str(start_time)+ """; // Loop back to 5 seconds
-                }
-            });
-
-            video.play(); // Play the video
-        });
-    </script>
-    </div>
+    
     """
     
     #components.html(video_html, height=874*3/4, width=1080*3/4)
