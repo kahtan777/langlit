@@ -27,9 +27,6 @@ left_column, right_column = st.columns([7,3])
 
 with left_column:
     video_placeholder = st.empty()
-    for i in range(50):
-        with video_placeholder:
-            st.write('hi'+str(i))
 
 start_time = 5  # Start time in seconds
 end_time = 10
@@ -87,8 +84,8 @@ with left_column:
     
     #components.html(video_html, height=874*3/4, width=1080*3/4)
     #components.html(video_html) 
-    #with video_placeholder:
-        #components.html(video_html, height=874) 
+    with video_placeholder:
+        components.html(video_html, height=874) 
         #st.markdown(video_html, unsafe_allow_html=True)
 
 def change_avatar(secs):
