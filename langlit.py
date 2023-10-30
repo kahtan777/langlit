@@ -34,63 +34,63 @@ end_time = 10
 with left_column:
     video_html = """
     <style>
-    .video-container video {
+    .video-container {
+        position: fixed;
         width: 80%;
-        height: 80%; 
-        #overflow: hidden;
-        #border-radius: 0;
-        #position: fixed;
-        #bottom: 0;
-        #top:5%;
-        #left: 3%;
+        height: auto;
+        overflow: hidden;
+        border-radius: 0;
         z-index: 999; /* Ensure the video appears above other content */
-        float: top;
-        margin-right: 20px;
+        left: 0;
+        top:0;
     }
-    
-    </style>
-    
-    <div class="video-container floating">
-    <video autoplay muted loop id="myVideo" >
+
+    .video-container video {
+        width: 100%;
+        height: auto;
+    }
+</style>
+
+<div class="video-container floating">
+    <video autoplay muted loop id="myVideo">
         <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
-    <script>
-        var video = document.getElementById('myVideo');
+<script>
+    var video = document.getElementById('myVideo');
 
-        video.addEventListener('loadedmetadata', function() {
-            video.currentTime = """ +str(start_time)+ """; // Start at 5 seconds
-            var endTime = """+str(end_time)+""";    // End at 10 seconds
+    video.addEventListener('loadedmetadata', function() {
+        video.currentTime = """ +str(start_time)+ """; // Start at 5 seconds
+        var endTime = """+str(end_time)+""";    // End at 10 seconds
 
-            video.addEventListener('timeupdate', function() {
-                if (video.currentTime >= endTime) { 
-                    video.currentTime = """+ str(start_time)+ """; // Loop back to 5 seconds
-                }
-            });
-
-            video.play(); // Play the video
-        });
-
-        window.addEventListener("scroll", function() {
-            var videoContainer = document.getElementById("video-container");
-            var content = document.getElementById("myVideo");
-            
-            // Get the scroll position
-            var scrollY = window.scrollY || window.pageYOffset;
-            
-            // Define a threshold for when to show/hide the video
-            var threshold = 200; // Adjust as needed
-            
-            if (scrollY > threshold) {
-                videoContainer.style.display = "block";
-            } else {
-                videoContainer.style.display = "none";
+        video.addEventListener('timeupdate', function() {
+            if (video.currentTime >= endTime) {
+                video.currentTime = """+ str(start_time)+ """; // Loop back to 5 seconds
             }
         });
 
-    </script>
-    </div>
+        video.play(); // Play the video
+    });
+
+    window.addEventListener("scroll", function() {
+        var videoContainer = document.querySelector(".video-container");
+        var content = document.getElementById("myVideo");
+
+        // Get the scroll position
+        var scrollY = window.scrollY || window.pageYOffset;
+
+        // Define a threshold for when to show/hide the video
+        var threshold = 200; // Adjust as needed
+
+        if (scrollY > threshold) {
+            videoContainer.style.display = "block";
+        } else {
+            videoContainer.style.display = "none";
+        }
+    });
+</script>
+</div>
     """
     
     #components.html(video_html, height=874*3/4, width=1080*3/4)
