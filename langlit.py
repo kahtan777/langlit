@@ -120,13 +120,13 @@ def change_avatar(secs):
     <style>
     .video-container video {
         width: 80%;
-        height: 80%; 
+        height: auto; 
         #overflow: hidden;
         #border-radius: 0;
         #position: fixed;
         #bottom: 0;
-        #top:5%;
-        #left: 3%;
+        top:0;
+        left: 0;
         z-index: 999; /* Ensure the video appears above other content */
         float: top;
         margin-right: 20px;
@@ -240,7 +240,6 @@ with right_column:
         if st.session_state['responses']:
     
             for i in range(max(0, len(st.session_state['responses'])-2), len(st.session_state['responses'])):
-                st.write(st.session_state['responses'][i])
                 message(st.session_state['responses'][i],key=str(i))
                 if i < len(st.session_state['requests']):
                     message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
