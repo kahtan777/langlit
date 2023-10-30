@@ -35,7 +35,7 @@ with left_column:
     video_html = """
     <style>
     .video-container {
-        width: auto;
+        width: 90%;
         height: auto; 
         overflow: hidden;
         border-radius: 0;
@@ -47,7 +47,7 @@ with left_column:
     }
 
 
-    @media (max-width: 1079px) {
+    @media (max-width: 768px) {
         .video-container {
             position: fixed;
             top: 0;
@@ -84,7 +84,7 @@ with left_column:
 #st.markdown(video_html, unsafe_allow_html=True)
     #components.html(video_html, height=874, width=1080)
     with video_placeholder:
-        components.html(video_html, height=874, width=1080)
+        st.markdown(video_html, unsafe_allow_html=True))
 
 
 def change_avatar(secs):
