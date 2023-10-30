@@ -71,6 +71,24 @@ with left_column:
 
             video.play(); // Play the video
         });
+
+        window.addEventListener("scroll", function() {
+            var videoContainer = document.getElementById("video-container");
+            var content = document.getElementById("content");
+            
+            // Get the scroll position
+            var scrollY = window.scrollY || window.pageYOffset;
+            
+            // Define a threshold for when to show/hide the video
+            var threshold = 200; // Adjust as needed
+            
+            if (scrollY > threshold) {
+                videoContainer.style.display = "block";
+            } else {
+                videoContainer.style.display = "none";
+            }
+        });
+
     </script>
     </div>
     """
