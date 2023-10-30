@@ -24,7 +24,8 @@ with open("eduavatar-m-hamza-321734316044.json", "w") as json_file:
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="eduavatar-m-hamza-321734316044.json"
 
-def autoplay_audio(file_path: str, col):
+def autoplay_audio(file_path, col):
+    st.write(f'supposed to read this {file_path}')
     with open(file_path, "rb") as f:
         data = f.read()
         b64 = base64.b64encode(data).decode()
@@ -101,6 +102,6 @@ def tts(text, col):
             st.audio(filename, format='audio/wav')
             autoplay_audio(filename, col)
     except:
-        autoplay_audio
+        return 'output.wav'
     return filename
         
