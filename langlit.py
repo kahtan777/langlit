@@ -44,7 +44,7 @@ with left_column:
         #top:5%;
         #left: 3%;
         z-index: 999; /* Ensure the video appears above other content */
-        float: left;
+        float: top;
         margin-right: 20px;
     }
     
