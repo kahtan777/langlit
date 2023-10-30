@@ -52,7 +52,7 @@ with left_column:
             position: fixed;
             top: 0;
             left: 0;
-            width: 60%;
+            width: 60vw;
         }
     }
     
