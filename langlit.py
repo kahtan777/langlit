@@ -23,11 +23,11 @@ import time
 
 keyy=st.secrets["openAI_key"]
 st.set_page_config(layout="wide")
-left_column, right_column = st.columns([7,2])
+left_column, right_column = st.columns([7,3])
 
 with left_column:
     video_placeholder = st.empty()
-    
+
 start_time = 5  # Start time in seconds
 end_time = 10
 
@@ -35,8 +35,8 @@ with left_column:
     video_html = """
     <style>
     .video-container {
-        width: auto%;
-        height: 60%; 
+        width: 60%;
+        height: auto; 
         overflow: hidden;
         border-radius: 0;
         position: fixed;
@@ -47,7 +47,7 @@ with left_column:
     }
 
 
-    @media (max-width: 768px) {
+    @media (max-width: 1079px) {
         .video-container {
             position: fixed;
             top: 0;
@@ -81,10 +81,11 @@ with left_column:
     </script>
     </div>
     """
-#st.markdown(video_html, unsafe_allow_html=True)
+    
     #components.html(video_html, height=874, width=1080)
-    st.markdown(video_html, unsafe_allow_html=True)
-
+    with video_placeholder:
+        components.html(video_html, height=874, width=1080)
+        st.markdown(video_html, unsafe_allow_html=True)
 
 def change_avatar(secs):
     start_time = 37
@@ -93,7 +94,7 @@ def change_avatar(secs):
     <style>
     .video-container {
         width: 60%;
-        height: 60%; 
+        height: auto; 
         overflow: hidden;
         border-radius: 0;
         position: fixed;
@@ -142,11 +143,13 @@ def change_avatar(secs):
     # Clear the old component and replace it with the updated content
     #placeholder.components.html(video_html2, height=874, width=1080)
     with video_placeholder:
-        st.markdown(video_html2, unsafe_allow_html=True)
+        components.html(video_html2, height=874, width=1080)
+        st.markdown(video_html, unsafe_allow_html=True)
     time.sleep(secs)
     start_time = 5
     end_time = 10
     with video_placeholder:
+        components.html(video_html, height=874, width=1080)
         st.markdown(video_html, unsafe_allow_html=True)
     
 
