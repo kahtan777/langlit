@@ -27,8 +27,8 @@ left_column, right_column = st.columns([7,3])
 
 with left_column:
     video_placeholder = st.empty()
-    with video_placeholder:
-        for i in range (50):
+    for i in range(50):
+        with video_placeholder:
             st.write('hi'+str(i))
 
 start_time = 5  # Start time in seconds
