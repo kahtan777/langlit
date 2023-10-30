@@ -37,7 +37,7 @@ css='''
 </style>
 '''
 
-st.markdown(css, unsafe_allow_html=True)
+#st.markdown(css, unsafe_allow_html=True)
 
 with left_column:
     video_placeholder = st.empty()
