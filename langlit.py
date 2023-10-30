@@ -43,8 +43,6 @@ with left_column:
         @media (max-width: 768px) {
             .video-container {
                 position: fixed;
-                top: 0;
-                left: 1%;
                 height: auto;
                 width: 40%;
                 z-index: 999; /* Ensure the video appears above other content */
@@ -76,8 +74,6 @@ with left_column:
 
 
 with right_column:
-    st.markdown('#')
-    st.markdown('#')
     st.markdown('#')
     st.markdown('#')
     st.markdown('#')
