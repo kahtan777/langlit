@@ -82,7 +82,7 @@ with left_column:
     </div>
     """
     
-    #components.html(video_html, height=874, width=1080)
+    #components.html(video_html, height=874*3/4, width=1080*3/4)
     with video_placeholder:
         components.html(video_html, height=874, width=1080) 
         #st.markdown(video_html, unsafe_allow_html=True)
