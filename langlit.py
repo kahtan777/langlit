@@ -25,8 +25,8 @@ keyy=st.secrets["openAI_key"]
 st.set_page_config(layout="wide")
 left_column, right_column = st.columns([7,3])
 
-with left_column:
-    video_placeholder = st.empty()
+#with left_column:
+    #video_placeholder = st.empty()
 
 start_time = 5  # Start time in seconds
 end_time = 10
@@ -84,8 +84,8 @@ with left_column:
     
     #components.html(video_html, height=874*3/4, width=1080*3/4)
     #components.html(video_html) 
-    with video_placeholder:
-        components.html(video_html, height=874) 
+    #with video_placeholder:
+        #components.html(video_html, height=874) 
         #st.markdown(video_html, unsafe_allow_html=True)
 
 def change_avatar(secs):
@@ -143,14 +143,14 @@ def change_avatar(secs):
     
     # Clear the old component and replace it with the updated content
     #placeholder.components.html(video_html2, height=874, width=1080)
-    with video_placeholder:
-        components.html(video_html2, height=874, width=1080)
+    #with video_placeholder:
+        #components.html(video_html2, height=874, width=1080)
         #st.markdown(video_html, unsafe_allow_html=True)
     time.sleep(secs)
     start_time = 5
     end_time = 10
-    with video_placeholder:
-        components.html(video_html, height=874, width=1080)
+    #with video_placeholder:
+        #components.html(video_html, height=874, width=1080)
         #st.markdown(video_html, unsafe_allow_html=True)
     
 
