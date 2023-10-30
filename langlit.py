@@ -23,14 +23,14 @@ import time
 
 keyy=st.secrets["openAI_key"]
 st.set_page_config(layout="wide")
-left_column, right_column = st.columns([7,3])
+left_column, right_column = st.columns([5,5])
 
 with left_column:
 
     video_html = """
         <style>
         .video-container {
-            width: 60%;
+            width: 30%;
             height: auto;
             overflow: hidden;
             border-radius: 0;
