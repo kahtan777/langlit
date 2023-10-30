@@ -149,9 +149,9 @@ def change_avatar(secs):
     time.sleep(secs)
     start_time = 5
     end_time = 10
-    with video_placeholder:
-        components.html(video_html, height=874, width=1080)
-        st.markdown(video_html, unsafe_allow_html=True)
+    #with video_placeholder:
+        #components.html(video_html, height=874, width=1080)
+        #st.markdown(video_html, unsafe_allow_html=True)
     
 
 
