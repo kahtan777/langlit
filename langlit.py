@@ -44,12 +44,12 @@ with left_column:
         #top:5%;
         #left: 3%;
         z-index: 999; /* Ensure the video appears above other content */
+        float: left;
+        margin-right: 20px;
     }
-
-
-
     
-    </style>    
+    </style>
+    
     <div class="video-container">
     <video autoplay muted loop id="myVideo" >
         <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
