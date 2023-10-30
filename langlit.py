@@ -26,66 +26,50 @@ st.set_page_config(layout="wide")
 left_column, right_column = st.columns([5,5])
 
 with left_column:
-    import streamlit as st
 
     video_html = """
-    <!DOCTYPE html>
-    <html>
-    <head>
         <style>
+        .video-container {
+            width: 60%;
+            height: auto;
+            overflow: hidden;
+            border-radius: 0;
+            position: fixed;
+            top: 5%;
+            left: 3%;
+            z-index: 999; /* Ensure the video appears above other content */
+        }
+    
+        @media (max-width: 768px) {
             .video-container {
-                width: 30%;
-                height: auto;
-                overflow: hidden;
-                border-radius: 0;
-                position: absolute; /* Change position to absolute */
-                top: 5%;
-                left: 3%;
-                z-index: 999; /* Ensure the video appears above other content */
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 95%;
             }
+        }
     
-            @media (max-width: 768px) {
-                .video-container {
-                    position: absolute; /* Change position to absolute */
-                    top: 0;
-                    left: 0;
-                    width: 95%;
-                }
-            }
+        video {
+            width: 100%;
+            height: auto;
+        }
     
-            video {
-                width: 100%;
-                height: auto;
-            }
-    
-            .content {
-                background: rgba(0, 0, 0, 0.5);
-                color: #f1f1f1;
-                width: 100%;
-                padding: 45%;
-            }
-        </style>
-    </head>
-    <body>
-    <div class="video-container floating" id="draggable-video">
+        .content {
+            background: rgba(0, 0, 0, 0.5);
+            color: #f1f1f1;
+            width: 100%;
+            padding: 45%;
+        }
+        </style>    
+        <div class="video-container floating">
         <video autoplay muted loop id="myVideo">
             <source src="https://futurelaby.com/avatar/2023-10-28%2014-19-34.mp4">
             Your browser does not support HTML5 video.
         </video>
-    </div>
+        </div>
+        """
+        st.markdown(video_html, unsafe_allow_html=True)
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/draggable/1.0.0/draggable.min.js"></script>
-    <script>
-        // JavaScript for making the video container draggable using the "draggable" library
-        const videoContainer = document.getElementById("draggable-video");
-        new Draggable(videoContainer, { restrict: true });
-    </script>
-    </body>
-    </html>
-    """
-    
-    st.markdown(video_html, unsafe_allow_html=True)
-
 
 
 
