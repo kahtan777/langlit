@@ -139,7 +139,6 @@ with right_column:
                 filename_ = tts.tts(response, left_column)
                 with wave.open(filename_) as mywav:
                     duration_seconds = mywav.getnframes() / mywav.getframerate()
-                    change_avatar(duration_seconds)
                 
             st.session_state.requests.append(query)
             st.session_state.responses.append(response) 
