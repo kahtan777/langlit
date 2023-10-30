@@ -85,7 +85,7 @@ with left_column:
     #components.html(video_html, height=874*3/4, width=1080*3/4)
     #components.html(video_html) 
     with video_placeholder:
-        components.html(video_html,) 
+        components.html(video_html,874*3/4) 
         #st.markdown(video_html, unsafe_allow_html=True)
 
 def change_avatar(secs):
