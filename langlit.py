@@ -45,7 +45,8 @@ with left_column:
                 position: fixed;
                 top: 0;
                 left: 1%;
-                width: 90%;
+                height: auto;
+                width: 40%;
                 z-index: 999; /* Ensure the video appears above other content */
             }
         }
