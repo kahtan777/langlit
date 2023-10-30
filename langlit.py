@@ -33,26 +33,28 @@ with left_column:
         height: auto;
         overflow: hidden;
         border-radius: 0;
-        position: fixed;
+        position: absolute; /* Change position to absolute */
         top: 5%;
         left: 3%;
         z-index: 999; /* Ensure the video appears above other content */
+        user-drag: initial; /* Enable user drag */
+        user-select: none; /* Disable text selection while dragging */
     }
-
+    
     @media (max-width: 768px) {
         .video-container {
-            position: fixed;
+            position: absolute; /* Change position to absolute */
             top: 0;
             left: 0;
             width: 95%;
         }
     }
-
+    
     video {
         width: 100%;
         height: auto;
     }
-
+    
     .content {
         background: rgba(0, 0, 0, 0.5);
         color: #f1f1f1;
@@ -66,18 +68,8 @@ with left_column:
             Your browser does not support HTML5 video.
         </video>
     </div>
-    
-    <script>
-        const video = document.getElementById('myVideo');
-    
-        video.addEventListener('loadedmetadata', () => {
-            if (video.requestPictureInPicture) {
-                video.requestPictureInPicture();
-            }
-        });
-    </script>
     """
-
+    
     st.markdown(video_html, unsafe_allow_html=True)
 
 
