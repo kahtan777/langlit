@@ -29,7 +29,7 @@ with left_column:
     video_placeholder = st.empty()
     with video_placeholder:
         for i in range (50):
-            st.write('hi')
+            st.write('hi'+str(i))
 
 start_time = 5  # Start time in seconds
 end_time = 10
