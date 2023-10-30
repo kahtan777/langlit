@@ -44,8 +44,8 @@ with left_column:
             .video-container {
                 position: fixed;
                 top: 0;
-                left: 0;
-                width: 95%;
+                left: 1%;
+                width: 90%;
             }
         }
     
