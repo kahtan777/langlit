@@ -46,6 +46,7 @@ with left_column:
                 top: 0;
                 left: 1%;
                 width: 90%;
+                z-index: 999; /* Ensure the video appears above other content */
             }
         }
     
