@@ -23,62 +23,137 @@ import time
 
 keyy=st.secrets["openAI_key"]
 st.set_page_config(layout="wide")
-left_column, right_column = st.columns([5,5])
+left_column, right_column = st.columns([6,3])
 
 with left_column:
+    video_placeholder = st.empty()
 
+start_time = 5  # Start time in seconds
+end_time = 10
+
+with left_column:
     video_html = """
-        <style>
+    <style>
+    .video-container {
+        width: 60%;
+        height: auto; 
+        overflow: hidden;
+        border-radius: 0;
+        position: fixed;
+        bottom: 0;
+        top:5%;
+        left: 3%;
+        z-index: 999; /* Ensure the video appears above other content */
+    }
+
+
+    @media (max-width: 1079px) {
         .video-container {
-            width: 40%;
-            height: auto;
-            overflow: hidden;
-            border-radius: 0;
             position: fixed;
-            top: 5%;
-            left: 3%;
-            z-index: 999; /* Ensure the video appears above other content */
+            top: 0;
+            left: 0;
+            width: 60%;
         }
+    }
     
-        @media (max-width: 768px) {
+    </style>    
+    <div class="video-container floating">
+    <video autoplay muted loop id="myVideo" >
+        <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        var video = document.getElementById('myVideo');
+
+        video.addEventListener('loadedmetadata', function() {
+            video.currentTime = """ +str(start_time)+ """; // Start at 5 seconds
+            var endTime = """+str(end_time)+""";    // End at 10 seconds
+
+            video.addEventListener('timeupdate', function() {
+                if (video.currentTime >= endTime) { 
+                    video.currentTime = """+ str(start_time)+ """; // Loop back to 5 seconds
+                }
+            });
+
+            video.play(); // Play the video
+        });
+    </script>
+    </div>
+    """
+#st.markdown(video_html, unsafe_allow_html=True)
+    #components.html(video_html, height=874, width=1080)
+    with video_placeholder:
+        components.html(video_html, height=874, width=1080)
+
+
+def change_avatar(secs):
+    start_time = 37
+    end_time = 37+secs
+    video_html2 = """
+    <style>
+    .video-container {
+        width: auto;
+        height: auto; 
+        overflow: hidden;
+        border-radius: 0;
+        position: fixed;
+        bottom: 0;
+        top:5%;
+        left: 3%;
+        z-index: 999; /* Ensure the video appears above other content */
+    }
+
+
+    @media (max-width: 768px) {
         .video-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 95%;
-            }
         }
+    }
     
-        video {
-            width: 100%;
-            height: auto;
-        }
-    
-        .content {
-            background: rgba(0, 0, 0, 0.5);
-            color: #f1f1f1;
-            width: 100%;
-            padding: 45%;
-        }
-        </style>    
-        <div class="video-container floating">
-        <video autoplay muted loop id="myVideo">
-            <source src="https://futurelaby.com/avatar/2023-10-28%2014-19-34.mp4">
-            Your browser does not support HTML5 video.
-        </video>
-        </div>
-        """
-    st.markdown(video_html, unsafe_allow_html=True)
-    
+    </style>    
+    <div class="video-container floating">
+    <video autoplay muted loop id="myVideo" >
+        <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
+    <script>
+        var video = document.getElementById('myVideo');
+
+        video.addEventListener('loadedmetadata', function() {
+            video.currentTime = """ +str(start_time)+ """; // Start at 5 seconds
+            var endTime = """+str(end_time)+""";    // End at 10 seconds
+
+            video.addEventListener('timeupdate', function() {
+                if (video.currentTime >= endTime) { 
+                    video.currentTime = """+ str(start_time)+ """; // Loop back to 5 seconds
+                }
+            });
+
+            video.play(); // Play the video
+        });
+    </script>
+    </div>
+    """
+    
+    # Clear the old component and replace it with the updated content
+    #placeholder.components.html(video_html2, height=874, width=1080)
+    with video_placeholder:
+        components.html(video_html2, height=874, width=1080)
+    time.sleep(secs)
+    start_time = 5
+    end_time = 10
+    with video_placeholder:
+        components.html(video_html, height=874, width=1080)
+    
 
 
 with right_column:
     st.markdown('#')
-    st.markdown('#')
-    st.markdown('#')
-    st.markdown('#')
-    st.subheader("Hey little cupcakes, today am gonna be your teacher :)")
     if 'responses' not in st.session_state:
         st.session_state['responses'] = ["مرحبا، انا مريم رح كون انستكون ليوم"]
     
@@ -137,6 +212,7 @@ with right_column:
                 filename_ = tts.tts(response, left_column)
                 with wave.open(filename_) as mywav:
                     duration_seconds = mywav.getnframes() / mywav.getframerate()
+                    change_avatar(duration_seconds)
                 
             st.session_state.requests.append(query)
             st.session_state.responses.append(response) 
