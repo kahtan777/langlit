@@ -28,47 +28,62 @@ left_column, right_column = st.columns([5,5])
 with left_column:
 
     video_html = """
-        <style>
+    <style>
+    .video-container {
+        width: 30%;
+        height: auto;
+        overflow: hidden;
+        border-radius: 0;
+        position: fixed;
+        top: 5%;
+        left: 3%;
+        z-index: 999; /* Ensure the video appears above other content */
+    }
+
+    @media (max-width: 768px) {
         .video-container {
-            width: 30%;
-            height: auto;
-            overflow: hidden;
-            border-radius: 0;
             position: fixed;
-            top: 5%;
-            left: 3%;
-            z-index: 999; /* Ensure the video appears above other content */
+            top: 0;
+            left: 0;
+            width: 95%;
         }
-    
-        @media (max-width: 768px) {
-            .video-container {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 95%;
-            }
-        }
-    
-        video {
-            width: 100%;
-            height: auto;
-        }
-    
-        .content {
-            background: rgba(0, 0, 0, 0.5);
-            color: #f1f1f1;
-            width: 100%;
-            padding: 45%;
-        }
-        </style>    
-        <div class="video-container floating">
+    }
+
+    video {
+        width: 100%;
+        height: auto;
+    }
+
+    .content {
+        background: rgba(0, 0, 0, 0.5);
+        color: #f1f1f1;
+        width: 100%;
+        padding: 45%;
+    }
+    </style>
+    <div class="video-container floating">
         <video autoplay muted loop id="myVideo">
             <source src="https://futurelaby.com/avatar/2023-10-28%2014-19-34.mp4">
             Your browser does not support HTML5 video.
         </video>
-        </div>
-        """
-    st.markdown(video_html, unsafe_allow_html=True)
+    </div>
+    <script>
+        // Get the video element by its ID
+        var video = document.getElementById("myVideo");
+
+        // Play the video
+        video.play();
+
+        // Request Picture-in-Picture when the video is playing
+        video.addEventListener('play', function() {
+            if (document.pictureInPictureEnabled && !document.pictureInPictureElement) {
+                video.requestPictureInPicture();
+            }
+        });
+    </script>
+"""
+st.markdown(video_html, unsafe_allow_html=True)
+
 
 with right_column:
     st.subheader("Hey little cupcakes, today am gonna be your teacher :)")
