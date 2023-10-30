@@ -68,12 +68,24 @@ with left_column:
         </video>
         </div>
         """
-        st.markdown(video_html, unsafe_allow_html=True)
+    st.markdown(video_html, unsafe_allow_html=True)
     
 
 
 
 with right_column:
+
+    st.markdown(
+        """
+        <style>
+        .stStreamlitContainer {
+            background-color: white;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    ) 
+    
     st.subheader("Hey little cupcakes, today am gonna be your teacher :)")
     if 'responses' not in st.session_state:
         st.session_state['responses'] = ["مرحبا، انا مريم رح كون انستكون ليوم"]
