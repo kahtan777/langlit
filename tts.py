@@ -44,7 +44,6 @@ def autoplay_audio(file_path, col):
             </audio>
             '''
 
-    st.write(html_string)
     sound = st.empty()
     with col:
         components.html(html_string)
@@ -100,7 +99,6 @@ def tts(text, col):
         out.write(response.audio_content)
     try:
         with col:
-            st.audio(filename, format='audio/wav')
             autoplay_audio(filename, col)
     except:
         return 'output.wav'
