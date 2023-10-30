@@ -37,10 +37,6 @@ def autoplay_audio(file_path, col):
             """
         with col:
             components.html(md)
-            st.markdown(
-                md,
-                unsafe_allow_html=True,
-            )
     return
     html_string = f'''
             <audio controls autoplay>
