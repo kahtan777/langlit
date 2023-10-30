@@ -27,6 +27,21 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="eduavatar-m-hamza-321734316044.jso
 
 def autoplay_audio(file_path, col):
 
+    with open(file_path, "rb") as f:
+        data = f.read()
+        b64 = base64.b64encode(data).decode()
+        md = f"""
+            <audio autoplay="true">
+            <source src="data:audio/wav;base64,{b64}" type="audio/wav">
+            </audio>
+            """
+        with col:
+            components.html(md)
+            st.markdown(
+                md,
+                unsafe_allow_html=True,
+            )
+    return
     html_string = f'''
             <audio controls autoplay>
               <source src="{file_path}" type="audio/wav">
