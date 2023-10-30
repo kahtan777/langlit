@@ -37,8 +37,6 @@ with left_column:
         top: 5%;
         left: 3%;
         z-index: 999; /* Ensure the video appears above other content */
-        user-drag: initial; /* Enable user drag */
-        user-select: none; /* Disable text selection while dragging */
     }
     
     @media (max-width: 768px) {
@@ -62,12 +60,37 @@ with left_column:
         padding: 45%;
     }
     </style>
-    <div class="video-container floating">
+    <div class="video-container floating" id="draggable-video">
         <video autoplay muted loop id="myVideo">
             <source src="https://futurelaby.com/avatar/2023-10-28%2014-19-34.mp4">
             Your browser does not support HTML5 video.
         </video>
     </div>
+    
+    <script>
+        // JavaScript for making the video container draggable
+        const videoContainer = document.getElementById("draggable-video");
+    
+        let isDragging = false;
+        let offsetX, offsetY;
+    
+        videoContainer.addEventListener("mousedown", (e) => {
+            isDragging = true;
+            offsetX = e.clientX - videoContainer.getBoundingClientRect().left;
+            offsetY = e.clientY - videoContainer.getBoundingClientRect().top;
+        });
+    
+        document.addEventListener("mousemove", (e) => {
+            if (isDragging) {
+                videoContainer.style.left = e.clientX - offsetX + "px";
+                videoContainer.style.top = e.clientY - offsetY + "px";
+            }
+        });
+    
+        document.addEventListener("mouseup", () => {
+            isDragging = false;
+        });
+    </script>
     """
     
     st.markdown(video_html, unsafe_allow_html=True)
