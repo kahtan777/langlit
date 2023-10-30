@@ -34,7 +34,7 @@ end_time = 10
 with left_column:
     video_html = """
     <style>
-    .video-container {
+    .video-container video {
         width: 60%;
         height: auto; 
         overflow: hidden;
@@ -48,7 +48,7 @@ with left_column:
 
 
     @media (max-width: 768px) {
-        .video-container {
+        .video-container video {
             position: fixed;
             top: 0;
             left: 0;
