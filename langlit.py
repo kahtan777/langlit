@@ -74,7 +74,7 @@ with left_column:
 
         window.addEventListener("scroll", function() {
             var videoContainer = document.getElementById("video-container");
-            var content = document.getElementById("content");
+            var content = document.getElementById("myVideo");
             
             // Get the scroll position
             var scrollY = window.scrollY || window.pageYOffset;
