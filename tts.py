@@ -5,6 +5,7 @@ import streamlit as st
 from pygame import mixer 
 import base64
 import datetime
+import streamlit.components.v1 as components
 
 google_json={
     'universe_domain': st.secrets['universe_domain'],
@@ -26,15 +27,16 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="eduavatar-m-hamza-321734316044.jso
 
 def autoplay_audio(file_path, col):
 
-    html_string = '''
+    html_string = f'''
             <audio controls autoplay>
-              <source src="'''+file_path+'''" type="audio/wav">
+              <source src="{file_path}" type="audio/wav">
             </audio>
             '''
 
     st.write(html_string)
     sound = st.empty()
     with col:
+        components.html(html_string)
         sound.markdown(html_string, unsafe_allow_html=True)  # will display a st.audio with the sound you specified in the "src" of the html_string and autoplay i
     
     return
@@ -47,6 +49,7 @@ def autoplay_audio(file_path, col):
             </audio>
             """
         with col:
+            components.html(md)
             st.markdown(
                 md,
                 unsafe_allow_html=True,
