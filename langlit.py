@@ -26,7 +26,7 @@ st.set_page_config(layout="wide")
 left_column, right_column = st.columns([6,3])
 
 with left_column:
-    video_placeholder = st.empty()
+    #video_placeholder = st.empty()
 
 start_time = 5  # Start time in seconds
 end_time = 10
@@ -81,8 +81,8 @@ with left_column:
     </script>
     </div>
     """
-    st.markdown(video_html, unsafe_allow_html=True)
-    #components.html(video_html, height=874, width=1080)
+    #st.markdown(video_html, unsafe_allow_html=True)
+    components.html(video_html, height=874, width=1080)
    
 
 
@@ -146,8 +146,8 @@ def change_avatar(secs):
     time.sleep(secs)
     start_time = 5
     end_time = 10
-    with video_placeholder:
-        components.html(video_html, height=874, width=1080)
+     #with video_placeholder:
+    components.html(video_html, height=874, width=1080)
     
 
 
