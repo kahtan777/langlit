@@ -81,7 +81,7 @@ with left_column:
     </script>
     </div>
     """
-#st.markdown(video_html, unsafe_allow_html=True)
+    st.markdown(video_html, unsafe_allow_html=True)
     #components.html(video_html, height=874, width=1080)
     with video_placeholder:
         components.html(video_html, height=874, width=1080)
