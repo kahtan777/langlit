@@ -127,9 +127,8 @@ def change_avatar(secs):
         #bottom: 0;
         top:0;
         left: 0;
-        z-index: 999; /* Ensure the video appears above other content */
-        float: top;
-        margin-right: 20px;
+        z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */
+        float: top;                                                                                      
     }
     
     </style>    
@@ -183,7 +182,7 @@ with right_column:
     llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=keyy)
     
     if 'buffer_memory' not in st.session_state:
-                st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
+        st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
     
     
     system_msg_template = SystemMessagePromptTemplate.from_template(template="""Answer the question as truthfully as possible using the provided context in Arabic only, 
@@ -239,7 +238,7 @@ with right_column:
     with response_container:
         if st.session_state['responses']:
     
-            for i in range(max(0, len(st.session_state['responses'])-2), len(st.session_state['responses'])):
+            for i in range(max(0, len(st.session_state['responses'])-2)):#, len(st.session_state['responses'])
                 message(st.session_state['responses'][i],key=str(i))
                 if i < len(st.session_state['requests']):
                     message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
