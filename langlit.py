@@ -46,7 +46,7 @@ with left_column:
         left: 0;
         z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */                                                                                    
     }
-    @media (max-width: 900px) {
+    @media (max-width: 800px) {
         .video-container {
             position: fixed;
             top: 60%;
@@ -105,7 +105,7 @@ def change_avatar(secs):
         left: 0;
         z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */                                                                                     
     }
-    @media (max-width: 900px) {
+    @media (max-width: 800px) {
         .video-container {
             position: fixed;
             top: 60%;
