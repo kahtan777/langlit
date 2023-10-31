@@ -37,23 +37,20 @@ end_time = 10
 
 with left_column:
     video_html ="""
-    .video-container {
-    position: fixed;
-    width: 80%;
-    height: 100%;
-    overflow: hidden;
-    border-radius: 0;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    }
-    
+    <style>
     .video-container video {
         width: 80%;
-        height: auto;
+        height: auto; 
+        overflow: hidden;
+        border-radius: 0;
+        position: fixed;
+        top:0;
+        left: 0;
+        z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */
+        float: top;                                                                                      
     }
-    </style>
     
+    </style>    
     <div class="video-container">
         <video autoplay muted loop id="myVideo">
             <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
