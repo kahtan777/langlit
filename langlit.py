@@ -46,8 +46,7 @@ with left_column:
         position: fixed;
         top:0;
         left: 0;
-        z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */
-        float: top;                                                                                      
+        z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */                                                                                    
     }
     
     </style>    
@@ -98,8 +97,7 @@ def change_avatar(secs):
         position: fixed;
         top:0;
         left: 0;
-        z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */
-        float: top;                                                                                      
+        z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */                                                                                     
     }
     
     </style>    
