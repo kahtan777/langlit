@@ -43,13 +43,17 @@ with left_column:
         height: 100%; 
         border-radius: 0;
         position: fixed;
-        top:15%;    
+        top:0;    
         left: 0;
         z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */                                                                                    
     }
-    .video-container video {
-    width: 80%;
-    height: auto;
+    @media (max-width: 768px) {
+        .video-container {
+            position: fixed;
+            top: 18%;
+            left: 0;
+            width: 95%;
+        }
     }
     
     </style>    
@@ -98,7 +102,7 @@ def change_avatar(secs):
         overflow: hidden;
         border-radius: 0;
         position: fixed;
-        top:15%;
+        top:0;
         left: 0;
         z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */                                                                                     
     }
