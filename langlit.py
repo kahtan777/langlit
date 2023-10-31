@@ -50,7 +50,7 @@ with left_column:
         .video-container {
             position: fixed;
             top: 60%;
-            left: 0;
+            left: 5%;
             width: 95%;
         }
     }
@@ -109,7 +109,7 @@ def change_avatar(secs):
         .video-container {
             position: fixed;
             top: 60%;
-            left: 0;
+            left: 5%;
             width: 95%;
         }
     }
