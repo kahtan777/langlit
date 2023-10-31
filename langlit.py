@@ -44,7 +44,7 @@ with left_column:
         overflow: hidden;
         border-radius: 0;
         position: fixed;
-        top:0;
+        top:5%;
         left: 0;
         z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */                                                                                    
     }
