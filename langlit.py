@@ -47,7 +47,7 @@ end_time = 10
 
 with left_column:
     video_html = """
-    <style>
+<style>
     .video-container {
         position: fixed;
         width: 80%;
@@ -56,7 +56,8 @@ with left_column:
         border-radius: 0;
         z-index: 999; /* Ensure the video appears above other content */
         left: 0;
-        top:0;
+        top: 0;
+        display: block; /* Initially, show the video */
     }
 
     .video-container video {
@@ -70,27 +71,29 @@ with left_column:
         <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+</div>
 
 <script>
     var video = document.getElementById('myVideo');
 
     video.addEventListener('loadedmetadata', function() {
-        video.currentTime = """ +str(start_time)+ """; // Start at 5 seconds
-        var endTime = """+str(end_time)+""";    // End at 10 seconds
+        video.currentTime = """ + str(start_time) + """; // Start at the specified time
+        var endTime = """ + str(end_time) + """; // End at the specified time
 
         video.addEventListener('timeupdate', function() {
             if (video.currentTime >= endTime) {
-                video.currentTime = """+ str(start_time)+ """; // Loop back to 5 seconds
+                video.currentTime = """ + str(start_time) + """; // Loop back to the specified time
             }
         });
 
         video.play(); // Play the video
     });
 
-    window.addEventListener("scroll", function() {
-        var videoContainer = document.querySelector(".video-container");
-        var content = document.getElementById("myVideo");
+    // Get references to the video container and the video itself
+    var videoContainer = document.querySelector(".video-container");
+    var content = document.getElementById("myVideo");
 
+    window.addEventListener("scroll", function() {
         // Get the scroll position
         var scrollY = window.scrollY || window.pageYOffset;
 
@@ -98,14 +101,15 @@ with left_column:
         var threshold = 200; // Adjust as needed
 
         if (scrollY > threshold) {
-            videoContainer.style.display = "block";
+            // Position the video container at the top of the page
+            videoContainer.style.top = "0";
         } else {
-            videoContainer.style.display = "none";
+            // Restore the default position
+            videoContainer.style.top = null;
         }
     });
 </script>
-</div>
-    """
+
     
     #components.html(video_html, height=874*3/4, width=1080*3/4)
     #components.html(video_html) 
