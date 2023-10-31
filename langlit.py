@@ -36,27 +36,16 @@ start_time = 5  # Start time in seconds
 end_time = 10
 
 with left_column:
-    video_html = """
+    video_html ="""
     <style>
-    .video-container {
-        position: fixed;
-        width: 80%;
-        height: auto;
-        overflow: hidden;
-        border-radius: 0;
-        z-index: 999; /* Ensure the video appears above other content */
-        left: 0;
+    .stVideo iframe {{
+        position: -webkit-sticky;
+        position: sticky;
         top: 0;
-    }
-
-    .video-container video {
-        width: 100%;
-        height: auto;
-    }
-</style>
-<div class="content" style="height: 2000px;">
-
-</div>
+        z-index: 1;
+    }}
+    </style>
+    
 <div class="video-container">
     <video autoplay muted loop id="myVideo">
         <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
