@@ -208,7 +208,7 @@ with right_column:
     with response_container:
         if st.session_state['responses']:
     
-            for i in range(len(st.session_state['responses']),max(0, len(st.session_state['responses'])-2)):#max(0, len(st.session_state['responses'])-2),
+            for i in range(max(0, len(st.session_state['responses'])-2),len(st.session_state['responses']),v):#max(0, len(st.session_state['responses'])-2),
                 message(st.session_state['responses'][i],key=str(i))
                 if i < len(st.session_state['requests']):
                     message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
