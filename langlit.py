@@ -50,7 +50,7 @@ with left_column:
     }
 
     .video-container video {
-        width: 100%;
+        width: 80%;
         height: auto;
     }
     </style>
