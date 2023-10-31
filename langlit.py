@@ -57,7 +57,6 @@ with left_column:
         z-index: 999; /* Ensure the video appears above other content */
         left: 0;
         top:0;
-        display: none; /* Initially hide the video */
     }
 
     .video-container video {
