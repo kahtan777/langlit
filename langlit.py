@@ -109,6 +109,7 @@ with left_column:
         }
     });
 </script>
+"""
 
     
     #components.html(video_html, height=874*3/4, width=1080*3/4)
