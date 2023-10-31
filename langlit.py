@@ -121,10 +121,9 @@ def change_avatar(secs):
     .video-container video {
         width: 80%;
         height: auto; 
-        #overflow: hidden;
-        #border-radius: 0;
-        #position: fixed;
-        #bottom: 0;
+        overflow: hidden;
+        border-radius: 0;
+        position: fixed;
         top:0;
         left: 0;
         z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */
@@ -172,7 +171,6 @@ def change_avatar(secs):
 
 
 with right_column:
-    st.markdown('#')
     if 'responses' not in st.session_state:
         st.session_state['responses'] = ["مرحبا، انا مريم رح كون انستكون ليوم"]
     
