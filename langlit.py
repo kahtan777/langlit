@@ -36,19 +36,23 @@ start_time = 5  # Start time in seconds
 end_time = 10
 
 with left_column:
-    video_html = f"""
+    video_html = """
     <style>
-    .video-container video {{
+    .video-container {
+        position: fixed;
         width: 80%;
         height: auto;
         overflow: hidden;
         border-radius: 0;
-        position: fixed;
-        top: 0;
+        z-index: 999; /* Ensure the video appears above other content */
         left: 0;
-        z-index: 999;
-        margin-right: 20px;
-    }}
+        top: 0;
+    }
+
+    .video-container video {
+        width: 100%;
+        height: auto;
+    }
     </style>
     
     <div class="video-container">
