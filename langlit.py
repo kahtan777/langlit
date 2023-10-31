@@ -105,6 +105,14 @@ def change_avatar(secs):
         left: 0;
         z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */                                                                                     
     }
+    @media (max-width: 768px) {
+        .video-container {
+            position: fixed;
+            top: 60%;
+            left: 0;
+            width: 95%;
+        }
+    }
     
     </style>    
     <div class="video-container">
