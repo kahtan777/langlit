@@ -37,41 +37,49 @@ end_time = 10
 
 with left_column:
     video_html ="""
-    <style>
-    .stVideo iframe {{
-        position: -webkit-sticky;
-        position: sticky;
-        top: 0;
-        z-index: 1;
-    }}
+    .video-container {
+    position: fixed;
+    width: 80%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 0;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    }
+    
+    .video-container video {
+        width: 80%;
+        height: auto;
+    }
     </style>
     
-<div class="video-container">
-    <video autoplay muted loop id="myVideo">
-        <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
-
-<script>
-    var video = document.getElementById('myVideo');
-
-    video.addEventListener('loadedmetadata', function() {
-        video.currentTime = """ + str(start_time) + """; // Start at the specified time
-        var endTime = """ + str(end_time) + """; // End at the specified time
-
-        video.addEventListener('timeupdate', function() {
-            if (video.currentTime >= endTime) {
-                video.currentTime = """ + str(start_time) + """; // Loop back to the specified time
-            }
-        });
-
-        video.play(); // Play the video
-    });
-
+    <div class="video-container">
+        <video autoplay muted loop id="myVideo">
+            <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
     
-</script>
-"""
+    <script>
+        var video = document.getElementById('myVideo');
+    
+        video.addEventListener('loadedmetadata', function() {
+            video.currentTime = """ + str(start_time) + """; // Start at the specified time
+            var endTime = """ + str(end_time) + """; // End at the specified time
+    
+            video.addEventListener('timeupdate', function() {
+                if (video.currentTime >= endTime) {
+                    video.currentTime = """ + str(start_time) + """; // Loop back to the specified time
+                }
+            });
+    
+            video.play(); // Play the video
+        });
+    
+        
+    </script>
+    """
 
     
     #components.html(video_html, height=874*3/4, width=1080*3/4)
