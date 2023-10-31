@@ -40,7 +40,7 @@ with left_column:
     <style>
     .video-container video {
         width: 80%;
-        height: auto; 
+        height: 100%; 
         overflow: hidden;
         border-radius: 0;
         position: fixed;
@@ -206,13 +206,13 @@ with right_column:
     with response_container:
         if st.session_state['responses']:
     
-            for i in range(max(0, len(st.session_state['responses'])-2),len(st.session_state['responses'])):#max(0, len(st.session_state['responses'])-2),
+            for i in range(max(0, len(st.session_state['responses'])-2),len(st.session_state['responses'])):
                 message(st.session_state['responses'][i],key=str(i))
                 if i < len(st.session_state['requests']):
                     message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
 
 
-    def play_audio(where):
-        return
+def play_audio(where):
+    return
 
 
