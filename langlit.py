@@ -44,8 +44,7 @@ with left_column:
         overflow: hidden;
         border-radius: 0;
         position: fixed;
-        top:15%;
-        bottom:0;
+        top:15%;    
         left: 0;
         z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */                                                                                    
     }
@@ -82,7 +81,7 @@ with left_column:
     #components.html(video_html, height=874*3/4, width=1080*3/4)
     #components.html(video_html) 
     with video_placeholder:
-        components.html(video_html, height=874*3/4) 
+        components.html(video_html, height=874) 
         #st.markdown(video_html, unsafe_allow_html=True)
 
 def change_avatar(secs):
