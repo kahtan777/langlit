@@ -25,19 +25,9 @@ keyy=st.secrets["openAI_key"]
 st.set_page_config(layout="wide")
 left_column, right_column = st.columns([7,3])
 
-css='''
-<style>
-    section.main>div {
-        padding-bottom: 1rem;
-    }
-    [data-testid="column"]>div>div>div>div>div {
-        overflow: auto;
-        height: 70vh;
-    }
-</style>
-'''
 
-#st.markdown(css, unsafe_allow_html=True)
+
+
 
 with left_column:
     video_placeholder = st.empty()
