@@ -47,7 +47,7 @@ end_time = 10
 
 with left_column:
     video_html = """
-<style>
+    <style>
     .video-container {
         position: fixed;
         width: 80%;
