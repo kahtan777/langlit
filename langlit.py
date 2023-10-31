@@ -212,7 +212,7 @@ with right_column:
                     message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
 
 
-def play_audio(where):
-    return
+    def play_audio(where):
+        return
 
 
