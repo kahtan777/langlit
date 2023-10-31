@@ -44,7 +44,7 @@ with left_column:
         overflow: hidden;
         border-radius: 0;
         position: fixed;
-        top:5%;
+        top:15%;
         left: 0;
         z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */                                                                                    
     }
@@ -91,7 +91,7 @@ def change_avatar(secs):
     <style>
     .video-container video {
         width: 80%;
-        height: auto; 
+        height: 100%; 
         overflow: hidden;
         border-radius: 0;
         position: fixed;
