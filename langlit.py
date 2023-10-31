@@ -41,7 +41,6 @@ with left_column:
     .video-container video {
         width: 80%;
         height: 100%; 
-        overflow: hidden;
         border-radius: 0;
         position: fixed;
         top:15%;    
@@ -95,7 +94,7 @@ def change_avatar(secs):
         overflow: hidden;
         border-radius: 0;
         position: fixed;
-        top:0;
+        top:15%;
         left: 0;
         z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */                                                                                     
     }
@@ -129,13 +128,13 @@ def change_avatar(secs):
     # Clear the old component and replace it with the updated content
     #placeholder.components.html(video_html2, height=874, width=1080)
     with video_placeholder:
-        components.html(video_html2, height=874*3/4)
+        components.html(video_html2, height=874)
         #st.markdown(video_html, unsafe_allow_html=True)
     time.sleep(secs)
     start_time = 5
     end_time = 10
     with video_placeholder:
-        components.html(video_html, height=874*3/4)
+        components.html(video_html, height=874)
         #st.markdown(video_html, unsafe_allow_html=True)
     
 
