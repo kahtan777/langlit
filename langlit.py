@@ -58,6 +58,7 @@ with left_column:
         left: 0;
         top: 0;
         display: block; /* Initially, show the video */
+        transform: translateX(0);
     }
 
     .video-container video {
@@ -65,7 +66,9 @@ with left_column:
         height: auto;
     }
 </style>
+<div class="content" style="height: 2000px;">
 
+</div>
 <div class="video-container">
     <video autoplay muted loop id="myVideo">
         <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
@@ -99,6 +102,9 @@ with left_column:
 
         // Define a threshold for when to show/hide the video
         var threshold = 200; // Adjust as needed
+        
+        var scrollX = 0; // Adjust as needed
+        videoContainer.style.transform = `translate(${scrollX}px, ${scrollY}px)`;
 
         if (scrollY > threshold) {
             // Position the video container at the top of the page
