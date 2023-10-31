@@ -57,6 +57,7 @@ with left_column:
         z-index: 999; /* Ensure the video appears above other content */
         left: 0;
         top:0;
+        display: none; /* Initially hide the video */
     }
 
     .video-container video {
@@ -65,7 +66,7 @@ with left_column:
     }
 </style>
 
-<div class="video-container floating">
+<div class="video-container">
     <video autoplay muted loop id="myVideo">
         <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
         Your browser does not support the video tag.
