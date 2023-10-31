@@ -57,8 +57,6 @@ with left_column:
         z-index: 999; /* Ensure the video appears above other content */
         left: 0;
         top: 0;
-        display: block; /* Initially, show the video */
-        transform: translateX(0);
     }
 
     .video-container video {
@@ -92,28 +90,7 @@ with left_column:
         video.play(); // Play the video
     });
 
-    // Get references to the video container and the video itself
-    var videoContainer = document.querySelector(".video-container");
-    var content = document.getElementById("myVideo");
-
-    window.addEventListener("scroll", function() {
-        // Get the scroll position
-        var scrollY = window.scrollY || window.pageYOffset;
-
-        // Define a threshold for when to show/hide the video
-        var threshold = 200; // Adjust as needed
-        
-        var scrollX = 0; // Adjust as needed
-        videoContainer.style.transform = `translate(${scrollX}px, ${scrollY}px)`;
-
-        if (scrollY > threshold) {
-            // Position the video container at the top of the page
-            videoContainer.style.top = "0";
-        } else {
-            // Restore the default position
-            videoContainer.style.top = null;
-        }
-    });
+    
 </script>
 """
 
