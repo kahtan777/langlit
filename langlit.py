@@ -42,9 +42,14 @@ with left_column:
         width: 80%;
         height: 100%; 
         border-radius: 0;
+        position: fixed;
         top:15%;    
         left: 0;
         z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */                                                                                    
+    }
+    .video-container video {
+    width: 80%;
+    height: auto;
     }
     
     </style>    
