@@ -36,21 +36,21 @@ start_time = 5  # Start time in seconds
 end_time = 10
 
 with left_column:
-    video_html ="""
+    video_html = f"""
     <style>
-    .video-container video {
+    .video-container video {{
         width: 80%;
-        height: auto; 
+        height: auto;
         overflow: hidden;
         border-radius: 0;
         position: fixed;
-        top:0;
+        top: 0;
         left: 0;
-        z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */
-        float: top;                                                                                      
-    }
+        z-index: 999;
+        margin-right: 20px;
+    }}
+    </style>
     
-    </style>    
     <div class="video-container">
         <video autoplay muted loop id="myVideo">
             <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
@@ -60,29 +60,23 @@ with left_column:
     
     <script>
         var video = document.getElementById('myVideo');
-    
-        video.addEventListener('loadedmetadata', function() {
-            video.currentTime = """ + str(start_time) + """; // Start at the specified time
-            var endTime = """ + str(end_time) + """; // End at the specified time
-    
-            video.addEventListener('timeupdate', function() {
-                if (video.currentTime >= endTime) {
-                    video.currentTime = """ + str(start_time) + """; // Loop back to the specified time
-                }
-            });
-    
+        video.addEventListener('loadedmetadata', function() {{
+            video.currentTime = {start_time}; // Start at the specified time
+            var endTime = {end_time}; // End at the specified time
+            video.addEventListener('timeupdate', function() {{
+                if (video.currentTime >= endTime) {{
+                    video.currentTime = {start_time}; // Loop back to the specified time
+                }}
+            }};
             video.play(); // Play the video
-        });
-    
-        
+        }});
     </script>
     """
 
-    
-    #components.html(video_html, height=874*3/4, width=1080*3/4)
+
     #components.html(video_html) 
     with video_placeholder:
-        components.html(video_html, height=874*3/4) 
+        st.markdown(video_html, unsafe_allow_html=True)
         #st.markdown(video_html, unsafe_allow_html=True)
 
 def change_avatar(secs):
