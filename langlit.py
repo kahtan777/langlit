@@ -7,226 +7,62 @@ from langchain.prompts import (
     ChatPromptTemplate,
     MessagesPlaceholder
 )
-import os
-import audio
 import streamlit as st
 from streamlit_chat import message
 from utils import *
-import tts
-import wave
-import contextlib
-import streamlit.components.v1 as components
-import time
-
-
-
-
 keyy=st.secrets["openAI_key"]
-st.set_page_config(layout="wide")
-left_column, right_column = st.columns([7,3])
+st.subheader("Chatbot with Langchain, ChatGPT, Pinecone, and Streamlit")
+
+if 'responses' not in st.session_state:
+    st.session_state['responses'] = ["How can I assist you?"]
+
+if 'requests' not in st.session_state:
+    st.session_state['requests'] = []
+
+llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=keyy)
+
+if 'buffer_memory' not in st.session_state:
+            st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
+
+
+system_msg_template = SystemMessagePromptTemplate.from_template(template="""Answer the question as truthfully as possible using the provided context Only, 
+and if the answer is not contained within the text below, say 'I don't know'""")
+
+
+human_msg_template = HumanMessagePromptTemplate.from_template(template="{input}")
+
+prompt_template = ChatPromptTemplate.from_messages([system_msg_template, MessagesPlaceholder(variable_name="history"), human_msg_template])
+
+conversation = ConversationChain(memory=st.session_state.buffer_memory, prompt=prompt_template, llm=llm, verbose=True)
 
 
 
 
-
-with left_column:
-    video_placeholder = st.empty()
-
-start_time = 5  # Start time in seconds
-end_time = 10
-
-with left_column:
-    video_html ="""
-    <style>
-    .video-container video {
-        width: 80%;
-        height: 100%; 
-        border-radius: 0;
-        top:0;    
-        left: 0;
-        z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */                                                                                    
-    }
-    @media (max-width: 800px) {
-        .video-container {
-            position: fixed;
-            top: 60%;
-            left: 5%;
-            width: 95%;
-        }
-    }
-    
-    </style>    
-    <div class="video-container">
-        <video autoplay muted loop id="myVideo">
-            <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-    
-    <script>
-        var video = document.getElementById('myVideo');
-    
-        video.addEventListener('loadedmetadata', function() {
-            video.currentTime = """ + str(start_time) + """; // Start at the specified time
-            var endTime = """ + str(end_time) + """; // End at the specified time
-    
-            video.addEventListener('timeupdate', function() {
-                if (video.currentTime >= endTime) {
-                    video.currentTime = """ + str(start_time) + """; // Loop back to the specified time
-                }
-            });
-    
-            video.play(); // Play the video
-        });
-    
-        
-    </script>
-    """
-
-    
-    #components.html(video_html, height=874*3/4, width=1080*3/4)
-    #components.html(video_html) 
-    with video_placeholder:
-        components.html(video_html, height=874) 
-        #st.markdown(video_html, unsafe_allow_html=True)
-
-def change_avatar(secs):
-    start_time = 37
-    end_time = 37+secs
-    video_html2 = """
-    <style>
-    .video-container video {
-        width: 80%;
-        height: 100%; 
-        overflow: hidden;
-        border-radius: 0;
-        position: fixed;
-        top:0;
-        left: 0;
-        z-index: 999; /* Ensure the video appears above other content margin-right: 20px; */                                                                                     
-    }
-    @media (max-width: 800px) {
-        .video-container {
-            position: fixed;
-            top: 60%;
-            left: 5%;
-            width: 95%;
-        }
-    }
-    
-    </style>    
-    <div class="video-container">
-    <video autoplay muted loop id="myVideo" >
-        <source src="https://futurelaby.com/avatar/cont.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <script>
-        var video = document.getElementById('myVideo');
-
-        video.addEventListener('loadedmetadata', function() {
-            video.currentTime = """ +str(start_time)+ """; // Start at 5 seconds
-            var endTime = """+str(end_time)+""";    // End at 10 seconds
-
-            video.addEventListener('timeupdate', function() {
-                if (video.currentTime >= endTime) { 
-                    video.currentTime = """+ str(start_time)+ """; // Loop back to 5 seconds
-                }
-            });
-
-            video.play(); // Play the video
-        });
-    </script>
-    </div>
-    """
-    
-    # Clear the old component and replace it with the updated content
-    #placeholder.components.html(video_html2, height=874, width=1080)
-    with video_placeholder:
-        components.html(video_html2, height=874)
-        #st.markdown(video_html, unsafe_allow_html=True)
-    time.sleep(secs)
-    start_time = 5
-    end_time = 10
-    with video_placeholder:
-        components.html(video_html, height=874)
-        #st.markdown(video_html, unsafe_allow_html=True)
-    
+# container for chat history
+response_container = st.container()
+# container for text box
+textcontainer = st.container()
 
 
-with right_column:
-    if 'responses' not in st.session_state:
-        st.session_state['responses'] = ["مرحبا، انا مريم رح كون انستكون ليوم"]
-    
-    if 'requests' not in st.session_state:
-        st.session_state['requests'] = []
-    
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=keyy)
-    
-    if 'buffer_memory' not in st.session_state:
-        st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
-    
-    
-    system_msg_template = SystemMessagePromptTemplate.from_template(template="""Answer the question as truthfully as possible using the provided context in Arabic only, 
-    and if the answer is not contained within the text below, say 'I don't know', but if its a greeting you have to greet back, and be friendly female teacher,and your name is mariam, act as teacher your name is mariam""")
-    
-    
-    human_msg_template = HumanMessagePromptTemplate.from_template(template="{input}")
-    
-    prompt_template = ChatPromptTemplate.from_messages([system_msg_template, MessagesPlaceholder(variable_name="history"), human_msg_template])
-    
-    conversation = ConversationChain(memory=st.session_state.buffer_memory, prompt=prompt_template, llm=llm, verbose=True)
-    
-    
-    
-    
-   
-    # container for chat history
-    with right_column:
-        response_container = st.container()
-    # container for text box
-    with right_column: 
-        textcontainer = st.container()
-    
-    with right_column:
-        mytext = audio.audiorec_demo_app(right_column)
-    
-    def change_my_text_back():
-        mytext='default'
-        
-    
-    with textcontainer:
-        if mytext == 'default':
-            query = st.text_input("Question: ", key="input", on_change=change_my_text_back)
-        else:
-            query = st.text_input("Question: ", key="input", value=mytext, on_change=change_my_text_back)
-        if query:
-            with st.spinner("typing..."):
-                #conversation_string = get_conversation_string()
-                #st.code(conversation_string)
-                #refined_query = query_refiner(conversation_string, query)
-                #st.subheader("Refined Query:")
-                #st.write(refined_query)
-                context = find_match(query)#refined_query
-                # print(context)  
-                response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
-                filename_ = tts.tts(response, left_column)
-                with wave.open(filename_) as mywav:
-                    duration_seconds = mywav.getnframes() / mywav.getframerate()
-                    change_avatar(duration_seconds)
-                
-            st.session_state.requests.append(query)
-            st.session_state.responses.append(response) 
-    with response_container:
-        if st.session_state['responses']:
-    
-            for i in range(max(0, len(st.session_state['responses'])-2),len(st.session_state['responses'])):
-                message(st.session_state['responses'][i],key=str(i))
-                if i < len(st.session_state['requests']):
-                    message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
+with textcontainer:
+    query = st.text_input("Query: ", key="input")
+    if query:
+        with st.spinner("typing..."):
+            #conversation_string = get_conversation_string()
+            # st.code(conversation_string)
+            #refined_query = query_refiner(conversation_string, query)
+            #st.subheader("Refined Query:")
+            #st.write(refined_query)
+            context = find_match(query)
+            # print(context)  
+            response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
+        st.session_state.requests.append(query)
+        st.session_state.responses.append(response) 
+with response_container:
+    if st.session_state['responses']:
 
-
-def play_audio(where):
-    return
-
+        for i in range(len(st.session_state['responses'])):
+            message(st.session_state['responses'][i],key=str(i))
+            if i < len(st.session_state['requests']):
+                message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
 
