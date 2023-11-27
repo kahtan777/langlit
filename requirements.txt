@@ -14,9 +14,3 @@ boto3==1.28.57
 streamlit_chat
 sentence_transformers
 
-pydub==0.25.1
-google-cloud-speech==2.21.1
-google-cloud-texttospeech==2.14.2
-wave==0.0.2
-pygame
-audio-recorder-streamlit
